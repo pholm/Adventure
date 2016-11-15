@@ -34,10 +34,10 @@ class Action(input: String) {
       Some(actor.examine(this.modifiers))
     } else if (this.verb == "get") {
       Some(actor.get(this.modifiers))
-    } else if (this.verb == "drink") {
+    /*} else if (this.verb == "drink") {
       Some(actor.drink(this.modifiers))
-    } else if (this.verb == "talk") {
-      Some(actor.talk(this.modifiers)) 
+    	} else if (this.verb == "talk") {
+      Some(actor.talk(this.modifiers)) */
     } else {
       None
     }
