@@ -11,7 +11,7 @@ package o1.adventure
   * games, you will need to modify or replace the source code of this class. */
 class Adventure {
 
-  /** The title of the adventure game. */
+  /** The title of the adventure game. */ //toimiperkele
   val title = "Rontti approilee"
   
   private val Kampin_alakerta     = new Area("Forest", "You are somewhere in the forest. There are a lot of trees here.\nBirds are singing.")  
