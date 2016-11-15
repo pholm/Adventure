@@ -27,16 +27,27 @@ class Adventure {
   private val Shaker              = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
   private val WilliamK            = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
   private val Teereenpeli         = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val Vessa               = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
+  private val VessaKamppi               = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
+  private val VeskiHenry               = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
   private val destination         = Bruuveri    
 
-  Kampin_alakerta.setNeighbors(Vector("Kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> Vessa))
+  Kampin_alakerta.setNeighbors(Vector("Kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
   Kampin_yläkerta.setNeighbors(Vector("Bruuveriin" -> Bruuveri, "Bierhuis Rotterdamiin" -> Bierhuis_Rotterdam, "Narinkkatorille" -> Narinkkatori, "Tennispalatsinaukiolle" -> Tennispalatsinaukio,   "Kampin alakertaan" -> Kampin_alakerta))
   Narinkkatori.setNeighbors(Vector("Pub Ikkunaan" -> Pub_Ikkuna, "Henry's Pubiin" -> Henrys_pub, "Tennispalatsinaukiolle" -> Tennispalatsinaukio, "Kampin yläkertaan" -> Kampin_yläkerta  ))
   Tennispalatsinaukio.setNeighbors(Vector("Teereenpeliin" -> Teereenpeli,      "Aussie Bariin" -> AussieBar, "Fredrikinkadulle" -> Fredrikinkatu, "Kampin yläkertaan" -> Kampin_yläkerta   ))
   Fredrikinkatu.setNeighbors(Vector("William Koohon" -> WilliamK, "Shakeriin" -> Shaker, "Tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Bruuveri.setNeighbors(Vector("Kampin yläkertaan" -> Kampin_yläkerta))
   Bierhuis_Rotterdam.setNeighbors(Vector("Kampin yläkertaan" -> Kampin_yläkerta))
+  Pub_Ikkuna.setNeighbors(Vector("Narinkkatorille" -> Narinkkatori))
+  
+  Henrys_pub.setNeighbors(Vector("Narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry))
+  Shaker.setNeighbors(Vector("Fredrikinkadulle" -> Fredrikinkatu))
+  WilliamK.setNeighbors(Vector("Fredrikinkadulle" -> Fredrikinkatu))
+  AussieBar.setNeighbors(Vector("Tennispalatsinaukiolle" -> Tennispalatsinaukio))
+  Teereenpeli.setNeighbors(Vector("Tennispalatsinaukiolle" -> Tennispalatsinaukio))
+  VessaKamppi.setNeighbors(Vector( "Kampin alakertaan" -> Kampin_alakerta))
+  VeskiHenry.setNeighbors(Vector("Henry's Pubiin" -> Henrys_pub))
+
 
 
   // TODO: place these two items in clearing and southForest, respectively
