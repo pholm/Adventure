@@ -31,7 +31,7 @@ class Action(input: String) {
     }
     
   }
- //PETRUS IS GAY TOIMIIIKOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOooo
+ //kymis IS GAY TOIMIIIKOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOooo
 
   /** Returns a textual description of the action object, for debugging purposes. */
   override def toString = this.verb + " (modifiers: " + this.modifiers + ")"  
