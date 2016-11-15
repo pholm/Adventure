@@ -12,8 +12,35 @@ class Player(startingArea: Area) {
 
   private var currentLocation = startingArea        // gatherer: changes in relation to the previous location
   private var quitCommandGiven = false              // one-way flag
+  private val itemList = Map[String, Item]()
    
+  def drop(itemName: String) = {
+    if(has(itemName)) {
+    this.currentLocation.addItem(this.itemList(itemName))
+    itemList.remove(itemName)
+    s"You drop the $itemName."
+    } else "You don't have that!"
+  }
+  def examine(itemName: String) = {
+    if(!has(itemName)) "If you want to examine something, you need to pick it up first."
+    else s"You look closely at the $itemName.\n" + itemList(itemName).description
+  }
   
+  def has(itemName: String) = itemList.contains(itemName)
+  
+  def inventory = {
+    if(itemList.isEmpty) "You are empty-handed."
+    else "You are carrying:\n" + itemList.keys.mkString("\n")
+    
+  }
+  
+  def get(itemName: String) = {
+    if(this.currentLocation.contains(itemName)) {
+      this.itemList += itemName -> this.currentLocation.removeItem(itemName).get
+      s"You pick up the $itemName."   
+  } else s"There is no $itemName here to pick up." 
+  }
+
   /** Determines if the player has indicated a desire to quit the game. */
   def hasQuit = this.quitCommandGiven
 
@@ -52,5 +79,8 @@ class Player(startingArea: Area) {
 
 
 }
+
+
+
 
 

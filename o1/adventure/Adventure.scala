@@ -30,8 +30,8 @@ class Adventure {
          home.setNeighbors(Vector(                                                                  "west" -> tangle     ))
 
   // TODO: place these two items in clearing and southForest, respectively
-  new Item("battery", "It's a small battery cell. Looks new.")   
-  new Item("remote", "It's the remote control for your TV.\nWhat it was doing in the forest, you have no idea.\nProblem is, there's no battery.")
+  clearing.addItem(new Item("battery", "It's a small battery cell. Looks new."))   
+  southForest.addItem(new Item("remote", "It's the remote control for your TV.\nWhat it was doing in the forest, you have no idea.\nProblem is, there's no battery."))
 
   /** The character that the player controls in the game. */
   val player = new Player(middle)
@@ -43,7 +43,7 @@ class Adventure {
 
 
   /** Determines if the adventure is complete, that is, if the player has won. */
-  def isComplete = this.player.location == this.destination 
+  def isComplete = this.player.location == this.destination && this.player.has("remote") && this.player.has("battery")
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */ 
   def isOver = this.isComplete || this.player.hasQuit || this.turnCount == this.timeLimit
@@ -78,4 +78,3 @@ class Adventure {
   
   
 }
-
