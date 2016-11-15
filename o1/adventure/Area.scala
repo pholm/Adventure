@@ -13,10 +13,15 @@ class Area(var name: String, var description: String) {
   
   private val neighbors = Map[String, Area]()
   private val items = Map[String, Item]()
+  private val drinks = Map[String, Drink]().withDefaultValue(new Drink("Ei olla","Osta Bisse"))
   
   def addItem(item: Item) = this.items += item.name -> item
   def contains(itemName: String) = items.contains(itemName)
   def removeItem(itemName: String) = items.remove(itemName)
+  
+  def addDrink(drink: Drink) = this.drinks += drink.name -> drink
+  def containsDrink(drinkName: String) = drinks.contains(drinkName)
+  def removeDrink(drinkName: String) = drinks.remove(drinkName)
   
   /** Returns the area that can be reached from this area by moving in the given direction. The result 
     * is returned in an `Option`; `None` is returned if there is no exit in the given direction. */

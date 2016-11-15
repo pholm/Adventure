@@ -48,8 +48,10 @@ class Adventure {
   VessaKamppi.setNeighbors(Vector( "Kampin alakertaan" -> Kampin_alakerta))
   VeskiHenry.setNeighbors(Vector("Henry's Pubiin" -> Henrys_pub))
 
-
-
+  private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teereenpeli)
+  baarit.foreach(_.addDrink(new Drink("Talon olut","Mainiota Olvi kolmosta opiskelijahintaan")))
+  baarit.foreach(_.addDrink(new Drink("Viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin")))
+  
   // TODO: place these two items in clearing and southForest, respectively
  // clearing.addItem(new Item("battery", "It's a small battery cell. Looks new."))   
  // southForest.addItem(new Item("remote", "It's the remote control for your TV.\nWhat it was doing in the forest, you have no idea.\nProblem is, there's no battery."))
