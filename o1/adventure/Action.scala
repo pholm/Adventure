@@ -18,7 +18,7 @@ class Action(input: String) {
     * wrapper; if the command was not recognized, `None` is returned. */
   def execute(actor: Player) = {                             
 
-    if (this.verb == "go") {
+  if (this.verb == "go") {
       Some(actor.go(this.modifiers))
     } else if (this.verb == "rest") {
       Some(actor.rest())
@@ -26,12 +26,20 @@ class Action(input: String) {
       Some("The grue tastes yummy.")
     } else if (this.verb == "quit") {
       Some(actor.quit())
-    } else {
+    } else if (this.verb == "inventory") {
+     Some(actor.inventory)
+    } else if (this.verb == "drop") {
+      Some(actor.drop(this.modifiers))
+    } else if (this.verb == "examine") {
+      Some(actor.examine(this.modifiers))
+    }else if (this.verb == "get") {
+      Some(actor.get(this.modifiers))
+    }else {
       None
     }
     
   }
-  
+
   //asd
   
   /** Returns a textual description of the action object, for debugging purposes. */
