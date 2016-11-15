@@ -32,15 +32,18 @@ class Action(input: String) {
       Some(actor.drop(this.modifiers))
     } else if (this.verb == "examine") {
       Some(actor.examine(this.modifiers))
-    }else if (this.verb == "get") {
+    } else if (this.verb == "get") {
       Some(actor.get(this.modifiers))
-    }else {
+    } else if (this.verb == "drink") {
+      Some(actor.drink(this.modifiers))
+    } else if (this.verb == "talk") {
+      Some(actor.talk(this.modifiers)) 
+    } else {
       None
     }
     
   }
 
-  //asd
   
   /** Returns a textual description of the action object, for debugging purposes. */
   override def toString = this.verb + " (modifiers: " + this.modifiers + ")"  

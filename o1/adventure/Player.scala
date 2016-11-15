@@ -73,7 +73,13 @@ class Player(startingArea: Area) {
     ""
   }
 
+  def drink(juoma: String) = {
+    
+  }
   
+  def talk(person: String) = {
+    
+  }
   /** Returns a brief description of the player's state, for debugging purposes. */
   override def toString = "Now at: " + this.location.name   
 
