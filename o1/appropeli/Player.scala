@@ -16,7 +16,7 @@ class Player(startingArea: Area) {
   private var ryhmä: Option[Group] = None
   private var kusi = 0
   private var juomamaara = 0
-  private var porukat = Map[String, Group]()
+  private var porukat = Map[String, Group]().withDefaultValue(new Group("Väärin kirjoitettu", Vector[Person]()))
   
   
   def vessahata = this.kusi
@@ -32,6 +32,12 @@ class Player(startingArea: Area) {
   
   def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat
       
+  def valitsen(ryhmanNimi: String) = {
+    if(!this.ryhmä.isDefined) {
+      
+    }
+  }
+  
   def examine(itemName: String) = {
     if(!has(itemName)) "If you want to examine something, you need to pick it up first."
     else s"You look closely at the $itemName.\n" + itemList(itemName).description
