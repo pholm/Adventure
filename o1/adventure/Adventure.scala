@@ -41,13 +41,13 @@ class Adventure {
   Bierhuis_Rotterdam.setNeighbors(Vector( "kampin yläkertaan" -> Kampin_yläkerta))
   Pub_Ikkuna.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori))
   
-  Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry, "vessanpönttöön" -> VessaKamppi))
+  Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry))
   Shaker.setNeighbors(Vector(             "fredrikinkadulle" -> Fredrikinkatu))
   WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu))
   AussieBar.setNeighbors(Vector(          "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Teerenpeli.setNeighbors(Vector(        "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta, "vessanpönttöön" -> VeskiHenry))
-  VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub))
+  VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
   
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)

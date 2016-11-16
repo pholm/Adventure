@@ -83,9 +83,9 @@ class Player(startingArea: Area) {
 
   def tilaa(juoma: Drink) = {
     this.juodut += 1
-    if (juoma == "Talon olut") {
+    if (juoma = olut) {
       "Tilasit oluen. Joit huurteisen yhdellä kulauksella!"
-    } else if (juoma == "Viina")
+    } else if (juoma == viina)
       "Joit viinan ja irvistit kuin fuksi."
   }
   
