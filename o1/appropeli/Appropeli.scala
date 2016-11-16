@@ -51,12 +51,16 @@ class Appropeli {
   VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
   
-  // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmiä luotaessa
+  /* Luodaan pelihahmo ja asetetaan se "alkupaikkaan". Alkupaikassa pelaaja valitsee ryhmän, jonka jälkeen hahmo siirtyy Kampin alakertaan
+   ja peli alkaa */
+  val player = new Player(alkupaikka)
+  
+  // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  val group1 = new Group("tutalaiset", Vector[Person](new Person("Rontti",a), new Person("Akseli",a), new Person("Kymis",a)))
-  val group2 = new Group("kauppislaiset",Vector[Person](new Person("Jan-Paul",a), new Person("Christoffer",a), new Person("Erik",a)))
-  val group3 = new Group("infolaiset",Vector[Person](new Person("Henrik",a), new Person("Ville",a), new Person("Tiina",a)))
+  val group1 = new Group("paatuneet tutalaiset", Vector[Person](new Person("Rontti",a,"olen nousu_humalassa"), new Person("Akseli",a,"vitunkymisvittu"), new Person("Kymis",a,"en ainakaan nouse ennen kahtatoista")))
+  val group2 = new Group("syntiset kylterit",Vector[Person](new Person("Jan-Paul",a,"Lähtisitkö viikonloppuna purjehtimaan Dragsvikiin?"), new Person("Christoffer",a,"Tänään otetaan!"), new Person("Erik",a,"Mä oon tänään vesilinjalla, älä syyyllistä.")))
+  val group3 = new Group("viattomat infolaiset",Vector[Person](new Person("Henrik",a,"Mun rahat on loppu."), new Person("Ville",a,"Mun tekstipeli on parempi ku sun."), new Person("Tiina",a,"Info on paras")))
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
   this.player.addGroups(Vector(group1.nimi -> group1, group2.nimi -> group2, group3.nimi -> group3))
@@ -69,9 +73,7 @@ class Appropeli {
   baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.")))
   
 
-/* Luodaan pelihahmo ja asetetaan se "alkupaikkaan". Alkupaikassa pelaaja valitsee ryhmän, jonka jälkeen hahmo siirtyy Kampin alakertaan
-   ja peli alkaa */
-  val player = new Player(alkupaikka)
+
   var juodut = player.juodut
   /** The number of turns that have passed since the start of the game. */
   var turnCount = 0
