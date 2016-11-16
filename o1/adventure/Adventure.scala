@@ -31,22 +31,22 @@ class Adventure {
   private val VeskiHenry               = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
   private val destination         = Bruuveri    
 
-  Kampin_alakerta.setNeighbors(Vector("Kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
-  Kampin_yläkerta.setNeighbors(Vector("Bruuveriin" -> Bruuveri, "Bierhuis Rotterdamiin" -> Bierhuis_Rotterdam, "Narinkkatorille" -> Narinkkatori, "Tennispalatsinaukiolle" -> Tennispalatsinaukio,   "Kampin alakertaan" -> Kampin_alakerta))
-  Narinkkatori.setNeighbors(Vector("Pub Ikkunaan" -> Pub_Ikkuna, "Henry's Pubiin" -> Henrys_pub, "Tennispalatsinaukiolle" -> Tennispalatsinaukio, "Kampin yläkertaan" -> Kampin_yläkerta  ))
-  Tennispalatsinaukio.setNeighbors(Vector("Teereenpeliin" -> Teereenpeli,      "Aussie Bariin" -> AussieBar, "Fredrikinkadulle" -> Fredrikinkatu, "Kampin yläkertaan" -> Kampin_yläkerta   ))
-  Fredrikinkatu.setNeighbors(Vector("William Koohon" -> WilliamK, "Shakeriin" -> Shaker, "Tennispalatsinaukiolle" -> Tennispalatsinaukio))
-  Bruuveri.setNeighbors(Vector("Kampin yläkertaan" -> Kampin_yläkerta))
-  Bierhuis_Rotterdam.setNeighbors(Vector("Kampin yläkertaan" -> Kampin_yläkerta))
-  Pub_Ikkuna.setNeighbors(Vector("Narinkkatorille" -> Narinkkatori))
+  Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
+  Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
+  Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta  ))
+  Tennispalatsinaukio.setNeighbors(Vector("teereenpeliin" -> Teereenpeli,      "aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
+  Fredrikinkatu.setNeighbors(Vector(      "william koohon" -> WilliamK, "shakeriin" -> Shaker, "tennispalatsinaukiolle" -> Tennispalatsinaukio))
+  Bruuveri.setNeighbors(Vector(           "kampin yläkertaan" -> Kampin_yläkerta))
+  Bierhuis_Rotterdam.setNeighbors(Vector( "kampin yläkertaan" -> Kampin_yläkerta))
+  Pub_Ikkuna.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori))
   
-  Henrys_pub.setNeighbors(Vector("Narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry))
-  Shaker.setNeighbors(Vector("Fredrikinkadulle" -> Fredrikinkatu))
-  WilliamK.setNeighbors(Vector("Fredrikinkadulle" -> Fredrikinkatu))
-  AussieBar.setNeighbors(Vector("Tennispalatsinaukiolle" -> Tennispalatsinaukio))
-  Teereenpeli.setNeighbors(Vector("Tennispalatsinaukiolle" -> Tennispalatsinaukio))
-  VessaKamppi.setNeighbors(Vector( "Kampin alakertaan" -> Kampin_alakerta))
-  VeskiHenry.setNeighbors(Vector("Henry's Pubiin" -> Henrys_pub))
+  Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry))
+  Shaker.setNeighbors(Vector(             "fredrikinkadulle" -> Fredrikinkatu))
+  WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu))
+  AussieBar.setNeighbors(Vector(          "tennispalatsinaukiolle" -> Tennispalatsinaukio))
+  Teereenpeli.setNeighbors(Vector(        "tennispalatsinaukiolle" -> Tennispalatsinaukio))
+  VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta))
+  VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub))
 
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teereenpeli)
   baarit.foreach(_.addDrink(new Drink("Talon olut","Mainiota Olvi kolmosta opiskelijahintaan")))
@@ -69,7 +69,7 @@ class Adventure {
   def isComplete = this.player.location == this.destination && this.player.has("remote") && this.player.has("battery")
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */ 
-  def isOver = this.isComplete || this.player.hasQuit || this.turnCount == this.timeLimit
+  def isOver = this.isComplete || this.player.hasQuit || this.turnCount == this.timeLimit || this.player.vessahata >= 10
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = "Rontti is lost in Appro.\n\nBetter hurry, 'cause ronttis nousuhumala is on real soon now. And you can't miss that rontti, right?"
@@ -82,6 +82,8 @@ class Adventure {
       "Home at last... and phew, just in time! Well done!"
     else if (this.turnCount == this.timeLimit)
       "Oh no! Time's up. Starved of entertainment, you collapse and weep like a child.\nGame over!"
+    else if (this.player.vessahata >= 10)
+      "Pissasit housuun! Koko Helsinki nauraa sinulle ja joudut poistumaan häpeissän takaisin Otaniemen suojiin."
     else  // game over due to player quitting
       "Quitter!" 
   }
@@ -96,7 +98,7 @@ class Adventure {
     if (outcomeReport.isDefined) { 
       this.turnCount += 1 
     }
-    outcomeReport.getOrElse("Unknown command: \"" + command + "\".")
+    outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \n Sanoppa uudestaan.")
   }
   
   

@@ -18,8 +18,8 @@ class Action(input: String) {
     * wrapper; if the command was not recognized, `None` is returned. */
   def execute(actor: Player) = {                             
 
-  if (this.verb == "go") {
-      Some(actor.go(this.modifiers))
+  if (this.verb == "mene") {
+      Some(actor.mene(this.modifiers))
     } else if (this.verb == "rest") {
       Some(actor.rest())
     } else if (this.verb == "xyzzy") {

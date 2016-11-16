@@ -47,11 +47,19 @@ class Area(var name: String, var description: String) {
   /** Returns a multi-line description of the area as a player sees it. This includes a basic 
     * description of the area as well as information about exits and items. */
   def fullDescription = {
-    val exitList = "\n\nExits available: " + this.neighbors.keys.mkString(" ")
+    var exitit = this.neighbors.keys.map(_.capitalize).toVector
+    var onkoMonta = if(exitit.size > 1) (exitit.init.mkString(", ") + " tai ") + exitit.last else "ainoastaan takaisin " + exitit.last
+    val exitList = "\n\nKatsot ympärillesi, huomaat, että voitte mennä " + onkoMonta
+    var kuvaus = this.description
     if(!this.items.isEmpty) {
     val esineet = "\nYou see here: " + this.items.keys.mkString(" ")
-    this.description + esineet + exitList
-    } else this.description + exitList
+    kuvaus += esineet
+    } 
+    if(!this.drinks.isEmpty) {
+    val drinkit = "\nTalon drinkkilista tarjoaa seuraavaa: " + this.drinks.keys.mkString(", ")
+    kuvaus += drinkit
+    }  
+    kuvaus + exitList
   } 
   
   

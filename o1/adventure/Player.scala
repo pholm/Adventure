@@ -13,7 +13,10 @@ class Player(startingArea: Area) {
   private var currentLocation = startingArea        // gatherer: changes in relation to the previous location
   private var quitCommandGiven = false              // one-way flag
   private val itemList = Map[String, Item]()
-   
+  private var kusi = 0
+  
+  def vessahata = this.kusi
+  
   def drop(itemName: String) = {
     if(has(itemName)) {
     this.currentLocation.addItem(this.itemList(itemName))
@@ -52,10 +55,14 @@ class Player(startingArea: Area) {
   /** Attempts to move the player in the given direction. This is successful if there 
     * is an exit from the player's current location towards the direction name. 
     * Returns a description of the results of the attempt. */
-  def go(direction: String) = {
+  def mene (direction: String) = {
     val destination = this.location.neighbor(direction)
     this.currentLocation = destination.getOrElse(this.currentLocation) 
-    if (destination.isDefined) "You go " + direction + "." else "You can't go " + direction + "."
+    if (destination.isDefined) {
+      this.kusi += 1 
+      "Menit " + direction + "." 
+    } else "Et voi mennä " + direction + "."
+   
   }
 
   
