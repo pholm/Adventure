@@ -73,8 +73,7 @@ class Appropeli {
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = {
-    "Tervetuloa pelaamaan Appropeliä. Saavut bussilla Kampin terminaaliin ja tapaat 3 kavereistasi koostuvaa porukkaa." 	  
-    "Minkä porukan mukaan haluat lähteä? valitse porukka kirjoittamalla 'porukka [porukannumero]"
+    "Tervetuloa pelaamaan Appropeliä. Saavut bussilla Kampin terminaaliin ja tapaat 3 kavereistasi koostuvaa porukkaa.\nMinkä porukan mukaan haluat lähteä? valitse porukka kirjoittamalla 'porukka [porukannumero]'"
     }
 
     
@@ -101,7 +100,7 @@ class Appropeli {
     if (outcomeReport.isDefined) { 
       this.turnCount += 1 
     }
-    outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \n Sanoppa uudestaan.")
+    outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \nSanoppa uudestaan.")
   }
   
   
