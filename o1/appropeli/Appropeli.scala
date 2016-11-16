@@ -9,7 +9,7 @@ package o1.appropeli
   * specific adventure game that involves a small trip through a twisted forest. All newly created 
   * instances of class Adventure are identical to each other. To create other kinds of adventure 
   * games, you will need to modify or replace the source code of this class. */
-class Adventure {
+class Appropeli {
 
   /** The title of the adventure game. */
   val title = "Appropeli"
@@ -75,8 +75,7 @@ class Adventure {
   def welcomeMessage = {
     "Tervetuloa pelaamaan Appropeliä. Saavut bussilla Kampin terminaaliin ja tapaat 3 kavereistasi koostuvaa porukkaa." 	  
     "Minkä porukan mukaan haluat lähteä? valitse porukka kirjoittamalla 'porukka [porukannumero]"
-    this.porukat.toString
-  }
+    }
 
     
   /** Returns a message that is to be displayed to the player at the end of the game. The message 

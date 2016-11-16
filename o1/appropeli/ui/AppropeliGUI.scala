@@ -3,7 +3,7 @@ package o1.appropeli.ui
 import scala.swing._
 import scala.swing.event._
 import javax.swing.UIManager
-import o1.adventure.Adventure
+import o1.appropeli.Appropeli
 
 
 ////////////////// NOTE TO STUDENTS //////////////////////////
@@ -22,7 +22,7 @@ import o1.adventure.Adventure
   * or can be used, apart from the fact that you can use this file to start the program.'''
   *
   * @see [[AdventureTextUI]] */
-object AdventureGUI extends SimpleSwingApplication {
+object AppropeliGUI extends SimpleSwingApplication {
 
   UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName) 
 
@@ -30,7 +30,7 @@ object AdventureGUI extends SimpleSwingApplication {
 
     // Access to the internal logic of the application: 
   
-    val game = new Adventure
+    val game = new Appropeli
     val player = game.player
     
     // Components: 
