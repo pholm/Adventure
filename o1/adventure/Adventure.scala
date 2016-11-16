@@ -14,41 +14,43 @@ class Adventure {
   /** The title of the adventure game. */
   val title = "Rontti approilee"
   
-  private val Kampin_alakerta     = new Area("Forest", "You are somewhere in the forest. There are a lot of trees here.\nBirds are singing.")  
-  private val Kampin_yläkerta     = new Area("Forest", "You are somewhere in the forest. There are a lot of trees here.\nBirds are singing.") 
-  private val Narinkkatori        = new Area("Forest", "You are somewhere in the forest. A tangle of bushes blocks further passage north.\nBirds are singing.")
-  private val Fredrikinkatu       =  new Area("Forest", "The forest just goes on and on.")
-  private val Tennispalatsinaukio = new Area("Forest Clearing", "You are at a small clearing in the middle of forest.\nNearly invisible, twisted paths lead in many directions.")
-  private val Bruuveri            = new Area("Tangle of Bushes", "You are in a dense tangle of bushes. It's hard to see exactly where you're going.")
-  private val AussieBar           = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val Bierhuis_Rotterdam  = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val Pub_Ikkuna          = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.") 
-  private val Henrys_pub          = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val Shaker              = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val WilliamK            = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val Teereenpeli         = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val VessaKamppi               = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val VeskiHenry               = new Area("Home", "Home sweet home! Now the only thing you need is a working remote control.")
-  private val destination         = Bruuveri    
+  private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!")  
+  private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.") 
+  private val Narinkkatori        = new Area("Narinkkatori", "Olet Narinkkatorilla.")
+  private val Fredrikinkatu       =  new Area("Fredrikinkatu", "Olet Fredrikinkadulla.")
+  private val Tennispalatsinaukio = new Area("Tennispalatsinaukio", "Olet Tennispalatsinaukiolla.")
+  private val Bruuveri            = new Area("Bruuveri", "Olet Bruuverissa.")
+  private val AussieBar           = new Area("Aussie Bar", "Olet Aussie Barissa.")
+  private val Bierhuis_Rotterdam  = new Area("Bierhuis Rotterdam", "Olet Bierhuis Rotterdamissa.")
+  private val Pub_Ikkuna          = new Area("Pub Ikkuna", "Olet Pub Ikkunassa") 
+  private val Henrys_pub          = new Area("Henry's Pub", "Olet Henry's Pubissa.")
+  private val Shaker              = new Area("Shaker", "Olet Shakerissa.")
+  private val WilliamK            = new Area("William K", "Olet William K:ssa.")
+  private val Teerenpeli         = new Area("Teerenpeli", "Olet Teerenpelissä.")
+  private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa.")
+  private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.")
+  private val Circus              = new Area("Circus", "Olet Circuksessa.")
+  private val destination         = Circus    
 
   Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
   Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
-  Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta  ))
-  Tennispalatsinaukio.setNeighbors(Vector("teereenpeliin" -> Teereenpeli,      "aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
+  Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta, "circukseen" -> Circus  ))
+  Tennispalatsinaukio.setNeighbors(Vector("teereenpeliin" -> Teerenpeli,      "aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
   Fredrikinkatu.setNeighbors(Vector(      "william koohon" -> WilliamK, "shakeriin" -> Shaker, "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Bruuveri.setNeighbors(Vector(           "kampin yläkertaan" -> Kampin_yläkerta))
   Bierhuis_Rotterdam.setNeighbors(Vector( "kampin yläkertaan" -> Kampin_yläkerta))
   Pub_Ikkuna.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori))
   
-  Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry))
+  Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry, "vessanpönttöön" -> VessaKamppi))
   Shaker.setNeighbors(Vector(             "fredrikinkadulle" -> Fredrikinkatu))
   WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu))
   AussieBar.setNeighbors(Vector(          "tennispalatsinaukiolle" -> Tennispalatsinaukio))
-  Teereenpeli.setNeighbors(Vector(        "tennispalatsinaukiolle" -> Tennispalatsinaukio))
-  VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta))
+  Teerenpeli.setNeighbors(Vector(        "tennispalatsinaukiolle" -> Tennispalatsinaukio))
+  VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta, "vessanpönttöön" -> VeskiHenry))
   VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub))
-
-  private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teereenpeli)
+  Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
+  
+  private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
   baarit.foreach(_.addDrink(new Drink("Talon olut","Mainiota Olvi kolmosta opiskelijahintaan")))
   baarit.foreach(_.addDrink(new Drink("Viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin")))
   
@@ -58,6 +60,7 @@ class Adventure {
 
 /** The character that the player controls in the game. */
   val player = new Player(Kampin_alakerta)
+  var juodut = player.juodut
 
   /** The number of turns that have passed since the start of the game. */
   var turnCount = 0
@@ -79,9 +82,9 @@ class Adventure {
     * will be different depending on whether or not the player has completed their quest. */
   def goodbyeMessage = {
     if (this.isComplete)
-      "Home at last... and phew, just in time! Well done!"
+      s"Tervetuloa jatkoille! Keräsit $juodut leimaa, joten saat haalarimerkin!"
     else if (this.turnCount == this.timeLimit)
-      "Oh no! Time's up. Starved of entertainment, you collapse and weep like a child.\nGame over!"
+      "Et ehtinyt jatkoille asti ajoissa!"
     else if (this.player.vessahata >= 10)
       "Pissasit housuun! Koko Helsinki nauraa sinulle ja joudut poistumaan häpeissän takaisin Otaniemen suojiin."
     else  // game over due to player quitting

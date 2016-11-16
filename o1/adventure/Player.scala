@@ -14,6 +14,7 @@ class Player(startingArea: Area) {
   private var quitCommandGiven = false              // one-way flag
   private val itemList = Map[String, Item]()
   private var kusi = 0
+  var juodut = 0
   
   def vessahata = this.kusi
   
@@ -80,8 +81,12 @@ class Player(startingArea: Area) {
     ""
   }
 
-  def drink(juoma: String) = {
-    
+  def tilaa(juoma: Drink) = {
+    this.juodut += 1
+    if (juoma == "Talon olut") {
+      "Tilasit oluen. Joit huurteisen yhdellä kulauksella!"
+    } else if (juoma == "Viina")
+      "Joit viinan ja irvistit kuin fuksi."
   }
   
   def talk(person: String) = {
@@ -89,7 +94,7 @@ class Player(startingArea: Area) {
   }
   /** Returns a brief description of the player's state, for debugging purposes. */
   override def toString = "Now at: " + this.location.name   
-
+     
 
 }
 

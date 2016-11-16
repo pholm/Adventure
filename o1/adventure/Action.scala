@@ -22,9 +22,7 @@ class Action(input: String) {
       Some(actor.mene(this.modifiers))
     } else if (this.verb == "rest") {
       Some(actor.rest())
-    } else if (this.verb == "xyzzy") {
-      Some("The grue tastes yummy.")
-    } else if (this.verb == "quit") {
+    }else if (this.verb == "quit") {
       Some(actor.quit())
     } else if (this.verb == "inventory") {
      Some(actor.inventory)
