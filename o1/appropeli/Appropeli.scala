@@ -51,13 +51,16 @@ class Appropeli {
   VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
   
-  
+  // lista kaikista baareista
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
+  
+  //lisätään jokaisen baarin tarjontaan olut ja viina
   baarit.foreach(_.addDrink(new Drink("talon olut","Mainiota Olvi kolmosta opiskelijahintaan","Tilasit oluen. Joit huurteisen yhdellä kulauksella!")))
   baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.")))
   
 
-/** The character that the player controls in the game. */
+/* Luodaan pelihahmo ja asetetaan se "alkupaikkaan". Alkupaikassa pelaaja valitsee ryhmän, jonka jälkeen hahmo siirtyy Kampin alakertaan
+   ja peli alkaa */
   val player = new Player(alkupaikka)
   var juodut = player.juodut
   /** The number of turns that have passed since the start of the game. */
