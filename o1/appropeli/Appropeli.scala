@@ -58,7 +58,8 @@ class Appropeli {
   val group2 = new Group("kauppislaiset",Vector[Person](new Person("Jan-Paul",a), new Person("Christoffer",a), new Person("Erik",a)))
   val group3 = new Group("infolaiset",Vector[Person](new Person("Henrik",a), new Person("Ville",a), new Person("Tiina",a)))
   
-  val ryhmat = Vector(group1.nimi -> group1, group2.nimi -> group2, group3.nimi -> group3)
+  //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
+  this.player.addGroups(Vector(group1.nimi -> group1, group2.nimi -> group2, group3.nimi -> group3))
   
   // lista kaikista baareista
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
