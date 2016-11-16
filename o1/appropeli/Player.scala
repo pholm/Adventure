@@ -81,6 +81,7 @@ class Player(startingArea: Area) {
     * is an exit from the player's current location towards the direction name. 
     * Returns a description of the results of the attempt. */
   def mene (direction: String) = {
+    if(this.ryhmä.isDefined) {
     val nykysijainti = this.currentLocation
     val destination = this.location.neighbor(direction)
     this.currentLocation = destination.getOrElse(this.currentLocation) 
@@ -89,7 +90,7 @@ class Player(startingArea: Area) {
       nykysijainti.onkoKayty = false
       "Menit " + direction + "." 
     } else "Et voi mennä " + direction + "."
-   
+    } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   }
 
   
