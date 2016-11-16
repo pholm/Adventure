@@ -30,6 +30,8 @@ class Action(input: String) {
       Some(actor.drop(this.modifiers))
     } else if (this.verb == "examine") {
       Some(actor.examine(this.modifiers))
+    }else if (this.verb == "tilaa") {
+      Some(actor.tilaa(this.modifiers))
     } else if (this.verb == "get") {
       Some(actor.get(this.modifiers))
     /*} else if (this.verb == "drink") {

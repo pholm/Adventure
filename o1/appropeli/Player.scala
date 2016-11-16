@@ -58,10 +58,12 @@ class Player(startingArea: Area) {
     * is an exit from the player's current location towards the direction name. 
     * Returns a description of the results of the attempt. */
   def mene (direction: String) = {
+    val nykysijainti = this.currentLocation
     val destination = this.location.neighbor(direction)
     this.currentLocation = destination.getOrElse(this.currentLocation) 
     if (destination.isDefined) {
       this.kusi += 1 
+      nykysijainti.onkoKayty = false
       "Menit " + direction + "." 
     } else "Et voi mennä " + direction + "."
    
@@ -82,13 +84,17 @@ class Player(startingArea: Area) {
     ""
   }
 
-  def tilaa(juoma: Option[Drink]) = {
-    this.juomamaara += 1
-    if (juoma == this.location.removeDrink("Talon olut")) {
-      "Tilasit oluen. Joit huurteisen yhdellä kulauksella!"
-    } else if (juoma == this.location.removeDrink("Viina"))
-      "Joit viinan ja irvistit kuin fuksi."
+  def tilaa(juoma: String) = {
+    if (location.onkoKayty == false) {
+    if (this.location.giveDrink(juoma) != this.location.giveDrink("tyhja")) {                        // Kaikki listan määritellyt juomat
+      this.juomamaara += 1
+      this.kusi += 2
+      location.onkoKayty = true
+      this.location.giveDrink(juoma).tilaamisenJalkeen      
+    } else this.location.giveDrink(juoma).tilaamisenJalkeen
+  } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
   }
+  
   
   def talk(person: String) = {
     

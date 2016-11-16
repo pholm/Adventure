@@ -52,8 +52,8 @@ class Appropeli {
   
   
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
-  baarit.foreach(_.addDrink(new Drink("Talon olut","Mainiota Olvi kolmosta opiskelijahintaan")))
-  baarit.foreach(_.addDrink(new Drink("Viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin")))
+  baarit.foreach(_.addDrink(new Drink("talon olut","Mainiota Olvi kolmosta opiskelijahintaan","Tilasit oluen. Joit huurteisen yhdellä kulauksella!")))
+  baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.")))
   
 
 /** The character that the player controls in the game. */
