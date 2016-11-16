@@ -1,4 +1,4 @@
-package o1.adventure.ui
+package o1.appropeli.ui
 
 import o1.adventure._
 import scala.io.StdIn._

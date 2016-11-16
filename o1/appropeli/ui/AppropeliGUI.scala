@@ -1,4 +1,4 @@
-package o1.adventure.ui
+package o1.appropeli.ui
 
 import scala.swing._
 import scala.swing.event._

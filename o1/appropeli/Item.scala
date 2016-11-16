@@ -1,4 +1,4 @@
-package o1.adventure
+package o1.appropeli
 
 /** The class `Item` represents items in a text adventure game. Each item has a name 
   * and a  *  longer description. (In later versions of the adventure game, items may 

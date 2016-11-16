@@ -1,4 +1,4 @@
-package o1.adventure
+package o1.appropeli
 
 class Drink(val name: String, val description: String) {
   

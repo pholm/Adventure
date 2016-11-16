@@ -1,4 +1,4 @@
-package o1.adventure
+package o1.appropeli
 
 import scala.collection.mutable.Map
 

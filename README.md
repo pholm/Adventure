@@ -1,4 +1,4 @@
-# Adventure
+# Appropeli
 
 Appro on opiskelijatapahtuma, jossa osallistujat kiertävät jonkin alueen baareja sekä ravintoloita tavoitteenaan juoda alkoholia tietty määrä säädetyssä ajassa.
 

@@ -1,4 +1,4 @@
-package o1.adventure
+package o1.appropeli
 
 
 /** The class Adventure represents text adventure games. An adventure consists of a player and 

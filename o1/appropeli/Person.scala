@@ -1,4 +1,4 @@
-package o1.adventure
+package o1.appropeli
 
 class Person(name: String, location: Area) {
   
