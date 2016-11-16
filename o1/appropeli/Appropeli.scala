@@ -26,13 +26,14 @@ class Appropeli {
   private val Henrys_pub          = new Area("Henry's Pub", "Olet Henry's Pubissa.")
   private val Shaker              = new Area("Shaker", "Olet Shakerissa.")
   private val WilliamK            = new Area("William K", "Olet William K:ssa.")
-  private val Teerenpeli         = new Area("Teerenpeli", "Olet Teerenpelissä.")
+  private val Teerenpeli          = new Area("Teerenpeli", "Olet Teerenpelissä.")
   private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa.")
   private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.")
   private val Circus              = new Area("Circus", "Olet Circuksessa.")
+  private val alkupaikka           = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä. TÄHÄN PELIN SÄÄNNÖT")
   private val destination         = Circus    
 
-  // Määritellään alueille naapurialueet
+  // Määritellään alueille naapurialueet 
   Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
   Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
   Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta, "circukseen" -> Circus  ))
@@ -57,7 +58,7 @@ class Appropeli {
   
 
 /** The character that the player controls in the game. */
-  val player = new Player(Kampin_alakerta)
+  val player = new Player(alkupaikka)
   var juodut = player.juodut
   /** The number of turns that have passed since the start of the game. */
   var turnCount = 0
@@ -73,8 +74,9 @@ class Appropeli {
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = {
-    "Tervetuloa pelaamaan Appropeliä. Saavut bussilla Kampin terminaaliin ja tapaat 3 kavereistasi koostuvaa porukkaa.\n" +  
-    "Minkä porukan mukaan haluat lähteä? valitse porukka kirjoittamalla porukan numero"
+    "Koodasit viime yönä aivan liian pitkään, joten nukuit tänään pommiin ja saavut nyt myöhässä bussilla Kampin terminaaliin, jossa tapaat kolme eri kavereistasi koostuvaa porukkaa.\n" +  
+    "Minkä porukan mukaan haluat lähteä? Valitse kirjoittamalla 'valitsen [porukan nimi]'.\n" +
+    "Vaihtoehtoina ovat Viattomat infolaiset, Syntiset kylterit sekä Paatuneet tutalaiset."
     }
 
     

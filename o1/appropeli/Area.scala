@@ -49,8 +49,9 @@ class Area(var name: String, var description: String) {
     * description of the area as well as information about exits and items. */
   def fullDescription = {
     var exitit = this.neighbors.keys.map(_.capitalize).toVector
-    var onkoMonta = if(exitit.size > 1) (exitit.init.mkString(", ") + " tai ") + exitit.last else "ainoastaan takaisin " + exitit.last
-    val exitList = "\n\nKatsot ympärillesi, huomaat, että voitte mennä " + onkoMonta
+    val exitList = if(!this.neighbors.isEmpty) {
+      "\n\nKatsot ympärillesi, huomaat, että voitte mennä " + {if(exitit.size > 1) (exitit.init.mkString(", ") + " tai ") + exitit.last else "ainoastaan takaisin " + exitit.last}
+    } else ""
     var kuvaus = this.description
     if(!this.items.isEmpty) {
     val esineet = "\nYou see here: " + this.items.keys.mkString(" ")
