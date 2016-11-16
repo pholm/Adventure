@@ -57,6 +57,8 @@ class Appropeli {
   
   // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
+  
+  // luodaan peliin henkilöitä. Ryhmiin kuuluvilla henkilöillä alkusijainti on sama kuin pelaajalla. 
   private val rontti = new Person("Rontti",a,"olen nousu_humalassa")
   private val akseli = new Person("Akseli",a,"vitunkymisvittu")
   private val kymis = new Person("Kymis",a,"en ainakaan nouse ennen kahtatoista")
@@ -66,6 +68,10 @@ class Appropeli {
   private val henrik = new Person("Henrik",a,"Mun rahat on loppu.")
   private val ville = new Person("Ville",a,"Mun tekstipeli on parempi ku sun.")
   private val tiina = new Person("Tiina",a,"Info on paras")
+  //luodaan ryhmiin kuulumattomat henkilöt
+  private val spusse = new Person("Spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
+  private val puustinen = new Person("Puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
+  
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
   val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),5,30,1000)
   val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),10,20,100)

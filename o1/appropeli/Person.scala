@@ -4,6 +4,4 @@ class Person(val name: String, val sijainti: Area, val tunnuslause: String) {
   
   override def toString = this.name
   
-  def puhu() = tunnuslause
-  
 }
