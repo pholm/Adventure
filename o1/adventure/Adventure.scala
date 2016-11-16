@@ -12,7 +12,7 @@ package o1.adventure
 class Adventure {
 
   /** The title of the adventure game. */
-  val title = "Rontti approilee"
+  val title = "Appropeli"
   
   private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!")  
   private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.") 
@@ -54,9 +54,6 @@ class Adventure {
   baarit.foreach(_.addDrink(new Drink("Talon olut","Mainiota Olvi kolmosta opiskelijahintaan")))
   baarit.foreach(_.addDrink(new Drink("Viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin")))
   
-  // TODO: place these two items in clearing and southForest, respectively
- // clearing.addItem(new Item("battery", "It's a small battery cell. Looks new."))   
- // southForest.addItem(new Item("remote", "It's the remote control for your TV.\nWhat it was doing in the forest, you have no idea.\nProblem is, there's no battery."))
 
 /** The character that the player controls in the game. */
   val player = new Player(Kampin_alakerta)
@@ -75,7 +72,11 @@ class Adventure {
   def isOver = this.isComplete || this.player.hasQuit || this.turnCount == this.timeLimit || this.player.vessahata >= 10
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
-  def welcomeMessage = "Rontti is lost in Appro.\n\nBetter hurry, 'cause ronttis nousuhumala is on real soon now. And you can't miss that rontti, right?"
+  def welcomeMessage = {
+    "Tervetuloa pelaamaan Appropeliä. Saavut bussilla Kampin terminaaliin ja tapaat 3 kavereistasi koostuvaa porukkaa." 	  
+    "Minkä porukan mukaan haluat lähteä? valitse porukka kirjoittamalla 'porukka [porukannumero]"
+    this.porukat.toString
+  }
 
     
   /** Returns a message that is to be displayed to the player at the end of the game. The message 
