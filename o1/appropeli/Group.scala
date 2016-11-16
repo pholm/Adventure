@@ -1,7 +1,9 @@
 package o1.appropeli
 
-class Group(jasenet: Vector[Person]) {
+class Group(val nimi: String, val jasenet: Vector[Person]) {
   
-  override def toString = "Tämän ryhmän jäseniä ovat: " + jasenet.mkString(", ")
-  
+
+  override def toString = nimi
+  def kuvaus = "Tämän ryhmän jäseniä ovat: " + jasenet.mkString(", ")
+
 }
