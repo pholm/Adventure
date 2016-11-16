@@ -34,9 +34,7 @@ class Action(input: String) {
       Some(actor.tilaa(this.modifiers))
     } else if (this.verb == "get") {
       Some(actor.get(this.modifiers))
-    /*} else if (this.verb == "drink") {
-      Some(actor.drink(this.modifiers))
-    	} else if (this.verb == "talk") {
+    /*} else if (this.verb == "talk") {
       Some(actor.talk(this.modifiers)) */
     } else {
       None
