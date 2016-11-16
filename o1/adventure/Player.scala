@@ -81,11 +81,11 @@ class Player(startingArea: Area) {
     ""
   }
 
-  def tilaa(juoma: Drink) = {
+  def tilaa(juoma: Option[Drink]) = {
     this.juodut += 1
-    if (juoma = olut) {
+    if (juoma == this.location.removeDrink("Talon olut")) {
       "Tilasit oluen. Joit huurteisen yhdellä kulauksella!"
-    } else if (juoma == viina)
+    } else if (juoma == this.location.removeDrink("Viina"))
       "Joit viinan ja irvistit kuin fuksi."
   }
   
