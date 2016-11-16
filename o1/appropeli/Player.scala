@@ -14,10 +14,11 @@ class Player(startingArea: Area) {
   private var quitCommandGiven = false              // one-way flag
   private val itemList = Map[String, Item]()
   private var kusi = 0
-  var juodut = 0
+  private var juomamaara = 0
+  var porukka = 0
   
   def vessahata = this.kusi
-  
+  def juodut = this.juomamaara
   def drop(itemName: String) = {
     if(has(itemName)) {
     this.currentLocation.addItem(this.itemList(itemName))
@@ -82,7 +83,7 @@ class Player(startingArea: Area) {
   }
 
   def tilaa(juoma: Option[Drink]) = {
-    this.juodut += 1
+    this.juomamaara += 1
     if (juoma == this.location.removeDrink("Talon olut")) {
       "Tilasit oluen. Joit huurteisen yhdellä kulauksella!"
     } else if (juoma == this.location.removeDrink("Viina"))
