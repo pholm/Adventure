@@ -13,7 +13,7 @@ class Appropeli {
 
   /** The title of the adventure game. */
   val title = "Appropeli"
-  
+  // Luodaan alueet
   private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!")  
   private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.") 
   private val Narinkkatori        = new Area("Narinkkatori", "Olet Narinkkatorilla.")
@@ -32,6 +32,7 @@ class Appropeli {
   private val Circus              = new Area("Circus", "Olet Circuksessa.")
   private val destination         = Circus    
 
+  // Määritellään alueille naapurialueet
   Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
   Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
   Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta, "circukseen" -> Circus  ))
@@ -40,7 +41,6 @@ class Appropeli {
   Bruuveri.setNeighbors(Vector(           "kampin yläkertaan" -> Kampin_yläkerta))
   Bierhuis_Rotterdam.setNeighbors(Vector( "kampin yläkertaan" -> Kampin_yläkerta))
   Pub_Ikkuna.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori))
-  
   Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry))
   Shaker.setNeighbors(Vector(             "fredrikinkadulle" -> Fredrikinkatu))
   WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu))
@@ -50,6 +50,7 @@ class Appropeli {
   VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
   
+  
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
   baarit.foreach(_.addDrink(new Drink("Talon olut","Mainiota Olvi kolmosta opiskelijahintaan")))
   baarit.foreach(_.addDrink(new Drink("Viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin")))
@@ -58,7 +59,6 @@ class Appropeli {
 /** The character that the player controls in the game. */
   val player = new Player(Kampin_alakerta)
   var juodut = player.juodut
-
   /** The number of turns that have passed since the start of the game. */
   var turnCount = 0
   /** The maximum number of turns that this adventure game allows before time runs out. */
@@ -73,8 +73,8 @@ class Appropeli {
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = {
-    "Tervetuloa pelaamaan Appropeliä. Saavut bussilla Kampin terminaaliin ja tapaat 3 kavereistasi koostuvaa porukkaa." 	  
-    "Minkä porukan mukaan haluat lähteä? valitse porukka kirjoittamalla 'porukka [porukannumero]"
+    "Tervetuloa pelaamaan Appropeliä. Saavut bussilla Kampin terminaaliin ja tapaat 3 kavereistasi koostuvaa porukkaa.\n" +  
+    "Minkä porukan mukaan haluat lähteä? valitse porukka kirjoittamalla porukan numero" + porukat
     }
 
     
