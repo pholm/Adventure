@@ -86,13 +86,13 @@ class Player(startingArea: Area) {
 
   def tilaa(juoma: String) = {
     if (location.onkoKayty == false) {
-    if (this.location.giveDrink(juoma) != this.location.giveDrink("tyhja")) {                        // Kaikki listan määritellyt juomat
-      this.juomamaara += 1
-      this.kusi += 2
-      location.onkoKayty = true
-      this.location.giveDrink(juoma).tilaamisenJalkeen      
-    } else this.location.giveDrink(juoma).tilaamisenJalkeen
-  } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
+      if (this.location.giveDrink(juoma) != this.location.giveDrink("tyhja")) {                        // Kaikki listan määritellyt juomat
+        this.juomamaara += 1
+        this.kusi += 2
+        location.onkoKayty = true
+        this.location.giveDrink(juoma).tilaamisenJalkeen      
+      } else this.location.giveDrink(juoma).tilaamisenJalkeen
+    } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
   }
   
   
