@@ -17,7 +17,7 @@ class Appropeli {
   private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!")  
   private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.") 
   private val Narinkkatori        = new Area("Narinkkatori", "Olet Narinkkatorilla.")
-  private val Fredrikinkatu       =  new Area("Fredrikinkatu", "Olet Fredrikinkadulla.")
+  private val Fredrikinkatu       = new Area("Fredrikinkatu", "Olet Fredrikinkadulla.")
   private val Tennispalatsinaukio = new Area("Tennispalatsinaukio", "Olet Tennispalatsinaukiolla.")
   private val Bruuveri            = new Area("Bruuveri", "Olet Bruuverissa.")
   private val AussieBar           = new Area("Aussie Bar", "Olet Aussie Barissa.")
@@ -50,6 +50,8 @@ class Appropeli {
   VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta, "vessanpönttöön" -> VeskiHenry))
   VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
+  val a = this.Kampin_alakerta
+  val group1 = Vector[Person](new Person("Rontti",a), new Person("Akseli",a), new Person("Kymis",a))
   
   // lista kaikista baareista
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
