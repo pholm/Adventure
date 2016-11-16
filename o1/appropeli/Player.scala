@@ -16,7 +16,8 @@ class Player(startingArea: Area) {
   private var ryhmä: Option[Group] = None
   private var kusi = 0
   private var juomamaara = 0
-  private var porukat = Map[String, Group]().withDefaultValue(new Group("Väärin kirjoitettu", Vector[Person]()))
+  private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person]())
+  var porukat = Map[String, Group]().withDefaultValue(ryhmanVikaArvo)
   
   
   def vessahata = this.kusi
@@ -34,7 +35,7 @@ class Player(startingArea: Area) {
       
   def valitsen(ryhmanNimi: String) = {
     if(!this.ryhmä.isDefined) {
-      
+      if(porukat(ryhmanNimi) != ryhmanVikaArvo)
     }
   }
   

@@ -28,6 +28,8 @@ class Action(input: String) {
      Some(actor.inventory)
     } else if (this.verb == "drop") {
       Some(actor.drop(this.modifiers))
+    } else if (this.verb == "puhu") {
+      Some(actor.puhu(this.modifiers)))
     } else if (this.verb == "examine") {
       Some(actor.examine(this.modifiers))
     }else if (this.verb == "tilaa") {
