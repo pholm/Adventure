@@ -13,9 +13,11 @@ class Player(startingArea: Area) {
   private var currentLocation = startingArea        // gatherer: changes in relation to the previous location
   private var quitCommandGiven = false              // one-way flag
   private val itemList = Map[String, Item]()
+  private var ryhmä: Option[Group] = None
   private var kusi = 0
   private var juomamaara = 0
-  var porukka = 0
+  private var porukat = Map[String, Group]()
+  
   
   def vessahata = this.kusi
   def juodut = this.juomamaara
@@ -26,6 +28,9 @@ class Player(startingArea: Area) {
     s"You drop the $itemName."
     } else "You don't have that!"
   }
+  
+  def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat
+      
   def examine(itemName: String) = {
     if(!has(itemName)) "If you want to examine something, you need to pick it up first."
     else s"You look closely at the $itemName.\n" + itemList(itemName).description
