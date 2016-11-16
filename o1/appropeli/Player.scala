@@ -16,7 +16,10 @@ class Player(startingArea: Area) {
   private var ryhmä: Option[Group] = None
   private var kusi = 0
   private var juomamaara = 0
-  private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person]())
+  private var vaadittukanni = 0
+  private var maximiaika = 0
+  private var rahat = 0
+  private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person](),0,0,0)
   var porukat = Map[String, Group]().withDefaultValue(ryhmanVikaArvo)
   
   
@@ -35,8 +38,15 @@ class Player(startingArea: Area) {
       
   def valitsen(ryhmanNimi: String) = {
     if(!this.ryhmä.isDefined) {
-      if(porukat(ryhmanNimi) != ryhmanVikaArvo)
-    }
+      if(porukat(ryhmanNimi) != ryhmanVikaArvo) {
+        this.ryhmä = Some(porukat(ryhmanNimi))
+        this.vaadittukanni = porukat(ryhmanNimi).juomaMaara
+        this.maximiaika = porukat(ryhmanNimi).aikaMaara
+        this.rahat = porukat(ryhmanNimi).rahaMaara
+        this.currentLocation = this.location.neighbor("kampin alakertaan").get
+        "Valitsit " + ryhmanNimi.capitalize + "!" 
+      } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
+    } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
   
   def examine(itemName: String) = {
