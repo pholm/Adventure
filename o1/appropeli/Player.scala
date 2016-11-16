@@ -88,6 +88,7 @@ class Player(startingArea: Area) {
     if (destination.isDefined) {
       this.kusi += 1 
       nykysijainti.onkoKayty = false
+      this.ryhmä.foreach(_.jasenet.forall(_.sijainti == destination))
       "Menit " + direction + "." 
     } else "Et voi mennä " + direction + "."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
