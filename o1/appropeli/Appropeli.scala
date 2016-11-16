@@ -57,10 +57,19 @@ class Appropeli {
   
   // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
+  private val rontti = new Person("Rontti",a,"olen nousu_humalassa")
+  private val akseli = new Person("Akseli",a,"vitunkymisvittu")
+  private val kymis = new Person("Kymis",a,"en ainakaan nouse ennen kahtatoista")
+  private val janpaul = new Person("Jan-Paul",a,"Lähtisitkö viikonloppuna purjehtimaan Dragsvikiin?") 
+  private val christoffer = new Person("Christoffer",a,"Tänään otetaan!")
+  private val erik = new Person("Erik",a,"Mä oon tänään vesilinjalla, älä syyyllistä.")
+  private val henrik = new Person("Henrik",a,"Mun rahat on loppu.")
+  private val ville = new Person("Ville",a,"Mun tekstipeli on parempi ku sun.")
+  private val tiina = new Person("Tiina",a,"Info on paras")
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  val group1 = new Group("paatuneet tutalaiset", Vector[Person](new Person("Rontti",a,"olen nousu_humalassa"), new Person("Akseli",a,"vitunkymisvittu"), new Person("Kymis",a,"en ainakaan nouse ennen kahtatoista")))
-  val group2 = new Group("syntiset kylterit",Vector[Person](new Person("Jan-Paul",a,"Lähtisitkö viikonloppuna purjehtimaan Dragsvikiin?"), new Person("Christoffer",a,"Tänään otetaan!"), new Person("Erik",a,"Mä oon tänään vesilinjalla, älä syyyllistä.")))
-  val group3 = new Group("viattomat infolaiset",Vector[Person](new Person("Henrik",a,"Mun rahat on loppu."), new Person("Ville",a,"Mun tekstipeli on parempi ku sun."), new Person("Tiina",a,"Info on paras")))
+  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),5,30,1000)
+  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),10,20,100)
+  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),2,50,200)
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
   this.player.addGroups(Vector(group1.nimi -> group1, group2.nimi -> group2, group3.nimi -> group3))
