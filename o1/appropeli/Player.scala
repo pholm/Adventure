@@ -28,6 +28,7 @@ class Player(startingArea: Area) {
     s"You drop the $itemName."
     } else "You don't have that!"
   }
+ 
   
   def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat
       
