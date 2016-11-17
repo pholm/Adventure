@@ -21,9 +21,7 @@ class Player(startingArea: Area) {
   private var vaadittukanni = 0
   private var maximiaika = 0
   private var rahat = 0
- //Näit parii vihreet EI Salee tarvitakkaa mut en kumita viel  private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person](),0,0,0)
   private var porukat = Map[String, Group]()  //.withDefaultValue(ryhmanVikaArvo)
-//  private var henkilonVikaArvo = new Person("väärinkirjoitettu",this.location,"antti is rontti")
   private var henkilot = Map[String,Person]()
   private var haasteheitetty = false
   private var vaarinmennyt = 0
@@ -55,7 +53,7 @@ class Player(startingArea: Area) {
         this.rahat = porukat(ryhmanNimi).rahaMaara
          var ryhmanNimet = Buffer[String]()
         for(tyypit <- ryhmä.get.jasenet) { ryhmanNimet += tyypit.name }
-        addHenkiloita(ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)) //.withDefaultValue(henkilonVikaArvo)
+        addHenkiloita(ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)) 
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
         "Valitsit " + ryhmanNimi.capitalize + "!" 
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
