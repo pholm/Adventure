@@ -1,6 +1,7 @@
 package o1.appropeli
 
 import scala.collection.mutable.Map
+import scala.collection.mutable.Buffer
 
   
 /** A `Player` object represents a player character controlled by the real-life user of the program. 
@@ -21,7 +22,7 @@ class Player(startingArea: Area) {
   private var rahat = 0
   private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person](),0,0,0)
   var porukat = Map[String, Group]().withDefaultValue(ryhmanVikaArvo)
-  
+  private var ryhmaMap = Map[String,Person]()
   
   def vessahata = this.kusi
   def juodut = this.juomamaara
@@ -43,12 +44,19 @@ class Player(startingArea: Area) {
         this.vaadittukanni = porukat(ryhmanNimi).juomaMaara
         this.maximiaika = porukat(ryhmanNimi).aikaMaara
         this.rahat = porukat(ryhmanNimi).rahaMaara
+        
+        var ryhmanNimet = Buffer[String]()
+        for(tyypit <- porukat(ryhmanNimi).jasenet) { ryhmanNimet ++ tyypit.name }
+        this.ryhmaMap = ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet).toMap
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
         "Valitsit " + ryhmanNimi.capitalize + "!" 
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
   
+  //def puhu (
+      
+      
   def examine(itemName: String) = {
     if(!has(itemName)) "If you want to examine something, you need to pick it up first."
     else s"You look closely at the $itemName.\n" + itemList(itemName).description
