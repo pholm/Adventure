@@ -36,7 +36,7 @@ class Appropeli {
   Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
   Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
   Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta, "circukseen" -> Circus  ))
-  Tennispalatsinaukio.setNeighbors(Vector("teereenpeliin" -> Teerenpeli,      "aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
+  Tennispalatsinaukio.setNeighbors(Vector("teerenpeliin" -> Teerenpeli,      "aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
   Fredrikinkatu.setNeighbors(Vector(      "william koohon" -> WilliamK, "shakeriin" -> Shaker, "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Bruuveri.setNeighbors(Vector(           "kampin yläkertaan" -> Kampin_yläkerta))
   Bierhuis_Rotterdam.setNeighbors(Vector( "kampin yläkertaan" -> Kampin_yläkerta))
@@ -45,11 +45,11 @@ class Appropeli {
   Shaker.setNeighbors(Vector(             "fredrikinkadulle" -> Fredrikinkatu))
   WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu))
   AussieBar.setNeighbors(Vector(          "tennispalatsinaukiolle" -> Tennispalatsinaukio))
-  Teerenpeli.setNeighbors(Vector(        "tennispalatsinaukiolle" -> Tennispalatsinaukio))
+  Teerenpeli.setNeighbors(Vector(         "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta, "vessanpönttöön" -> VeskiHenry))
   VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
-  alkupaikka.setNeighbors(Vector(  "kampin alakertaan" -> Kampin_alakerta))
+  alkupaikka.setNeighbors(Vector(         "kampin alakertaan" -> Kampin_alakerta))
   
   /* Luodaan pelihahmo ja asetetaan se "alkupaikkaan". Alkupaikassa pelaaja valitsee ryhmän, jonka jälkeen hahmo siirtyy Kampin alakertaan
    ja peli alkaa */
@@ -73,7 +73,7 @@ class Appropeli {
   private val puustinen = new Person("puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
   private val mysteeriMies = new Person("mysteerimies",Teerenpeli,"Uskaltaako kloppi pelata kierroksen Hirsipuuta")
   // lisätään henkilöt henkilöhakemistoon
-  player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen))
+  player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies))
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
   val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),5,30,1000)
   val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),10,20,100)

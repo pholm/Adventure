@@ -36,8 +36,14 @@ class Action(input: String) {
       Some(actor.examine(this.modifiers))
     }else if (this.verb == "tilaa") {
       Some(actor.tilaa(this.modifiers))
-    } else if (this.verb == "get") {
+    } else if (this.verb == "get"){
       Some(actor.get(this.modifiers))
+    } else if (this.verb == "kyllä") {
+      Some(actor.kyllä())
+    } else if (this.verb == "arvaan") {
+      Some(actor.arvaan(this.modifiers))
+    } else if (this.verb == "ei") {
+      Some(actor.ei())
     } else if (this.verb == "help") {
       Some(actor.help())
     } else {
@@ -45,6 +51,7 @@ class Action(input: String) {
     }
     
   }
+
 
   
   /** Returns a textual description of the action object, for debugging purposes. */
