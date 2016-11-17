@@ -72,6 +72,7 @@ class Appropeli {
   //luodaan ryhmiin kuulumattomat henkilöt
   private val spusse = new Person("spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
   private val puustinen = new Person("puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
+  private val mysteeriMies = new Person("mysteerimies",Teerenpeli,"Uskaltaako kloppi pelata kierroksen Hirsipuuta")
   // lisätään henkilöt henkilöhakemistoon
   player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen))
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
