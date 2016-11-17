@@ -47,7 +47,7 @@ class Player(startingArea: Area) {
         
         var ryhmanNimet = Buffer[String]()
         for(tyypit <- porukat(ryhmanNimi).jasenet) { ryhmanNimet ++ tyypit.name }
-        this.ryhmaMap = ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet).toMap
+        val ryhmaMap = collection.mutable.Map() ++ ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
         "Valitsit " + ryhmanNimi.capitalize + "!" 
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
