@@ -21,8 +21,9 @@ class Player(startingArea: Area) {
   private var maximiaika = 0
   private var rahat = 0
   private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person](),0,0,0)
-  var porukat = Map[String, Group]().withDefaultValue(ryhmanVikaArvo)
-  private var ryhmaMap = Map[String,Person]()
+  private var porukat = Map[String, Group]().withDefaultValue(ryhmanVikaArvo)
+  private var henkilonVikaArvo = new Person("väärinkirjoitettu",this.location,"antti is rontti")
+  private var henkilot = Map[String,Person]()
   
   def vessahata = this.kusi
   def juodut = this.juomamaara
@@ -46,15 +47,23 @@ class Player(startingArea: Area) {
         this.rahat = porukat(ryhmanNimi).rahaMaara
         
         var ryhmanNimet = Buffer[String]()
-        for(tyypit <- porukat(ryhmanNimi).jasenet) { ryhmanNimet ++ tyypit.name }
-        val ryhmaMap = collection.mutable.Map() ++ ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)
+        for(tyypit <- ryhmä.get.jasenet) { ryhmanNimet += tyypit.name }
+        henkilot = (collection.mutable.Map() ++ (ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet))).withDefaultValue(henkilonVikaArvo)
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
         "Valitsit " + ryhmanNimi.capitalize + "!" 
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
   
-  //def puhu (
+ def puhu(personName: String) = {
+   if(henkilot(personName) != henkilonVikaArvo) {
+     if(henkilot(personName).sijainti == this.location) {
+       henkilot(personName).tunnuslause
+     } else "Ei näy kaveria missään, ehkä hän on seuraavassa kapakassa!"     
+   } else "Ei ole kyllä tuommoisesta kaverista kuullut edes herra Peter 'network' Kelly."
+   
+   
+ }
       
       
   def examine(itemName: String) = {
@@ -128,10 +137,7 @@ class Player(startingArea: Area) {
     } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
   }
   
-  
-  def talk(person: String) = {
-    
-  }
+
   /** Returns a brief description of the player's state, for debugging purposes. */
   override def toString = "Now at: " + this.location.name   
      

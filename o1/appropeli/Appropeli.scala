@@ -59,18 +59,18 @@ class Appropeli {
   val a = this.Kampin_alakerta
   
   // luodaan peliin henkilöitä. Ryhmiin kuuluvilla henkilöillä alkusijainti on sama kuin pelaajalla. 
-  private val rontti = new Person("Rontti",a,"olen nousu_humalassa")
-  private val akseli = new Person("Akseli",a,"vitunkymisvittu")
-  private val kymis = new Person("Kymis",a,"en ainakaan nouse ennen kahtatoista")
-  private val janpaul = new Person("Jan-Paul",a,"Lähtisitkö viikonloppuna purjehtimaan Dragsvikiin?") 
-  private val christoffer = new Person("Christoffer",a,"Tänään otetaan!")
-  private val erik = new Person("Erik",a,"Mä oon tänään vesilinjalla, älä syyyllistä.")
-  private val henrik = new Person("Henrik",a,"Mun rahat on loppu.")
-  private val ville = new Person("Ville",a,"Mun tekstipeli on parempi ku sun.")
-  private val tiina = new Person("Tiina",a,"Info on paras")
+  private val rontti = new Person("rontti",a,"olen nousu_humalassa")
+  private val akseli = new Person("akseli",a,"vitunkymisvittu")
+  private val kymis = new Person("kymis",a,"en ainakaan nouse ennen kahtatoista")
+  private val janpaul = new Person("jan-paul",a,"Lähtisitkö viikonloppuna purjehtimaan Dragsvikiin?") 
+  private val christoffer = new Person("christoffer",a,"Tänään otetaan!")
+  private val erik = new Person("erik",a,"Mä oon tänään vesilinjalla, älä syyyllistä.")
+  private val henrik = new Person("henrik",a,"Mun rahat on loppu.")
+  private val ville = new Person("ville",a,"Mun tekstipeli on parempi ku sun.")
+  private val tiina = new Person("tiina",a,"Info on paras")
   //luodaan ryhmiin kuulumattomat henkilöt
-  private val spusse = new Person("Spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
-  private val puustinen = new Person("Puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
+  private val spusse = new Person("spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
+  private val puustinen = new Person("puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
   
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
   val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),5,30,1000)

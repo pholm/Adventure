@@ -15,7 +15,6 @@ class Area(var name: String, var description: String) {
   private val items = Map[String, Item]()
   private val drinks = Map[String, Drink]().withDefaultValue(new Drink("Ei olla","Osta Bisse","Juomaasi ei ole listassa. Tilaa vikka bisse, jos et muuta keksi."))
   var onkoKayty = false
-  
   def addItem(item: Item) = this.items += item.name -> item
   def contains(itemName: String) = items.contains(itemName)
   def removeItem(itemName: String) = items.remove(itemName)

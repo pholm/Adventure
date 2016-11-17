@@ -28,8 +28,8 @@ class Action(input: String) {
      Some(actor.inventory)
     } else if (this.verb == "drop") {
       Some(actor.drop(this.modifiers))
-  //  } else if (this.verb == "puhu") {
-    //  Some(actor.puhu(this.modifiers))
+    } else if (this.verb == "puhu") {
+      Some(actor.puhu(this.modifiers))
     } else if (this.verb == "valitsen") {
       Some(actor.valitsen(this.modifiers))
     } else if (this.verb == "examine") {
@@ -38,8 +38,6 @@ class Action(input: String) {
       Some(actor.tilaa(this.modifiers))
     } else if (this.verb == "get") {
       Some(actor.get(this.modifiers))
-    /*} else if (this.verb == "talk") {
-      Some(actor.talk(this.modifiers)) */
     } else {
       None
     }
