@@ -25,6 +25,11 @@ class Player(startingArea: Area) {
   private var porukat = Map[String, Group]()  //.withDefaultValue(ryhmanVikaArvo)
 //  private var henkilonVikaArvo = new Person("väärinkirjoitettu",this.location,"antti is rontti")
   private var henkilot = Map[String,Person]()
+  private var haasteheitetty = false
+  private var vaarinmennyt = 0
+  private var maxVaara = 5
+  private var piilosana  = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
+  private var tavoitesana= Vector[String] (" H ", " U ", " M " , " A ",  " N ", " I ", " S ", " T ", " I ")
   
   def vessahata = this.kusi
   
@@ -37,7 +42,6 @@ class Player(startingArea: Area) {
     s"You drop the $itemName."
     } else "You don't have that!"
   }
- 
   
   def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat
   def addHenkiloita(henkilot: Vector[(String,Person)]) = this.henkilot ++= henkilot
@@ -59,15 +63,78 @@ class Player(startingArea: Area) {
   }
   
  def puhu(personName: String) = {
-   if(henkilot.contains(personName)) {
+  if(henkilot.contains(personName)) {
      if(henkilot(personName).sijainti == this.location) {
+       if(personName == "mysteerimies") {
+       haasteheitetty = true
+       henkilot(personName).tunnuslause
+       }
        henkilot(personName).tunnuslause
      } else "Ei näy kaveria missään, ehkä hän on seuraavassa kapakassa!"     
-   } else "Ei ole kyllä tuommoisesta kaverista kuullut edes herra Peter 'network' Kelly."
-   
-   
+   } else "Ei ole kyllä tuommoisesta kaverista kuullut edes herra Peter 'network' Kelly."  
  }
+
+  def kyllä () = {
+    "Mainiota, rakastan ihmisiä jotka tykkäävät pelata.\nArvaa kirjain kerrallaan mitä kahdeksankirjaimista sanaa ajattelen." + 
+    "\nSinulla on 4 väärää vastausta käytettävänäsi, voittaja tarjoaa häviäjälle oluen!\n" + 
+    piilosana.mkString(" ") +
+    "\n(arvaa sanomalla 'arvaan [kirjain]'"    
+  }
+ 
+  def ei () = {
+    haasteheitetty = false
+    "Ei sitten, senkin mammanpoika!"
+  }
+  
+  private def paljasta(paljastettavat: Vector[String]) = {
+    var uusiPiilosana = piilosana.toBuffer                             
+    for (indeksi <- this.piilosana.indices) {
+      if (paljastettavat(indeksi) != "___") {
+        uusiPiilosana(indeksi) = paljastettavat(indeksi)    
+      } else {
+        uusiPiilosana(indeksi)  = piilosana(indeksi)
+      } 
+    }
+    uusiPiilosana.toVector
+  }
+  
+  def arvaan(arvaus: String) = {
+    if(haasteheitetty == true) {
+    val arvausIsona = arvaus.toUpperCase.toCharArray.head
+    var kikka = Buffer[String]()    
+      for(kirjaimet <- "HUMANISTI") {
+       if(kirjaimet != arvausIsona) {
+         kikka += "___" 
+       } else kikka += " "+ arvausIsona +" "       
+    }
+    if(paljasta(kikka.toVector) == this.piilosana) {
+      vaarinmennyt += 1
+    if(vaarinmennyt < maxVaara) {
+      piilosana.mkString(" ") +
+      "\n\nAijai, väärin meni. Olet " + (maxVaara-vaarinmennyt) +" virheen pääse tappiosta!"
+    } else {
+      haasteheitetty = false
+      rahat -= 5
+      this.piilosana = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
+      "Kjehkjeh! Hyvä yritys! Olutrahaa pöytään juniori! \n(Rahavarasi pienenivät oluen hinnalla)" 
+    } 
       
+    } else {
+      if(paljasta(kikka.toVector) != this.tavoitesana) {
+        this.piilosana = paljasta(kikka.toVector)
+        piilosana.mkString(" ") +"\n\nOho! Lähenee jo"      
+      } else {
+        this.piilosana = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
+        this.juomamaara += 1
+        this.kusi += 1
+        haasteheitetty = false
+        tavoitesana.mkString(" ") + "\n\nOhhoh, en olisi uskonut, että kykenet tämän ratkaisemaan! Olet olueis ansainnut!" +
+        "\n(Voitit mysteerimiehen haasteen ja sait ylimääräisen oluen!)"
+      }} 
+   
+  }else "Mitä se siinä yksikseen arvailee."
+}
+  
       
   def examine(itemName: String) = {
     if(!has(itemName)) "If you want to examine something, you need to pick it up first."
@@ -102,6 +169,7 @@ class Player(startingArea: Area) {
     * is an exit from the player's current location towards the direction name. 
     * Returns a description of the results of the attempt. */
   def mene (direction: String) = {
+    if(haasteheitetty == false){
     if(this.ryhmä.isDefined) {
     val nykysijainti = this.currentLocation
     val destination = this.location.neighbor(direction)
@@ -113,7 +181,8 @@ class Player(startingArea: Area) {
       "Menit " + direction + "." 
     } else "Et voi mennä " + direction + "."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
-  }
+  } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."
+ }   
 
   
   /** Causes the player to rest for a short while (this has no substantial effect in game terms).
@@ -167,6 +236,7 @@ class Player(startingArea: Area) {
      
 
 }
+
 
 
 

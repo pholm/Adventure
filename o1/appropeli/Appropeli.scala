@@ -32,6 +32,7 @@ class Appropeli {
   private val alkupaikka           = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.")
   private val destination         = Circus    
 
+  
   // Määritellään alueille naapurialueet 
   Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
   Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
