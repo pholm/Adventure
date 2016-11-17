@@ -1,5 +1,7 @@
 package o1.appropeli
 
+//import scala.
+
 /** The class Adventure represents text adventure games. An adventure consists of a player and 
   * a number of areas that make up the game world. It provides methods for playing the game one
   * turn at a time and for checking the state of the game.
@@ -100,10 +102,10 @@ class Appropeli {
 
 
   /** Determines if the adventure is complete, that is, if the player has won. */
-  def isComplete = this.player.location == this.destination && this.player.has("remote") && this.player.has("battery")
+  def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut == this.player.vaadittukanni && this.turnCount < this.timeLimit
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */ 
-  def isOver = this.isComplete || this.player.hasQuit || this.turnCount == this.timeLimit || this.player.vessahata >= 10
+  def isOver = false//this.isComplete || this.player.hasQuit || this.player.rahat > 0 || this.turnCount == this.timeLimit || this.player.vessahata >= 20
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = {
@@ -119,7 +121,7 @@ class Appropeli {
     if (this.isComplete)
       s"Tervetuloa jatkoille! Keräsit $juodut leimaa, joten saat haalarimerkin!"
     else if (this.turnCount == this.timeLimit)
-      "Et ehtinyt jatkoille asti ajoissa!"
+      "Et ehtinyt jatkoille asti ajoissa."
     else if (this.player.vessahata >= 10)
       "Pissasit housuun! Koko Helsinki nauraa sinulle ja joudut poistumaan häpeissän takaisin Otaniemen suojiin."
     else  // game over due to player quitting

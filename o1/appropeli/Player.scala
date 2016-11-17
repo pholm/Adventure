@@ -3,7 +3,6 @@ package o1.appropeli
 import scala.collection.mutable.Map
 import scala.collection.mutable.Buffer
 import scala.io.Source
-
   
 /** A `Player` object represents a player character controlled by the real-life user of the program. 
   *
@@ -17,10 +16,10 @@ class Player(startingArea: Area) {
   private val itemList = Map[String, Item]()
   private var ryhmä: Option[Group] = None
   private var kusi = 0
-  private var juomamaara = 0
-  private var vaadittukanni = 0
+  private var juotumaara = 0
+  var vaadittukanni = 0
   private var maximiaika = 0
-  private var rahat = 0
+  var rahat = 0
   private var porukat = Map[String, Group]()  //.withDefaultValue(ryhmanVikaArvo)
   private var henkilot = Map[String,Person]()
   private var haasteheitetty = false
@@ -31,7 +30,7 @@ class Player(startingArea: Area) {
   
   def vessahata = this.kusi
   
-  def juodut = this.juomamaara
+  def juodut = this.juotumaara
   
   def drop(itemName: String) = {
     if(has(itemName)) {
@@ -123,7 +122,7 @@ class Player(startingArea: Area) {
         piilosana.mkString(" ") +"\n\nOho! Lähenee jo"      
       } else {
         this.piilosana = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
-        this.juomamaara += 1
+        this.juotumaara += 1
         this.kusi += 1
         haasteheitetty = false
         tavoitesana.mkString(" ") + "\n\nOhhoh, en olisi uskonut, että kykenet tämän ratkaisemaan! Olet olueis ansainnut!" +
@@ -200,7 +199,7 @@ class Player(startingArea: Area) {
   def tilaa(juoma: String) = {
     if (location.onkoKayty == false) {
       if (this.location.giveDrink(juoma) != this.location.giveDrink("tyhja")) {                        // Kaikki listan määritellyt juomat
-        this.juomamaara += 1
+        this.juotumaara += 1
         this.kusi += 2
         location.onkoKayty = true
         this.location.giveDrink(juoma).tilaamisenJalkeen      
@@ -210,8 +209,17 @@ class Player(startingArea: Area) {
   
   def help() = {
     
+    type Closeable = { def close(): Unit }
+    def useAndClose[Resource <: Closeable, Result](resource: Resource)(operation: Resource => Result) = {
+  try {
+    operation(resource)
+  } finally {
+    resource.close()
+  }
+}
     val tiedosto = Source.fromFile("README.md")
-    var tulos = ""
+    useAndClose(tiedosto)( _.getLines.toVector ).mkString("\n")
+    /** var tulos = ""
 
     try {
       var rivinumero = 1              // askeltaja
@@ -224,7 +232,7 @@ class Player(startingArea: Area) {
     } finally {
       tiedosto.close()
     }
-    tulos
+    tulos**/
    }
   
   
