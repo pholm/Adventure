@@ -55,7 +55,7 @@ class Appropeli {
   /* Luodaan pelihahmo ja asetetaan se "alkupaikkaan". Alkupaikassa pelaaja valitsee ryhmän, jonka jälkeen hahmo siirtyy Kampin alakertaan
    ja peli alkaa */
   val player = new Player(alkupaikka)
-  
+  alkupaikka.description = player.help()
   // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
   
