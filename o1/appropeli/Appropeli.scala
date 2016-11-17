@@ -51,6 +51,7 @@ class Appropeli {
   VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
   alkupaikka.setNeighbors(Vector(  "kampin alakertaan" -> Kampin_alakerta))
+  
   /* Luodaan pelihahmo ja asetetaan se "alkupaikkaan". Alkupaikassa pelaaja valitsee ryhmän, jonka jälkeen hahmo siirtyy Kampin alakertaan
    ja peli alkaa */
   val player = new Player(alkupaikka)
@@ -71,7 +72,8 @@ class Appropeli {
   //luodaan ryhmiin kuulumattomat henkilöt
   private val spusse = new Person("spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
   private val puustinen = new Person("puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
-  
+  // lisätään henkilöt henkilöhakemistoon
+  player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen))
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
   val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),5,30,1000)
   val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),10,20,100)

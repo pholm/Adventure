@@ -20,13 +20,15 @@ class Player(startingArea: Area) {
   private var vaadittukanni = 0
   private var maximiaika = 0
   private var rahat = 0
-  private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person](),0,0,0)
-  private var porukat = Map[String, Group]().withDefaultValue(ryhmanVikaArvo)
-  private var henkilonVikaArvo = new Person("väärinkirjoitettu",this.location,"antti is rontti")
+ //Näit parii vihreet EI Salee tarvitakkaa mut en kumita viel  private var ryhmanVikaArvo = new Group("Väärin kirjoitettu", Vector[Person](),0,0,0)
+  private var porukat = Map[String, Group]()  //.withDefaultValue(ryhmanVikaArvo)
+//  private var henkilonVikaArvo = new Person("väärinkirjoitettu",this.location,"antti is rontti")
   private var henkilot = Map[String,Person]()
   
   def vessahata = this.kusi
+  
   def juodut = this.juomamaara
+  
   def drop(itemName: String) = {
     if(has(itemName)) {
     this.currentLocation.addItem(this.itemList(itemName))
@@ -37,18 +39,18 @@ class Player(startingArea: Area) {
  
   
   def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat
-      
+  def addHenkiloita(henkilot: Vector[(String,Person)]) = this.henkilot ++= henkilot
+  
   def valitsen(ryhmanNimi: String) = {
     if(!this.ryhmä.isDefined) {
-      if(porukat(ryhmanNimi) != ryhmanVikaArvo) {
+      if(porukat.contains(ryhmanNimi)) {
         this.ryhmä = Some(porukat(ryhmanNimi))
         this.vaadittukanni = porukat(ryhmanNimi).juomaMaara
         this.maximiaika = porukat(ryhmanNimi).aikaMaara
         this.rahat = porukat(ryhmanNimi).rahaMaara
-        
-        var ryhmanNimet = Buffer[String]()
+         var ryhmanNimet = Buffer[String]()
         for(tyypit <- ryhmä.get.jasenet) { ryhmanNimet += tyypit.name }
-        henkilot = (collection.mutable.Map() ++ (ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet))).withDefaultValue(henkilonVikaArvo)
+        addHenkiloita(ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)) //.withDefaultValue(henkilonVikaArvo)
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
         "Valitsit " + ryhmanNimi.capitalize + "!" 
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
@@ -56,7 +58,7 @@ class Player(startingArea: Area) {
   }
   
  def puhu(personName: String) = {
-   if(henkilot(personName) != henkilonVikaArvo) {
+   if(henkilot.contains(personName)) {
      if(henkilot(personName).sijainti == this.location) {
        henkilot(personName).tunnuslause
      } else "Ei näy kaveria missään, ehkä hän on seuraavassa kapakassa!"     
