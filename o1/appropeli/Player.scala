@@ -81,6 +81,7 @@ class Player(startingArea: Area) {
     
   }
   
+  
   def get(itemName: String) = {
     if(this.currentLocation.contains(itemName)) {
       this.itemList += itemName -> this.currentLocation.removeItem(itemName).get
