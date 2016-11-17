@@ -38,6 +38,8 @@ class Action(input: String) {
       Some(actor.tilaa(this.modifiers))
     } else if (this.verb == "get") {
       Some(actor.get(this.modifiers))
+    } else if (this.verb == "help") {
+      Some(actor.help())
     } else {
       None
     }

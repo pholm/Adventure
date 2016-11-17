@@ -2,6 +2,7 @@ package o1.appropeli
 
 import scala.collection.mutable.Map
 import scala.collection.mutable.Buffer
+import scala.io.Source
 
   
 /** A `Player` object represents a player character controlled by the real-life user of the program. 
@@ -139,6 +140,26 @@ class Player(startingArea: Area) {
       } else this.location.giveDrink(juoma).tilaamisenJalkeen
     } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
   }
+  
+  def help() = {
+    
+    val tiedosto = Source.fromFile("README.md")
+    var tulos = ""
+
+    try {
+      var rivinumero = 1              // askeltaja
+      for (rivi <- tiedosto.getLines) {
+        tulos += rivi
+        tulos += "\n"
+        rivinumero += 1
+      }
+  
+    } finally {
+      tiedosto.close()
+    }
+    tulos
+   }
+  
   
 
   /** Returns a brief description of the player's state, for debugging purposes. */

@@ -1,6 +1,5 @@
 package o1.appropeli
 
-
 /** The class Adventure represents text adventure games. An adventure consists of a player and 
   * a number of areas that make up the game world. It provides methods for playing the game one
   * turn at a time and for checking the state of the game.
