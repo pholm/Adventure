@@ -78,9 +78,9 @@ class Appropeli {
   // lisätään henkilöt henkilöhakemistoon
   player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies))
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),5,30,1000)
-  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),10,20,100)
-  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),2,50,200)
+  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,100,35)
+  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,100,30)
+  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,100,25)
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
   this.player.addGroups(Vector(group1.nimi -> group1, group2.nimi -> group2, group3.nimi -> group3))
@@ -102,10 +102,10 @@ class Appropeli {
 
 
   /** Determines if the adventure is complete, that is, if the player has won. */
-  def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut == this.player.vaadittukanni && this.turnCount < this.timeLimit
+  def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut == this.player.vaadittukanni && this.turnCount < this.player.maximiaika
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */ 
-  def isOver = false//this.isComplete || this.player.hasQuit || this.player.rahat > 0 || this.turnCount == this.timeLimit || this.player.vessahata >= 20
+  def isOver = this.isComplete || this.player.hasQuit || this.player.rahat < 0 || this.turnCount > this.player.maximiaika || this.player.vessahata >= 20
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = {
@@ -120,10 +120,12 @@ class Appropeli {
   def goodbyeMessage = {
     if (this.isComplete)
       s"Tervetuloa jatkoille! Keräsit $juodut leimaa, joten saat haalarimerkin!"
-    else if (this.turnCount == this.timeLimit)
-      "Et ehtinyt jatkoille asti ajoissa."
-    else if (this.player.vessahata >= 10)
-      "Pissasit housuun! Koko Helsinki nauraa sinulle ja joudut poistumaan häpeissän takaisin Otaniemen suojiin."
+    else if (this.turnCount > this.player.maximiaika)
+      "Et ehtinyt jatkoille asti ajoissa. Yritä ensi vuonna uudestaan!"
+    else if (this.player.vessahata >= 20)
+      "Pissasit housuun! Koko Helsinki nauraa sinulle ja joudut poistumaan häpeissaän takaisin Otaniemen suojiin."
+    else if (this.player.rahat < 0)
+      "Senkin lurppasuu, joit kaikki rahasi ja joudut lähtemään kotiin odottamaan ensi kuun tukia."
     else  // game over due to player quitting
       "Quitter!" 
   }

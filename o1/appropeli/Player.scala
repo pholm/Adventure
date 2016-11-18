@@ -18,7 +18,7 @@ class Player(startingArea: Area) {
   private var kusi = 0
   private var juotumaara = 0
   var vaadittukanni = 0
-  private var maximiaika = 0
+  var maximiaika = 0
   var rahat = 0
   private var porukat = Map[String, Group]()  //.withDefaultValue(ryhmanVikaArvo)
   private var henkilot = Map[String,Person]()
