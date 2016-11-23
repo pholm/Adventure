@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="scala-swing_2.11-1.0.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/O1Yleiset"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
