@@ -176,7 +176,7 @@ class Player(startingArea: Area) {
       nykysijainti.onkoKayty = false
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
       "Menit " + direction + "." 
-    } else "Et voi mennä " + direction + "."
+    } else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."
  }   

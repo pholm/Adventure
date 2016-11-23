@@ -8,7 +8,7 @@ import o1.sound._
 // nokia tunnari, pera soittaa, äänitys
 // joka baariin musa
 // voittomusiikki
-// aikakuntoon
+// tilaa metodin blokkaus jos ei baarissa
 
 /** The class Adventure represents text adventure games. An adventure consists of a player and 
   * a number of areas that make up the game world. It provides methods for playing the game one
@@ -89,9 +89,13 @@ class Appropeli {
   val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,100,35)
   val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,100,30)
   val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,100,25)
+  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,100,35)
+  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,100,30)
+  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,100,25)
+  
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
-  this.player.addGroups(Vector(group1.nimi -> group1, group2.nimi -> group2, group3.nimi -> group3))
+  this.player.addGroups(Vector(group1.nimi -> group1, group2.nimi -> group2, group3.nimi -> group3, group4.nimi -> group4, group5.nimi -> group5, group6.nimi -> group6))
   
   // lista kaikista baareista
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
@@ -106,14 +110,15 @@ class Appropeli {
   /** The number of turns that have passed since the start of the game. */
   var turnCount = 0
   /** The maximum number of turns that this adventure game allows before time runs out. */
-  val timeLimit = 40 
+  var minuutitJaljella = if((this.player.maximiaika - turnCount*10) % 60 == 0) "00" else ((this.player.maximiaika - turnCount*10) % 60)
+  var aikaaJaljella = (this.player.maximiaika - turnCount*10)/60 + ":" + minuutitJaljella
 
 
   /** Determines if the adventure is complete, that is, if the player has won. */
-  def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut == this.player.vaadittukanni && this.turnCount < this.player.maximiaika
+  def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut == this.player.vaadittukanni &&  turnCount*10 <= player.maximiaika
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */ 
-  def isOver = this.isComplete || this.player.hasQuit || this.player.rahat < 0 || this.turnCount > this.player.maximiaika || this.player.vessahata >= 20
+  def isOver = this.isComplete || this.player.hasQuit || this.player.rahat < 0 || this.turnCount*10 > this.player.maximiaika || this.player.vessahata >= 20
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = {
@@ -128,7 +133,7 @@ class Appropeli {
   def goodbyeMessage = {
     if (this.isComplete)
       s"Tervetuloa jatkoille! Keräsit $juodut leimaa, joten saat haalarimerkin!"
-    else if (this.turnCount > this.player.maximiaika)
+    else if (this.turnCount*10 > this.player.maximiaika)
       "Et ehtinyt jatkoille asti ajoissa. Yritä ensi vuonna uudestaan!"
     else if (this.player.vessahata >= 20)
       "Pissasit housuun! Koko Helsinki nauraa sinulle ja joudut poistumaan häpeissaän takaisin Otaniemen suojiin."
@@ -146,8 +151,9 @@ class Appropeli {
     val action = new Action(command)
     val outcomeReport = action.execute(this.player)
     if (outcomeReport.isDefined) { 
+      if(command.toLowerCase.take(4) == "mene" || command.toLowerCase.take(5) == "tilaa") {
       this.turnCount += 1 
-    }
+    }}
     outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \nSanoppa uudestaan.")
   }
   
