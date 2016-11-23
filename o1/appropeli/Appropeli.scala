@@ -1,5 +1,14 @@
 package o1.appropeli
+import o1.sound._
 
+
+
+
+// kaduille ulkoilmanääni
+// nokia tunnari, pera soittaa, äänitys
+// joka baariin musa
+// voittomusiikki
+// aikakuntoon
 
 /** The class Adventure represents text adventure games. An adventure consists of a player and 
   * a number of areas that make up the game world. It provides methods for playing the game one
