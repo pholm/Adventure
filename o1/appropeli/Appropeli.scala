@@ -105,7 +105,6 @@ class Appropeli {
   baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.")))
   
 
-
   var juodut = player.juodut
   /** The number of turns that have passed since the start of the game. */
   var turnCount = 0
