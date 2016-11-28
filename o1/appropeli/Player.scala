@@ -13,39 +13,29 @@ import util.Random
   * @param startingArea  the initial location of the player */
 class Player(startingArea: Area) {
 
-  private var currentLocation = startingArea        // gatherer: changes in relation to the previous location
+  private var currentLocation = startingArea        // gatherer: tämän hetkinen sijainti
   private var quitCommandGiven = false              // one-way flag
-  private val itemList = Map[String, Item]()
   private var ryhmä: Option[Group] = None
-  private var kusi = 0
-  private var juotumaara = 0
+  var juodut = 0
+  var vessahata = 0
   var vaadittukanni = 0
   var maximiaika = 0
   var rahat = 0
-  private var porukat = Map[String, Group]()  //.withDefaultValue(ryhmanVikaArvo)
+  var porukat = Map[String, Group]() 
   var henkilot = Map[String,Person]()
-  private var haasteheitetty = false
-  private var vaarinmennyt = 0
-  private var maxVaara = 5
-  private var piilosana  = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
-  private var tavoitesana= Vector[String] (" H ", " U ", " M " , " A ",  " N ", " I ", " S ", " T ", " I ")
-  var makeLoytynyt = true
-  private var soitettu = false
   
-  def vessahata = this.kusi
+  private var soitettu = false                    // Maken etsimiseen
+  var makeLoytynyt = true                         // Maken etsimiseen
   
-  def juodut = this.juotumaara
-  
-  def drop(itemName: String) = {
-    if(has(itemName)) {
-    this.currentLocation.addItem(this.itemList(itemName))
-    itemList.remove(itemName)
-    s"You drop the $itemName."
-    } else "You don't have that!"
-  }
+  private var haasteheitetty = false                                                                                // Mysteerimiehen hirsipuuhun
+  private var vaarinmennyt = 0                                                                                      // Mysteerimiehen hirsipuuhun
+  private var maxVaara = 5                                                                                          // Mysteerimiehen hirsipuuhun
+  private var piilosana  = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")         // Mysteerimiehen hirsipuuhun
+  private var tavoitesana= Vector[String] (" H ", " U ", " M " , " A ",  " N ", " I ", " S ", " T ", " I ")         // Mysteerimiehen hirsipuuhun
   
   def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat
   def addHenkiloita(henkilot: Vector[(String,Person)]) = this.henkilot ++= henkilot
+  
   
   def valitsen(ryhmanNimi: String) = {
     if(!this.ryhmä.isDefined) {
@@ -63,6 +53,7 @@ class Player(startingArea: Area) {
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
   
+  
  def puhu(personName: String) = {
   val puhumisfraasit = Vector[String](" sanoo: "," tokaisee: "," vastaa: "," kommentoi: ")
   var randomi = new Random
@@ -77,17 +68,19 @@ class Player(startingArea: Area) {
    } else "Ei ole kyllä tuommoisesta kaverista kuullut edes herra Peter 'network' Kelly."  
  }
 
+ 
   def kyllä () = {
     "Mainiota, rakastan ihmisiä jotka tykkäävät pelata.\nArvaa kirjain kerrallaan mitä maailman huvittavinta kahdeksankirjaimista asiaa ajattelen." + 
     "\n\nSinulla on 4 väärää vastausta käytettävänäsi, voittaja tarjoaa häviäjälle oluen!\n" + 
     piilosana.mkString(" ") +
     "\n(arvaa sanomalla 'arvaan [kirjain]'"    
   }
- 
+  
   def ei () = {
     haasteheitetty = false
     "Ei sitten, senkin mammanpoika!"
   }
+  
   
   private def paljasta(paljastettavat: Vector[String]) = {
     var uusiPiilosana = piilosana.toBuffer                             
@@ -100,6 +93,7 @@ class Player(startingArea: Area) {
     }
     uusiPiilosana.toVector
   }
+  
   
   def arvaan(arvaus: String) = {
     if(haasteheitetty == true) {
@@ -128,8 +122,8 @@ class Player(startingArea: Area) {
         piilosana.mkString(" ") +"\n\nOho! Lähenee jo"      
       } else {
         this.piilosana = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
-        this.juotumaara += 1
-        this.kusi += 1
+        this.juodut += 1
+        this.vessahata += 1
         haasteheitetty = false
         tavoitesana.mkString(" ") + "\n\nOhhoh, en olisi uskonut, että kykenet tämän ratkaisemaan! Olet olueis ansainnut!" +
         "\n(Voitit mysteerimiehen haasteen ja sait ylimääräisen oluen!)"
@@ -137,28 +131,6 @@ class Player(startingArea: Area) {
    
   }else "Mitä se siinä yksikseen arvailee."
 }
-  
-      
-  def examine(itemName: String) = {
-    if(!has(itemName)) "If you want to examine something, you need to pick it up first."
-    else s"You look closely at the $itemName.\n" + itemList(itemName).description
-  }
-  
-  def has(itemName: String) = itemList.contains(itemName)
-  
-  def inventory = {
-    if(itemList.isEmpty) "You are empty-handed."
-    else "You are carrying:\n" + itemList.keys.mkString("\n")
-    
-  }
-  
-  
-  def get(itemName: String) = {
-    if(this.currentLocation.contains(itemName)) {
-      this.itemList += itemName -> this.currentLocation.removeItem(itemName).get
-      s"You pick up the $itemName."   
-  } else s"There is no $itemName here to pick up." 
-  }
 
   /** Determines if the player has indicated a desire to quit the game. */
   def hasQuit = this.quitCommandGiven
@@ -168,6 +140,7 @@ class Player(startingArea: Area) {
   def location = this.currentLocation
   
 
+  
   /** Attempts to move the player in the given direction. This is successful if there 
     * is an exit from the player's current location towards the direction name. 
     * Returns a description of the results of the attempt. */
@@ -180,7 +153,7 @@ class Player(startingArea: Area) {
     val destination = this.location.neighbor(direction)
     this.currentLocation = destination.getOrElse(this.currentLocation) 
     if (destination.isDefined) {
-      this.kusi += 1 
+      this.vessahata += 1 
       nykysijainti.onkoKayty = false
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
       if(juodut >= 0 && soitettu == false) {
@@ -203,13 +176,6 @@ class Player(startingArea: Area) {
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."
  }   
-
-  
-  /** Causes the player to rest for a short while (this has no substantial effect in game terms).
-    * Returns a description of what happened. */
-  def rest() = {
-    "You rest for a while. Better get a move on, though." 
-  }
   
   
   /** Signals that the player wants to quit the game. Returns a description of what happened within 
@@ -219,15 +185,17 @@ class Player(startingArea: Area) {
     ""
   }
   
+  
   def katso(juoma: String) = {
     this.location.giveDrink(juoma).kuvaus
   }
+  
 
   def tilaa(juoma: String) = {
     if (location.onkoKayty == false) {
       if (this.location.giveDrink(juoma) != this.location.giveDrink("tyhja")) {                        // Kaikki listan määritellyt juomat
-        this.juotumaara += 1
-        this.kusi += 2
+        this.juodut += 1
+        this.vessahata += 2
         this.rahat -= this.location.giveDrink(juoma).hinta
         location.onkoKayty = true
         this.location.giveDrink(juoma).tilaamisenJalkeen      
@@ -235,8 +203,8 @@ class Player(startingArea: Area) {
     } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
   }
   
-  def help() = {
-    
+  
+  def help() = {    
     type Closeable = { def close(): Unit }
     def useAndClose[Resource <: Closeable, Result](resource: Resource)(operation: Resource => Result) = {
   try {
@@ -244,13 +212,13 @@ class Player(startingArea: Area) {
   } finally {
     resource.close()
   }
-}   
+  }   
     var onkoRyhmä = " "
     if(ryhmä.isDefined) onkoRyhmä  = "\n\n" + ryhmä.get.kuvaus
     val tiedosto = Source.fromFile("README.md")
     useAndClose(tiedosto)( _.getLines.toVector ).mkString("\n") + onkoRyhmä
-    
-   }
+  }
+ 
   
   def suicide() = {
    var bukka = 1.0
@@ -258,10 +226,6 @@ class Player(startingArea: Area) {
       bukka = bukka * -0.8978
     }
   }
-
-  /** Returns a brief description of the player's state, for debugging purposes. */
-  override def toString = "Now at: " + this.location.name   
-     
 
 }
 

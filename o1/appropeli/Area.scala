@@ -12,17 +12,11 @@ import scala.collection.mutable.Map
 class Area(var name: String, var description: String, var musa: Option[String]) {
   
   private val neighbors = Map[String, Area]()
-  private val items = Map[String, Item]()
   private val drinks = Map[String, Drink]().withDefaultValue(new Drink("Ei olla","Juomaasi ei ole listassa. Tilaa vikka viina, jos et muuta keksi.","Osta Bisse", 0))
   private val henkilot = Map[String, Person]()
-  
   var onkoKayty = false
-  def addItem(item: Item) = this.items += item.name -> item
-  def contains(itemName: String) = items.contains(itemName)
-  def removeItem(itemName: String) = items.remove(itemName)
   
-  def lisaaHenkilo(henkilo: Person) = this.henkilot += henkilo.name -> henkilo
-  
+  def lisaaHenkilo(henkilo: Person) = this.henkilot += henkilo.name -> henkilo  
   def addDrink(drink: Drink) = this.drinks += drink.name -> drink
   def containsDrink(drinkName: String) = drinks.contains(drinkName)
   def giveDrink(drinkName: String) = drinks(drinkName)
@@ -30,14 +24,6 @@ class Area(var name: String, var description: String, var musa: Option[String]) 
   /** Returns the area that can be reached from this area by moving in the given direction. The result 
     * is returned in an `Option`; `None` is returned if there is no exit in the given direction. */
   def neighbor(direction: String) = this.neighbors.get(direction)
-
-  
-  /** Adds an exit from this area to the given area. The neighboring area is reached by moving in 
-    * the specified direction from this area. */
-  def setNeighbor(direction: String, neighbor: Area) = {
-    this.neighbors += direction -> neighbor
-  }
-
   
   /** Adds exits from this area to the given areas. Calling this method is equivalent to calling 
     * the `setNeighbor` method on each of the given direction--area pairs.
@@ -55,11 +41,7 @@ class Area(var name: String, var description: String, var musa: Option[String]) 
     val exitList = if(this.name !="Alkupaikka") {
       "\n\nKatsot ympärillesi, huomaat, että voitte mennä " + {if(exitit.size > 1) (exitit.init.mkString(", ") + " tai ") + exitit.last else "ainoastaan takaisin " + exitit.last}
     } else ""
-    var kuvaus = this.description
-    if(!this.items.isEmpty) {
-    val esineet = "\nYou see here: " + this.items.keys.mkString(" ")
-    kuvaus += esineet
-    } 
+    var kuvaus = this.description    
     if(!this.henkilot.isEmpty) {
     val ihmiset = "\n\nHuomaat paikalla seuraavat ihmiset: " + this.henkilot.keys.mkString(" ").capitalize
     kuvaus += ihmiset
@@ -71,9 +53,6 @@ class Area(var name: String, var description: String, var musa: Option[String]) 
     kuvaus + exitList
   } 
   
-  
-  /** Returns a single-line description of the area for debugging purposes. */
-  override def toString = this.name + ": " + this.description.replaceAll("\n", " ").take(150)
 
   
   

@@ -31,8 +31,6 @@ class Action(input: String) {
       Some(actor.valitsen(this.modifiers))
     } else if (autoCorrect(this.verb,"tilaa")) {
       Some(actor.tilaa(this.modifiers))
-    } else if (autoCorrect(this.verb,"get")){
-      Some(actor.get(this.modifiers))
     } else if (autoCorrect(this.verb,"kyllä")) {
       Some(actor.kyllä())
     } else if (autoCorrect(this.verb,"arvaan")) {
@@ -49,11 +47,5 @@ class Action(input: String) {
     
   }
 
-
-  
-  /** Returns a textual description of the action object, for debugging purposes. */
-  override def toString = this.verb + " (modifiers: " + this.modifiers + ")"  
-
-  
 }
 
