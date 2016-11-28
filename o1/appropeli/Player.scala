@@ -56,7 +56,6 @@ class Player(startingArea: Area) {
         for(tyypit <- ryhmä.get.jasenet) { ryhmanNimet += tyypit.name }
         addHenkiloita(ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)) 
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
-       playRecording("nokia-tune.wav",6)
         "Valitsit " + ryhmanNimi.capitalize + "!" 
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
