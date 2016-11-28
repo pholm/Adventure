@@ -3,6 +3,8 @@ package o1.appropeli
 import scala.collection.mutable.Map
 import scala.collection.mutable.Buffer
 import scala.io.Source
+import o1.sound._
+import sounds._
   
 /** A `Player` object represents a player character controlled by the real-life user of the program. 
   *
@@ -54,11 +56,11 @@ class Player(startingArea: Area) {
         for(tyypit <- ryhmä.get.jasenet) { ryhmanNimet += tyypit.name }
         addHenkiloita(ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)) 
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
+       playRecording("nokia-tune.wav",6)
         "Valitsit " + ryhmanNimi.capitalize + "!" 
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
-  
  def puhu(personName: String) = {
   if(henkilot.contains(personName)) {
      if(henkilot(personName).sijainti == this.location) {
