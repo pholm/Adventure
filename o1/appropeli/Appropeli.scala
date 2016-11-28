@@ -69,6 +69,8 @@ class Appropeli {
   // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
   
+  val vessahädänMäärä = 12
+  
   // luodaan peliin henkilöitä. Ryhmiin kuuluvilla henkilöillä alkusijainti on sama kuin pelaajalla. 
   private val rontti = new Person("rontti",a,"olen nousu_humalassa")
   private val akseli = new Person("akseli",a,"vitunkymisvittu")
@@ -82,17 +84,21 @@ class Appropeli {
   //luodaan ryhmiin kuulumattomat henkilöt
   private val spusse = new Person("spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
   private val puustinen = new Person("puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
-  private val mysteeriMies = new Person("mysteerimies",Teerenpeli,"Uskaltaako kloppi pelata kierroksen Hirsipuuta?")
+  private val mysteeriMies = new Person("mysteerimies",Teerenpeli,"Uskaltaako kloppi pelata kierroksen Hirsipuuta?\n\nVastaa haasteeseen kyllä tai ei.")
   private val make = new Person("make",Shaker,"Nyt on paha olla.")
   // lisätään henkilöt henkilöhakemistoon
   player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies, make.name -> make))
+  //lisätään henkilöt paikkoihinsa
+  for(tyypit <- player.henkilot.keys) {
+    player.henkilot(tyypit).sijainti.lisaaHenkilo(player.henkilot(tyypit))
+  }
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,35)
-  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,300,30)
-  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,300,25)
-  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,35)
-  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,300,30)
-  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,300,25)
+  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,40)
+  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,300,100000)
+  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,300,30)
+  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,40)
+  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,300,1000000)
+  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,300,30)
   
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
@@ -102,8 +108,8 @@ class Appropeli {
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
   
   //lisätään jokaisen baarin tarjontaan olut ja viina
-  baarit.foreach(_.addDrink(new Drink("talon olut","Mainiota Olvi kolmosta opiskelijahintaan","Tilasit oluen. Joit huurteisen yhdellä kulauksella!")))
-  baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.")))
+  baarit.foreach(_.addDrink(new Drink("talon olut","Mainiota Olvi kolmosta opiskelijahintaan","Tilasit oluen. Joit huurteisen yhdellä kulauksella!",5)))
+  baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.",3)))
   
 
   var juodut = player.juodut
@@ -118,7 +124,7 @@ class Appropeli {
   def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut >= this.player.vaadittukanni &&  turnCount*10 <= player.maximiaika
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */ 
-  def isOver = this.isComplete || this.player.hasQuit || this.player.rahat < 0 || this.turnCount*10 > this.player.maximiaika || this.player.vessahata >= 20
+  def isOver = this.isComplete || this.player.hasQuit || this.player.rahat < 0 || this.turnCount*10 > this.player.maximiaika || this.player.vessahata >= vessahädänMäärä
 
   /** Returns a message that is to be displayed to the player at the beginning of the game. */
   def welcomeMessage = {
@@ -132,10 +138,10 @@ class Appropeli {
     * will be different depending on whether or not the player has completed their quest. */
   def goodbyeMessage = {
     if (this.isComplete)
-      s"Tervetuloa jatkoille! Keräsit $juodut leimaa, joten saat haalarimerkin!"
+      "Tervetuloa jatkoille! Keräsit " +  this.player.juodut + " leimaa, joten saat haalarimerkin!"
     else if (this.turnCount*10 > this.player.maximiaika)
       "Et ehtinyt jatkoille asti ajoissa. Yritä ensi vuonna uudestaan!"
-    else if (this.player.vessahata >= 20)
+    else if (this.player.vessahata >= vessahädänMäärä)
       "Pissasit housuun! Koko Helsinki nauraa sinulle ja joudut poistumaan häpeissaän takaisin Otaniemen suojiin."
     else if (this.player.rahat < 0)
       "Senkin lurppasuu, joit kaikki rahasi ja joudut lähtemään kotiin odottamaan ensi kuun tukia."
@@ -154,8 +160,33 @@ class Appropeli {
       if(command.toLowerCase.take(4) == "mene" || command.toLowerCase.take(5) == "tilaa") {
       this.turnCount += 1 
     }}
-    outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \nSanoppa uudestaan.")
+    var vessa = ""
+    if(this.player.vessahata > (vessahädänMäärä - 5) && !isOver )vessa = "\n\nSinulla alkaa olla jo melko kova vessahätä, varo ettet lirauta housuun!"
+    outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \nSanoppa uudestaan.") + vessa
   }
   
-  
+/**
+  TODO
+
+  joku ansa vielä, esim jos jää puhumaan jollekkin , ni hävii pelin
+  taustamusiikit (ulkoilma, baari, voitto)
+  																																															DONE baareihin tyypit näkyviin
+  lisää tyyppejä ja juomia
+  																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
+  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä
+  																																															DONE vessahädästä varoitus kun esim 20/30
+  																																															DONE guihin näkyviin montako juomaa juonut  kautta tavoite
+  																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
+  																																															DONE makenhaku
+  vessassakäymismetodi
+  																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
+  																																															DONE guihin rahevarat
+  helppi selkeemäks ja lisää hauskuuttaa teksteihin jos ehtii
+  ylimääräisten adventuresta jääneiden metodien karsinta
+  uusi nimi
+  walkthrough
+  kartta selkeämmäksi tai hienommaksi?
+  vessareitti pois?
+  ((vektori, mistä menemisfraasi randomilla.))
+**/
 }

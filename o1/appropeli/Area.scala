@@ -13,11 +13,15 @@ class Area(var name: String, var description: String) {
   
   private val neighbors = Map[String, Area]()
   private val items = Map[String, Item]()
-  private val drinks = Map[String, Drink]().withDefaultValue(new Drink("Ei olla","Osta Bisse","Juomaasi ei ole listassa. Tilaa vikka bisse, jos et muuta keksi."))
+  private val drinks = Map[String, Drink]().withDefaultValue(new Drink("Ei olla","Juomaasi ei ole listassa. Tilaa vikka viina, jos et muuta keksi.","Osta Bisse", 0))
+  private val henkilot = Map[String, Person]()
+  
   var onkoKayty = false
   def addItem(item: Item) = this.items += item.name -> item
   def contains(itemName: String) = items.contains(itemName)
   def removeItem(itemName: String) = items.remove(itemName)
+  
+  def lisaaHenkilo(henkilo: Person) = this.henkilot += henkilo.name -> henkilo
   
   def addDrink(drink: Drink) = this.drinks += drink.name -> drink
   def containsDrink(drinkName: String) = drinks.contains(drinkName)
@@ -55,6 +59,10 @@ class Area(var name: String, var description: String) {
     if(!this.items.isEmpty) {
     val esineet = "\nYou see here: " + this.items.keys.mkString(" ")
     kuvaus += esineet
+    } 
+    if(!this.henkilot.isEmpty) {
+    val ihmiset = "\n\nHuomaat paikalla seuraavat ihmiset: " + this.henkilot.keys.mkString(" ").capitalize
+    kuvaus += ihmiset
     } 
     if(!this.drinks.isEmpty) {
     val drinkit = "\n\nTalon drinkkilista tarjoaa seuraavaa: " + this.drinks.keys.mkString(", ")

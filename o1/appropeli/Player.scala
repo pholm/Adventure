@@ -23,13 +23,14 @@ class Player(startingArea: Area) {
   var maximiaika = 0
   var rahat = 0
   private var porukat = Map[String, Group]()  //.withDefaultValue(ryhmanVikaArvo)
-  private var henkilot = Map[String,Person]()
+  var henkilot = Map[String,Person]()
   private var haasteheitetty = false
   private var vaarinmennyt = 0
   private var maxVaara = 5
   private var piilosana  = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
   private var tavoitesana= Vector[String] (" H ", " U ", " M " , " A ",  " N ", " I ", " S ", " T ", " I ")
   var makeLoytynyt = true
+  private var soitettu = false
   
   def vessahata = this.kusi
   
@@ -57,7 +58,7 @@ class Player(startingArea: Area) {
         for(tyypit <- ryhmä.get.jasenet) { ryhmanNimet += tyypit.name }
         addHenkiloita(ryhmanNimet.toVector.zip(porukat(ryhmanNimi).jasenet)) 
         this.currentLocation = this.location.neighbor("kampin alakertaan").get
-        "Valitsit " + ryhmanNimi.capitalize + "!" 
+        "Valitsit " + ryhmanNimi.capitalize + "!\n\n" + porukat(ryhmanNimi).kuvaus
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
@@ -75,7 +76,7 @@ class Player(startingArea: Area) {
 
   def kyllä () = {
     "Mainiota, rakastan ihmisiä jotka tykkäävät pelata.\nArvaa kirjain kerrallaan mitä maailman huvittavinta kahdeksankirjaimista asiaa ajattelen." + 
-    "\nSinulla on 4 väärää vastausta käytettävänäsi, voittaja tarjoaa häviäjälle oluen!\n" + 
+    "\n\nSinulla on 4 väärää vastausta käytettävänäsi, voittaja tarjoaa häviäjälle oluen!\n" + 
     piilosana.mkString(" ") +
     "\n(arvaa sanomalla 'arvaan [kirjain]'"    
   }
@@ -177,14 +178,18 @@ class Player(startingArea: Area) {
       this.kusi += 1 
       nykysijainti.onkoKayty = false
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
-      if(juodut >= 4) {
+      if(juodut >= 4 && soitettu == false) {
+        soitettu = true
         makeLoytynyt = false
-        playRecording("nokia-tune.wav")
-        "PUHELIMESI SOI, VASTAAT: '\nShakerin baarimikko täällä terve. Joku Make-niminen kaverisi makaa tällä hetkellä pää pöntössä meidän vessassa, ja osasi antaa ainoastaan sun puhelinnumeron. Tulisitko hakemaan törvelön pois?'" +
+        playRecording("nokia-tune.wav",2)
+        "PUHELIMESI SOI, VASTAAT: \n'Shakerin baarimikko täällä terve. Joku Make-niminen kaverisi makaa tällä hetkellä pää pöntössä meidän vessassa, ja osasi antaa ainoastaan sun puhelinnumeron. Tulisitko hakemaan törvelön pois?'" +
         "\n\nKäy noutamassa Make Shakerista ennen kuin jatkat iltaasi Circuksessa."
-
       }
-      else "Menit " + direction + "." 
+        else if(soitettu == true && location.name == "Shaker") {
+        makeLoytynyt = true
+        "Huh, nappasit Maken kiinni juuri kun hän oli konttaamassa ulos ikkunasta. Voit nyt jatkaa iltaasi rauhassa!"
+      
+    }  else "Menit " + direction + "." 
     } else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."
@@ -204,15 +209,20 @@ class Player(startingArea: Area) {
     this.quitCommandGiven = true
     ""
   }
+  
+  def katso(juoma: String) = {
+    this.location.giveDrink(juoma).kuvaus
+  }
 
   def tilaa(juoma: String) = {
     if (location.onkoKayty == false) {
       if (this.location.giveDrink(juoma) != this.location.giveDrink("tyhja")) {                        // Kaikki listan määritellyt juomat
         this.juotumaara += 1
         this.kusi += 2
+        this.rahat -= this.location.giveDrink(juoma).hinta
         location.onkoKayty = true
         this.location.giveDrink(juoma).tilaamisenJalkeen      
-      } else this.location.giveDrink(juoma).tilaamisenJalkeen
+      } else this.location.giveDrink(juoma).kuvaus
     } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
   }
   
@@ -225,9 +235,11 @@ class Player(startingArea: Area) {
   } finally {
     resource.close()
   }
-}
+}   
+    var onkoRyhmä = " "
+    if(ryhmä.isDefined) onkoRyhmä  = "\n\n" + ryhmä.get.kuvaus
     val tiedosto = Source.fromFile("README.md")
-    useAndClose(tiedosto)( _.getLines.toVector ).mkString("\n")
+    useAndClose(tiedosto)( _.getLines.toVector ).mkString("\n") + onkoRyhmä
     
    }
   

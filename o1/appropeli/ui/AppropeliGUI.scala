@@ -118,7 +118,9 @@ object AppropeliGUI extends SimpleSwingApplication {
       val minuutit = if((this.game.turnCount*10 % 60) == 0) "00" else (this.game.turnCount*10 % 60)
       var minuutitJaljella = if((this.player.maximiaika - this.game.turnCount*10) % 60 == 0) "00" else ((this.player.maximiaika - this.game.turnCount*10) % 60)
       this.turnCounter.text = "Kello on: " + (17+(this.game.turnCount*10)/60) + ":" + minuutit + 
-      "         Aikaa jäljellä: " + (this.player.maximiaika - this.game.turnCount*10)/60 + ":" + minuutitJaljella
+      "                Aikaa jäljellä: " + (this.player.maximiaika - this.game.turnCount*10)/60 + ":" + minuutitJaljella +
+      "                Juomia kerätty: " + this.player.juodut + "/" + this.player.vaadittukanni +
+      "			                 	Kukkarossa kolikoita jäljellä: " + this.player.rahat
     }
 
     

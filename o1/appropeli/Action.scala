@@ -25,6 +25,8 @@ class Action(input: String) {
       Some(actor.rest())
     }else if (autoCorrect(this.verb,"quit")) {
       Some(actor.quit())
+    } else if (autoCorrect(this.verb,"katso")) {
+      Some(actor.katso(this.modifiers))
     } else if (autoCorrect(this.verb,"inventory")) {
      Some(actor.inventory)
     } else if (autoCorrect(this.verb,"drop")) {
