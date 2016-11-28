@@ -173,7 +173,7 @@ class Appropeli {
   																																															DONE baareihin tyypit näkyviin
   lisää tyyppejä ja juomia																										1	 	
   																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
-  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
+  NÄÄ MUST IHA OK NYT?  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
   																																															DONE vessahädästä varoitus kun esim 20/30
   																																															DONE guihin näkyviin montako juomaa juonut  kautta tavoite
   																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
@@ -182,7 +182,7 @@ class Appropeli {
   vessassakäymismetodi																												4
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat
-  lisää hauskuuttaa teksteihin jos ehtii									4
+  lisää hauskuuttaa teksteihin jos ehtii																			4
   ylimääräisten adventuresta jääneiden metodien karsinta											4
   																																															DONE uusi nimi	
   																																															DONE helppi
