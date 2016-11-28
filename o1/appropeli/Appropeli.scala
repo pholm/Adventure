@@ -173,7 +173,7 @@ class Appropeli {
   																																															DONE baareihin tyypit näkyviin
   lisää tyyppejä ja juomia																										1	 	
   																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
-  NÄÄ MUST IHA OK NYT?  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
+ 																																																NÄÄ MUST IHA OK NYT?  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
   																																															DONE vessahädästä varoitus kun esim 20/30
   																																															DONE guihin näkyviin montako juomaa juonut  kautta tavoite
   																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
