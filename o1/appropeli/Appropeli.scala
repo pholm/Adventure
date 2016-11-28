@@ -23,23 +23,23 @@ class Appropeli {
   /** The title of the adventure game. */
   val title = "Appropeli"
   // Luodaan alueet
-  private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!")  
-  private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.") 
-  private val Narinkkatori        = new Area("Narinkkatori", "Astuessasi Narinkkatorille viiltävä tuuli iskee kasvoillesi. Hankkiudu äkkiä takaisin sisätiloihin!")
-  private val Fredrikinkatu       = new Area("Fredrikinkatu", "Olet Fredrikinkadulla.")
-  private val Tennispalatsinaukio = new Area("Tennispalatsinaukio", "Olet Tennispalatsinaukiolla.")
-  private val Bruuveri            = new Area("Bruuveri", "Tervetuloa Bruuveriin! Olemme tunnettuja laadukkaista, valtavirrasta erottuvista talon omista oluista ja siidereistä.")
-  private val AussieBar           = new Area("Aussie Bar", "Welcome to Aussie Bar. You don't just visit Aussie Bar, you live it!")
-  private val Bierhuis_Rotterdam  = new Area("Bierhuis Rotterdam", "Tervetuloa Bierhuis Rotterdamiin. Bierhuis on välitön hauskanpidon satama, jossa juttu lentää ja tuopit kolahtelevat.")
+  private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!", None)  
+  private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.", None) 
+  private val Narinkkatori        = new Area("Narinkkatori", "Astuessasi Narinkkatorille viiltävä tuuli iskee kasvoillesi. Hankkiudu äkkiä takaisin sisätiloihin!", None)
+  private val Fredrikinkatu       = new Area("Fredrikinkatu", "Olet Fredrikinkadulla.", None)
+  private val Tennispalatsinaukio = new Area("Tennispalatsinaukio", "Olet Tennispalatsinaukiolla.", None)
+  private val Bruuveri            = new Area("Bruuveri", "Tervetuloa Bruuveriin! Olemme tunnettuja laadukkaista, valtavirrasta erottuvista talon omista oluista ja siidereistä.",Some("music1.wav"))
+  private val AussieBar           = new Area("Aussie Bar", "Welcome to Aussie Bar. You don't just visit Aussie Bar, you live it!",Some("music2.wav"))
+  private val Bierhuis_Rotterdam  = new Area("Bierhuis Rotterdam", "Tervetuloa Bierhuis Rotterdamiin. Bierhuis on välitön hauskanpidon satama, jossa juttu lentää ja tuopit kolahtelevat.",Some("music3.wav"))
   private val Pub_Ikkuna          = new Area("Pub Ikkuna", "Tervetuloa Pub Ikkunaan. Pub Ikkuna on alkuillan starttipaikka Kampin keskuksessa.") 
   private val Henrys_pub          = new Area("Henry's Pub", "Tervetuloa Henry's Pubiin. Henry's Pub tarjoaa elävää musiikkia maanantaista torstaihin sekä tietenkin erinomaisia juomia moneen makuun.")
   private val Shaker              = new Area("Shaker", "Tervetuloa Shakeriin. Olemme tunnettu hyvistä cocktaileista, ammattitaitoisesta henkilökunnasta, hyvästä palvelusta ja rennosta ilmapiiristä.")
   private val WilliamK            = new Area("William K", "Kun haluat treffata ennen leffaa tai mennä fiilistelemään leffan jälkeen, William K. Fredrikinkatu Tennispalatsissa sopii tarkoitukseen kuin buutsit Chuck Norrisille.")
   private val Teerenpeli          = new Area("Teerenpeli", "Teerenpeli Panimo & Tislaamossa on näyttävällä ja tehokkaalla tavalla yhdistetty oluen valmistus ja tislaaminen.")
-  private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa. Tänne ovat monien approt päättyneet ennenaikaisesti.")
-  private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.")
-  private val Circus              = new Area("Circus", "Portsari puhalluttaa sinut eikä todellakaan päästä noin selvää kaveria tylsistyttämään tunnelmaa. \nMene käymään muutamassa kapakassa vielä!")
-  private val alkupaikka          = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.")
+  private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa. Tänne ovat monien approt päättyneet ennenaikaisesti.", None)
+  private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.", None)
+  private val Circus              = new Area("Circus", "Portsari puhalluttaa sinut eikä todellakaan päästä noin selvää kaveria tylsistyttämään tunnelmaa. \nMene käymään muutamassa kapakassa vielä!", None)
+  private val alkupaikka          = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.", None)
   val destination                 = Circus    
 
   
@@ -130,7 +130,7 @@ class Appropeli {
   def welcomeMessage = {
     "Koodasit viime yönä aivan liian pitkään, joten nukuit tänään pommiin ja saavut nyt myöhässä bussilla Kampin terminaaliin, jossa tapaat kolme eri kavereistasi koostuvaa porukkaa.\n" +  
     "Minkä porukan mukaan haluat lähteä? Valitse kirjoittamalla 'valitsen [porukan nimi]'.\n" +
-    "Vaihtoehtoina ovat Viattomat infolaiset, Syntiset kylterit sekä Paatuneet tutalaiset."
+    "Vaihtoehtoina ovat Viattomat infolaiset, Syntiset kylterit sekä Paatuneet tutalaiset.\n(Ryhmät ovat vaikeusasteeltaan helpoimmasta haastavimpaan.)"
     }
 
     
@@ -173,7 +173,7 @@ class Appropeli {
   																																															DONE baareihin tyypit näkyviin
   lisää tyyppejä ja juomia																										1	 	
   																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
-  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
+  NÄÄ MUST IHA OK NYT?  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
   																																															DONE vessahädästä varoitus kun esim 20/30
   																																															DONE guihin näkyviin montako juomaa juonut  kautta tavoite
   																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
@@ -182,13 +182,14 @@ class Appropeli {
   vessassakäymismetodi																												4
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat
-  helppi selkeemäks ja lisää hauskuuttaa teksteihin jos ehtii									4
+  lisää hauskuuttaa teksteihin jos ehtii																			4
   ylimääräisten adventuresta jääneiden metodien karsinta											4
-  uusi nimi																																		5
+  																																															DONE uusi nimi	
+  																																															DONE helppi
   walkthrough																																	1
   kartta selkeämmäksi tai hienommaksi?																				5
   vessareitti pois?																														2
-  ((vektori, mistä menemisfraasi randomilla.))																5
-  puhu-metodiin: "Henkilö sanoo:"																							1
+                                                                                                DONE vektori, mistä menemisfraasi randomilla.
+  																																															DONE puhu-metodiin: "Henkilö sanoo:"																						
 **/
 }
