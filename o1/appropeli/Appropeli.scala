@@ -168,26 +168,27 @@ class Appropeli {
 /**
   TODO
 
-  joku ansa vielä, esim jos jää puhumaan jollekkin , ni hävii pelin
-  taustamusiikit (ulkoilma, baari, voitto)
+  joku ansa vielä, esim jos jää puhumaan jollekkin , ni hävii pelin						3
+  taustamusiikit (ulkoilma, baari, voitto)																		2
   																																															DONE baareihin tyypit näkyviin
-  lisää tyyppejä ja juomia
+  lisää tyyppejä ja juomia																										1	 	
   																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
-  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä
+  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
   																																															DONE vessahädästä varoitus kun esim 20/30
   																																															DONE guihin näkyviin montako juomaa juonut  kautta tavoite
   																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
   																																															DONE makenhaku
   																																															DONE luovutusmetodi
-  vessassakäymismetodi
+  vessassakäymismetodi																												4
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat
-  helppi selkeemäks ja lisää hauskuuttaa teksteihin jos ehtii
-  ylimääräisten adventuresta jääneiden metodien karsinta
-  uusi nimi
-  walkthrough
-  kartta selkeämmäksi tai hienommaksi?
-  vessareitti pois?
-  ((vektori, mistä menemisfraasi randomilla.))
+  helppi selkeemäks ja lisää hauskuuttaa teksteihin jos ehtii									4
+  ylimääräisten adventuresta jääneiden metodien karsinta											4
+  uusi nimi																																		5
+  walkthrough																																	1
+  kartta selkeämmäksi tai hienommaksi?																				5
+  vessareitti pois?																														2
+  ((vektori, mistä menemisfraasi randomilla.))																5
+  puhu-metodiin: "Henkilö sanoo:"																							1
 **/
 }
