@@ -38,9 +38,9 @@ class Appropeli {
   private val Teerenpeli          = new Area("Teerenpeli", "Teerenpeli Panimo & Tislaamossa on näyttävällä ja tehokkaalla tavalla yhdistetty oluen valmistus ja tislaaminen.")
   private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa. Tänne ovat monien approt päättyneet ennenaikaisesti.")
   private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.")
-  private val Circus              = new Area("Circus", "Tervetuloa jatkoille! Valitettavasti....")
-  private val alkupaikka           = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.")
-  private val destination         = Circus    
+  private val Circus              = new Area("Circus", "Portsari puhalluttaa sinut eikä todellakaan päästä noin selvää kaveria tylsistyttämään tunnelmaa. \nMene käymään muutamassa kapakassa vielä!")
+  private val alkupaikka          = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.")
+  val destination                 = Circus    
 
   
   // Määritellään alueille naapurialueet 
@@ -86,12 +86,12 @@ class Appropeli {
   // lisätään henkilöt henkilöhakemistoon
   player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies))
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,100,35)
-  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,100,30)
-  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,100,25)
-  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,100,35)
-  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,100,30)
-  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,100,25)
+  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,35)
+  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,300,30)
+  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,300,25)
+  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,35)
+  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,300,30)
+  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,300,25)
   
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
@@ -114,7 +114,7 @@ class Appropeli {
 
 
   /** Determines if the adventure is complete, that is, if the player has won. */
-  def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut == this.player.vaadittukanni &&  turnCount*10 <= player.maximiaika
+  def isComplete = this.player.location == this.destination && this.player.rahat > 0 && this.player.juodut >= this.player.vaadittukanni &&  turnCount*10 <= player.maximiaika
 
   /** Determines whether the player has won, lost, or quit, thereby ending the game. */ 
   def isOver = this.isComplete || this.player.hasQuit || this.player.rahat < 0 || this.turnCount*10 > this.player.maximiaika || this.player.vessahata >= 20

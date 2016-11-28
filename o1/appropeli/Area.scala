@@ -57,7 +57,7 @@ class Area(var name: String, var description: String) {
     kuvaus += esineet
     } 
     if(!this.drinks.isEmpty) {
-    val drinkit = "\nTalon drinkkilista tarjoaa seuraavaa: " + this.drinks.keys.mkString(", ")
+    val drinkit = "\n\nTalon drinkkilista tarjoaa seuraavaa: " + this.drinks.keys.mkString(", ")
     kuvaus += drinkit
     }  
     kuvaus + exitList

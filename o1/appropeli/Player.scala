@@ -29,6 +29,7 @@ class Player(startingArea: Area) {
   private var maxVaara = 5
   private var piilosana  = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")
   private var tavoitesana= Vector[String] (" H ", " U ", " M " , " A ",  " N ", " I ", " S ", " T ", " I ")
+  var makeLoytynyt = true
   
   def vessahata = this.kusi
   
@@ -73,7 +74,7 @@ class Player(startingArea: Area) {
  }
 
   def kyllä () = {
-    "Mainiota, rakastan ihmisiä jotka tykkäävät pelata.\nArvaa kirjain kerrallaan mitä kahdeksankirjaimista sanaa ajattelen." + 
+    "Mainiota, rakastan ihmisiä jotka tykkäävät pelata.\nArvaa kirjain kerrallaan mitä maailman huvittavinta kahdeksankirjaimista asiaa ajattelen." + 
     "\nSinulla on 4 väärää vastausta käytettävänäsi, voittaja tarjoaa häviäjälle oluen!\n" + 
     piilosana.mkString(" ") +
     "\n(arvaa sanomalla 'arvaan [kirjain]'"    
@@ -176,7 +177,14 @@ class Player(startingArea: Area) {
       this.kusi += 1 
       nykysijainti.onkoKayty = false
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
-      "Menit " + direction + "." 
+      if(juodut >= 4) {
+        makeLoytynyt = false
+        playRecording("nokia-tune.wav")
+        "PUHELIMESI SOI, VASTAAT: '\nShakerin baarimikko täällä terve. Joku Make-niminen kaverisi makaa tällä hetkellä pää pöntössä meidän vessassa, ja osasi antaa ainoastaan sun puhelinnumeron. Tulisitko hakemaan törvelön pois?'" +
+        "\n\nKäy noutamassa Make Shakerista ennen kuin jatkat iltaasi Circuksessa."
+
+      }
+      else "Menit " + direction + "." 
     } else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."
@@ -220,20 +228,7 @@ class Player(startingArea: Area) {
 }
     val tiedosto = Source.fromFile("README.md")
     useAndClose(tiedosto)( _.getLines.toVector ).mkString("\n")
-    /** var tulos = ""
-
-    try {
-      var rivinumero = 1              // askeltaja
-      for (rivi <- tiedosto.getLines) {
-        tulos += rivi
-        tulos += "\n"
-        rivinumero += 1
-      }
-  
-    } finally {
-      tiedosto.close()
-    }
-    tulos**/
+    
    }
   
   

@@ -113,7 +113,8 @@ object AppropeliGUI extends SimpleSwingApplication {
       } else {
         this.turnOutput.text = info + "\n\n" + this.game.goodbyeMessage
       }
-      this.locationInfo.text = this.player.location.fullDescription
+      if(this.game.player.location == this.game.destination && this.game.player.makeLoytynyt == false) {"Minne olet Maken jättänyt? Käy hakemassa hänet Shakerista!"}
+      else {this.locationInfo.text = this.player.location.fullDescription}
       val minuutit = if((this.game.turnCount*10 % 60) == 0) "00" else (this.game.turnCount*10 % 60)
       var minuutitJaljella = if((this.player.maximiaika - this.game.turnCount*10) % 60 == 0) "00" else ((this.player.maximiaika - this.game.turnCount*10) % 60)
       this.turnCounter.text = "Kello on: " + (17+(this.game.turnCount*10)/60) + ":" + minuutit + 
@@ -121,7 +122,7 @@ object AppropeliGUI extends SimpleSwingApplication {
     }
 
     
-  }
     
+  }
 }  
   
