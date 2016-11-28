@@ -17,34 +17,35 @@ class Action(input: String) {
     * of the action (such as "You go west."). The description is returned in an `Option` 
     * wrapper; if the command was not recognized, `None` is returned. */
   def execute(actor: Player) = {                             
-
-  if (this.verb == "mene") {
+  def autoCorrect(sana: String, toinen: String) = o1.util.editDistance(sana, toinen, 1) <= 1
+    
+  if (autoCorrect(this.verb,"mene")) {
       Some(actor.mene(this.modifiers))
-    } else if (this.verb == "rest") {
+    } else if (autoCorrect(this.verb,"rest")) {
       Some(actor.rest())
-    }else if (this.verb == "quit") {
+    }else if (autoCorrect(this.verb,"quit")) {
       Some(actor.quit())
-    } else if (this.verb == "inventory") {
+    } else if (autoCorrect(this.verb,"inventory")) {
      Some(actor.inventory)
-    } else if (this.verb == "drop") {
+    } else if (autoCorrect(this.verb,"drop")) {
       Some(actor.drop(this.modifiers))
-    } else if (this.verb == "puhu") {
+    } else if (autoCorrect(this.verb,"puhu")) {
       Some(actor.puhu(this.modifiers))
-    } else if (this.verb == "valitsen") {
+    } else if (autoCorrect(this.verb,"valitsen")) {
       Some(actor.valitsen(this.modifiers))
-    } else if (this.verb == "examine") {
+    } else if (autoCorrect(this.verb,"examine")) {
       Some(actor.examine(this.modifiers))
-    }else if (this.verb == "tilaa") {
+    }else if (autoCorrect(this.verb,"tilaa")) {
       Some(actor.tilaa(this.modifiers))
-    } else if (this.verb == "get"){
+    } else if (autoCorrect(this.verb,"get")){
       Some(actor.get(this.modifiers))
-    } else if (this.verb == "kyllä") {
+    } else if (autoCorrect(this.verb,"kyllä")) {
       Some(actor.kyllä())
-    } else if (this.verb == "arvaan") {
+    } else if (autoCorrect(this.verb,"arvaan")) {
       Some(actor.arvaan(this.modifiers))
-    } else if (this.verb == "ei") {
+    } else if (autoCorrect(this.verb,"ei")) {
       Some(actor.ei())
-    } else if (this.verb == "help") {
+    } else if (autoCorrect(this.verb,"help")) {
       Some(actor.help())
     } else {
       None
