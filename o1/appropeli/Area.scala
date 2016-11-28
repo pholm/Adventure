@@ -9,7 +9,7 @@ import scala.collection.mutable.Map
   * other, neighboring areas. An area also has a name and a description. 
   * @param name         the name of the area 
   * @param description  a basic description of the area (typically not including information about items) */
-class Area(var name: String, var description: String) {
+class Area(var name: String, var description: String, var musa: Option[String]) {
   
   private val neighbors = Map[String, Area]()
   private val items = Map[String, Item]()

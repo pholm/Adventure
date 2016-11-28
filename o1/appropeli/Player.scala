@@ -190,9 +190,13 @@ class Player(startingArea: Area) {
       }
         else if(soitettu == true && location.name == "Shaker") {
         makeLoytynyt = true
+        playRecording(this.location.musa.get)
         "Huh, nappasit Maken kiinni juuri kun hän oli konttaamassa ulos ikkunasta. Voit nyt jatkaa iltaasi rauhassa!"
       
-    }  else "Menit " + direction + "." 
+    }  else if(this.location.musa.isDefined) {
+      playRecording(this.location.musa.get)
+      "Menit " + direction + "." 
+    } else "Menit " + direction + "." 
     } else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."

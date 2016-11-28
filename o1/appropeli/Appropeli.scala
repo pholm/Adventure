@@ -23,23 +23,23 @@ class Appropeli {
   /** The title of the adventure game. */
   val title = "Appropeli"
   // Luodaan alueet
-  private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!")  
-  private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.") 
-  private val Narinkkatori        = new Area("Narinkkatori", "Astuessasi Narinkkatorille viiltävä tuuli iskee kasvoillesi. Hankkiudu äkkiä takaisin sisätiloihin!")
-  private val Fredrikinkatu       = new Area("Fredrikinkatu", "Olet Fredrikinkadulla.")
-  private val Tennispalatsinaukio = new Area("Tennispalatsinaukio", "Olet Tennispalatsinaukiolla.")
-  private val Bruuveri            = new Area("Bruuveri", "Tervetuloa Bruuveriin! Olemme tunnettuja laadukkaista, valtavirrasta erottuvista talon omista oluista ja siidereistä.")
-  private val AussieBar           = new Area("Aussie Bar", "Welcome to Aussie Bar. You don't just visit Aussie Bar, you live it!")
-  private val Bierhuis_Rotterdam  = new Area("Bierhuis Rotterdam", "Tervetuloa Bierhuis Rotterdamiin. Bierhuis on välitön hauskanpidon satama, jossa juttu lentää ja tuopit kolahtelevat.")
+  private val Kampin_alakerta     = new Area("Kampin alakerta", "Olet Kampin alakerrassa. Varo vartijoita pakoon juoksevia teinejä!", None)  
+  private val Kampin_yläkerta     = new Area("Kampin yläkerta", "Olet Kampin yläkerrassa.", None) 
+  private val Narinkkatori        = new Area("Narinkkatori", "Astuessasi Narinkkatorille viiltävä tuuli iskee kasvoillesi. Hankkiudu äkkiä takaisin sisätiloihin!", None)
+  private val Fredrikinkatu       = new Area("Fredrikinkatu", "Olet Fredrikinkadulla.", None)
+  private val Tennispalatsinaukio = new Area("Tennispalatsinaukio", "Olet Tennispalatsinaukiolla.", None)
+  private val Bruuveri            = new Area("Bruuveri", "Tervetuloa Bruuveriin! Olemme tunnettuja laadukkaista, valtavirrasta erottuvista talon omista oluista ja siidereistä.",Some("music1.wav"))
+  private val AussieBar           = new Area("Aussie Bar", "Welcome to Aussie Bar. You don't just visit Aussie Bar, you live it!",Some("music2.wav"))
+  private val Bierhuis_Rotterdam  = new Area("Bierhuis Rotterdam", "Tervetuloa Bierhuis Rotterdamiin. Bierhuis on välitön hauskanpidon satama, jossa juttu lentää ja tuopit kolahtelevat.",Some("music3.wav"))
   private val Pub_Ikkuna          = new Area("Pub Ikkuna", "Tervetuloa Pub Ikkunaan. Pub Ikkuna on alkuillan starttipaikka Kampin keskuksessa.") 
   private val Henrys_pub          = new Area("Henry's Pub", "Tervetuloa Henry's Pubiin. Henry's Pub tarjoaa elävää musiikkia maanantaista torstaihin sekä tietenkin erinomaisia juomia moneen makuun.")
   private val Shaker              = new Area("Shaker", "Tervetuloa Shakeriin. Olemme tunnettu hyvistä cocktaileista, ammattitaitoisesta henkilökunnasta, hyvästä palvelusta ja rennosta ilmapiiristä.")
   private val WilliamK            = new Area("William K", "Kun haluat treffata ennen leffaa tai mennä fiilistelemään leffan jälkeen, William K. Fredrikinkatu Tennispalatsissa sopii tarkoitukseen kuin buutsit Chuck Norrisille.")
   private val Teerenpeli          = new Area("Teerenpeli", "Teerenpeli Panimo & Tislaamossa on näyttävällä ja tehokkaalla tavalla yhdistetty oluen valmistus ja tislaaminen.")
-  private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa. Tänne ovat monien approt päättyneet ennenaikaisesti.")
-  private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.")
-  private val Circus              = new Area("Circus", "Portsari puhalluttaa sinut eikä todellakaan päästä noin selvää kaveria tylsistyttämään tunnelmaa. \nMene käymään muutamassa kapakassa vielä!")
-  private val alkupaikka          = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.")
+  private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa. Tänne ovat monien approt päättyneet ennenaikaisesti.", None)
+  private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.", None)
+  private val Circus              = new Area("Circus", "Portsari puhalluttaa sinut eikä todellakaan päästä noin selvää kaveria tylsistyttämään tunnelmaa. \nMene käymään muutamassa kapakassa vielä!", None)
+  private val alkupaikka          = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.", None)
   val destination                 = Circus    
 
   
