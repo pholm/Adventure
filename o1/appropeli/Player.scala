@@ -172,6 +172,8 @@ class Player(startingArea: Area) {
     * is an exit from the player's current location towards the direction name. 
     * Returns a description of the results of the attempt. */
   def mene (direction: String) = {
+    val menemisfraasit = Vector[String]("Menit ", "Saavuit ", "Tulit ", "Kävelit ")
+    var randomi = new Random
     if(haasteheitetty == false){
     if(this.ryhmä.isDefined) {
     val nykysijainti = this.currentLocation
@@ -195,8 +197,8 @@ class Player(startingArea: Area) {
       
     }  else if(this.location.musa.isDefined) {
       playRecording(this.location.musa.get)
-      "Menit " + direction + "." 
-    } else "Menit " + direction + "." 
+      menemisfraasit(randomi.nextInt(menemisfraasit.size))+ direction + "." 
+    } else menemisfraasit(randomi.nextInt(menemisfraasit.size)) + direction + "." 
     } else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."

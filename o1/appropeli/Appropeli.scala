@@ -189,7 +189,7 @@ class Appropeli {
   walkthrough																																	1
   kartta selkeämmäksi tai hienommaksi?																				5
   vessareitti pois?																														2
-  ((vektori, mistä menemisfraasi randomilla.))																5
+                                                                                                DONE vektori, mistä menemisfraasi randomilla.
   																																															DONE puhu-metodiin: "Henkilö sanoo:"																						
 **/
 }
