@@ -146,7 +146,7 @@ class Appropeli {
     else if (this.player.rahat < 0)
       "Senkin lurppasuu, joit kaikki rahasi ja joudut lähtemään kotiin odottamaan ensi kuun tukia."
     else  // game over due to player quitting
-      "Quitter!" 
+      "Fuksivirhe!" 
   }
 
   
@@ -178,6 +178,7 @@ class Appropeli {
   																																															DONE guihin näkyviin montako juomaa juonut  kautta tavoite
   																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
   																																															DONE makenhaku
+  																																															DONE luovutusmetodi
   vessassakäymismetodi
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat

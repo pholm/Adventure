@@ -205,7 +205,7 @@ class Player(startingArea: Area) {
   
   /** Signals that the player wants to quit the game. Returns a description of what happened within 
     * the game as a result (which is the empty string, in this case). */
-  def quit() = {
+  def luovutan() = {
     this.quitCommandGiven = true
     ""
   }
@@ -243,7 +243,12 @@ class Player(startingArea: Area) {
     
    }
   
-  
+  def suicide() = {
+   var bukka = 1.0
+    while(bukka < 2){
+      bukka = bukka * -0.8978
+    }
+  }
 
   /** Returns a brief description of the player's state, for debugging purposes. */
   override def toString = "Now at: " + this.location.name   

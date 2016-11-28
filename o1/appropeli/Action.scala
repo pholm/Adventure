@@ -21,23 +21,15 @@ class Action(input: String) {
     
   if (autoCorrect(this.verb,"mene")) {
       Some(actor.mene(this.modifiers))
-    } else if (autoCorrect(this.verb,"rest")) {
-      Some(actor.rest())
-    }else if (autoCorrect(this.verb,"quit")) {
-      Some(actor.quit())
+    } else if (autoCorrect(this.verb,"luovutan")) {
+      Some(actor.luovutan())
     } else if (autoCorrect(this.verb,"katso")) {
       Some(actor.katso(this.modifiers))
-    } else if (autoCorrect(this.verb,"inventory")) {
-     Some(actor.inventory)
-    } else if (autoCorrect(this.verb,"drop")) {
-      Some(actor.drop(this.modifiers))
     } else if (autoCorrect(this.verb,"puhu")) {
       Some(actor.puhu(this.modifiers))
     } else if (autoCorrect(this.verb,"valitsen")) {
       Some(actor.valitsen(this.modifiers))
-    } else if (autoCorrect(this.verb,"examine")) {
-      Some(actor.examine(this.modifiers))
-    }else if (autoCorrect(this.verb,"tilaa")) {
+    } else if (autoCorrect(this.verb,"tilaa")) {
       Some(actor.tilaa(this.modifiers))
     } else if (autoCorrect(this.verb,"get")){
       Some(actor.get(this.modifiers))
@@ -49,6 +41,8 @@ class Action(input: String) {
       Some(actor.ei())
     } else if (autoCorrect(this.verb,"help")) {
       Some(actor.help())
+    } else if (autoCorrect(this.verb,"suicide")) {
+      Some(actor.suicide())
     } else {
       None
     }
