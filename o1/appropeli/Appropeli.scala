@@ -183,7 +183,7 @@ class Appropeli {
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat
   lisää hauskuuttaa teksteihin jos ehtii																			4
-  ylimääräisten adventuresta jääneiden metodien karsinta											4
+ 																																															  DONE ylimääräisten adventuresta jääneiden metodien karsinta			
   																																															DONE uusi nimi	
   																																															DONE helppi
   walkthrough																																	1
