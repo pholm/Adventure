@@ -82,9 +82,10 @@ class Appropeli {
   //luodaan ryhmiin kuulumattomat henkilöt
   private val spusse = new Person("spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
   private val puustinen = new Person("puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
-  private val mysteeriMies = new Person("mysteerimies",Teerenpeli,"Uskaltaako kloppi pelata kierroksen Hirsipuuta")
+  private val mysteeriMies = new Person("mysteerimies",Teerenpeli,"Uskaltaako kloppi pelata kierroksen Hirsipuuta?")
+  private val make = new Person("make",Shaker,"Nyt on paha olla.")
   // lisätään henkilöt henkilöhakemistoon
-  player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies))
+  player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies, make.name -> make))
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
   val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,35)
   val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,300,30)
