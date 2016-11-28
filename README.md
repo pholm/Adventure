@@ -1,17 +1,22 @@
-# Appropeli
 
-Appro on opiskelijatapahtuma, jossa osallistujat kiertävät jonkin alueen baareja sekä ravintoloita tavoitteenaan juoda alkoholia tietty määrä säädetyssä ajassa.
+Tervetuloa pelaamaan Appro-pelisarjan ensimmäistä osaa, Appro: Option [humala]! Sarjan jatko-osista (Option[katuoja] ja Option[krapula]) poiketen ensimmäinen pelispektaakkeli sijoittuu Helsingin kantakaupungin baareihin.
 
-Appropeli simuloi approja, pyrkien antamaan mahdollisimman realistisen kuvan approtapahtumista. 
+Pelissä sinun täytyy ehtiä keräämään tarpeeksi juotavia eri ravitsemusliikkeistä, jotta kestät kuunnella kello 22:00 Circuksessa soittonsa aloittavaa Grippe & Co. yhtyettä. Ole lisäksi varovainen, etteivät rahavarasi pääse loppumaan tai ettei housuusi lirahda. Kummassakaan tapauksessa et pääse Circukseen sisälle!
 
-Pelin komennot: 
+Suositeltavaa on pitää tietokoneen tai mobiililaitteen äänet päällä pelin aikana, mutta seikkailun kulkuu tällä ei ole vaikutusta.
 
-- mene [kohde]: siirtää pelihahmon kohdealueeseen.
+Suurin osa pelin kommennoista selitetään illan edetessä, mutta pääkomennot ovat seuraavanlaiset:
 
-- valitsen [ryhmän nimi]: valitsee pelihahmolle approa varten ryhmän, joka koostuu muista henkilöistä. Ryhmän voi valita vain                             pelin alussa.
+- mene [kohteeseen]: Siirtää sinut haluamallesi alueelle, jos se on mahdollista.
 
-- tilaa [juoman nimi]: tilaa juoman. Pelihahmo juo juoman automaattisesti.
+- puhu [henkilön nimi]: Kysyy kohteesi kuulumiset. Voit jutella kaikille samassa tilassa kanssasi olevalle ihmiselle.
 
-- puhu [henkilön nimi]: puhuu henkilölle. Henkilön tulee olla samassa tilassa pelihahmon kanssa.
+- tilaa [juoman nimi]: Tilaa juoman. Juot juoman automaattisesti.
 
-- help: näyttää tämän ohjektekstin. 
+- lue [juoman nimi]: Lukee tarjolla olevan juoman etiketin.
+
+- help: Näyttää tämän ohjektekstin. 
+
+- luovutan: Lopettaa pelin (buu).
+
+Skumpan tuoksuista kierrosta!

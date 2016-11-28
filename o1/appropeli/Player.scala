@@ -4,7 +4,7 @@ import scala.collection.mutable.Map
 import scala.collection.mutable.Buffer
 import scala.io.Source
 import o1.sound._
-import sounds._
+import util.Random
   
 /** A `Player` object represents a player character controlled by the real-life user of the program. 
   *
@@ -62,14 +62,17 @@ class Player(startingArea: Area) {
       } else "Valitettavasti et ole käynyt tarpeeksi pöhisemässä verkostoitumistapahtumissa, joten nämä ovat ainoat mahdollisuutesi. Valitse tietenkin (?) Tutalaiset, jos et osaa päättää!"
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
+  
  def puhu(personName: String) = {
+  val puhumisfraasit = Vector[String](" sanoo: "," tokaisee: "," vastaa: "," kommentoi: ")
+  var randomi = new Random
   if(henkilot.contains(personName)) {
      if(henkilot(personName).sijainti == this.location) {
        if(personName == "mysteerimies") {
        haasteheitetty = true
        henkilot(personName).tunnuslause
        }
-       henkilot(personName).tunnuslause
+       personName.capitalize + puhumisfraasit(randomi.nextInt(puhumisfraasit.size)) + henkilot(personName).tunnuslause
      } else "Ei näy kaveria missään, ehkä hän on seuraavassa kapakassa!"     
    } else "Ei ole kyllä tuommoisesta kaverista kuullut edes herra Peter 'network' Kelly."  
  }
@@ -178,10 +181,10 @@ class Player(startingArea: Area) {
       this.kusi += 1 
       nykysijainti.onkoKayty = false
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
-      if(juodut >= 4 && soitettu == false) {
+      if(juodut >= 0 && soitettu == false) {
         soitettu = true
         makeLoytynyt = false
-        playRecording("nokia-tune.wav",2)
+        playRecording("music3.wav",1)
         "PUHELIMESI SOI, VASTAAT: \n'Shakerin baarimikko täällä terve. Joku Make-niminen kaverisi makaa tällä hetkellä pää pöntössä meidän vessassa, ja osasi antaa ainoastaan sun puhelinnumeron. Tulisitko hakemaan törvelön pois?'" +
         "\n\nKäy noutamassa Make Shakerista ennen kuin jatkat iltaasi Circuksessa."
       }

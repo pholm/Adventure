@@ -130,7 +130,7 @@ class Appropeli {
   def welcomeMessage = {
     "Koodasit viime yönä aivan liian pitkään, joten nukuit tänään pommiin ja saavut nyt myöhässä bussilla Kampin terminaaliin, jossa tapaat kolme eri kavereistasi koostuvaa porukkaa.\n" +  
     "Minkä porukan mukaan haluat lähteä? Valitse kirjoittamalla 'valitsen [porukan nimi]'.\n" +
-    "Vaihtoehtoina ovat Viattomat infolaiset, Syntiset kylterit sekä Paatuneet tutalaiset."
+    "Vaihtoehtoina ovat Viattomat infolaiset, Syntiset kylterit sekä Paatuneet tutalaiset.\n(Ryhmät ovat vaikeusasteeltaan helpoimmasta haastavimpaan.)"
     }
 
     
@@ -182,13 +182,14 @@ class Appropeli {
   vessassakäymismetodi																												4
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat
-  helppi selkeemäks ja lisää hauskuuttaa teksteihin jos ehtii									4
+  lisää hauskuuttaa teksteihin jos ehtii									4
   ylimääräisten adventuresta jääneiden metodien karsinta											4
-  uusi nimi																																		5
+  																																															DONE uusi nimi	
+  																																															DONE helppi
   walkthrough																																	1
   kartta selkeämmäksi tai hienommaksi?																				5
   vessareitti pois?																														2
   ((vektori, mistä menemisfraasi randomilla.))																5
-  puhu-metodiin: "Henkilö sanoo:"																							1
+  																																															DONE puhu-metodiin: "Henkilö sanoo:"																						
 **/
 }
