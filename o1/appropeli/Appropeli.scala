@@ -202,10 +202,12 @@ class Appropeli {
 /**
   TODO
 
-  joku ansa vielä, esim jos jää puhumaan jollekkin , ni hävii pelin						3
+  tyyppejä baareihin
+  testausta
+  projektin nimen vaihto
   																																															DONE taustamusiikit (ulkoilma, baari, voitto)
   																																															DONE baareihin tyypit näkyviin
-  lisää tyyppejä ja juomia																										1	 	
+ 																																																DONE lisää juomia				
   																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
  																																																NÄÄ MUST IHA OK NYT?  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
   																																															DONE vessahädästä varoitus kun esim 20/30
@@ -216,12 +218,11 @@ class Appropeli {
   																																															DONE vessassakäymismetodi		
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat
-  lisää hauskuuttaa teksteihin jos ehtii																			4
  																																															  DONE ylimääräisten adventuresta jääneiden metodien karsinta			
   																																															DONE uusi nimi	
   																																															DONE helppi
-  walkthrough																																	1
-  kartta selkeämmäksi tai hienommaksi?																				5
+  																																															DONE walkthrough																																	
+ 																																																DONE kartta selkeämmäksi tai hienommaksi?	
  																																									 							DONE vessareitti
                                                                                                 DONE vektori, mistä menemisfraasi randomilla.
   																																															DONE puhu-metodiin: "Henkilö sanoo:"																						
