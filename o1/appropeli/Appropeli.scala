@@ -37,28 +37,28 @@ class Appropeli {
   private val WilliamK            = new Area("William K", "Kun haluat treffata ennen leffaa tai mennä fiilistelemään leffan jälkeen, William K. Fredrikinkatu Tennispalatsissa sopii tarkoitukseen kuin buutsit Chuck Norrisille.",Some("music7.wav"))
   private val Teerenpeli          = new Area("Teerenpeli", "Teerenpeli Panimo & Tislaamossa on näyttävällä ja tehokkaalla tavalla yhdistetty oluen valmistus ja tislaaminen.",Some("music8.wav"))
   private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa. Tänne ovat monien approt päättyneet ennenaikaisesti.", None)
-  private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.", None)
+  private val VeskiWilliam        = new Area("William Koon vessa", "Olet William Koon vessassa.", None)
   private val Circus              = new Area("Circus", "Portsari puhalluttaa sinut eikä todellakaan päästä noin selvää kaveria tylsistyttämään tunnelmaa. \nMene käymään muutamassa kapakassa vielä!", None)
   private val alkupaikka          = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.", None)
   val destination                 = Circus    
 
    
   // Määritellään alueille naapurialueet 
-  Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
-  Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
+  Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi,"narinkkatorille" -> Narinkkatori))
+  Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
   Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta, "circukseen" -> Circus  ))
   Tennispalatsinaukio.setNeighbors(Vector("teerenpeliin" -> Teerenpeli,      "aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
   Fredrikinkatu.setNeighbors(Vector(      "william koohon" -> WilliamK, "shakeriin" -> Shaker, "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Bruuveri.setNeighbors(Vector(           "kampin yläkertaan" -> Kampin_yläkerta))
   Bierhuis_Rotterdam.setNeighbors(Vector( "kampin yläkertaan" -> Kampin_yläkerta))
   Pub_Ikkuna.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori))
-  Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori, "veskiin" -> VeskiHenry))
+  Henrys_pub.setNeighbors(Vector(         "narinkkatorille" -> Narinkkatori))
   Shaker.setNeighbors(Vector(             "fredrikinkadulle" -> Fredrikinkatu))
-  WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu))
+  WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu, "veskiin" -> VeskiWilliam))
   AussieBar.setNeighbors(Vector(          "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Teerenpeli.setNeighbors(Vector(         "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta))
-  VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub))
+  VeskiWilliam.setNeighbors(Vector(       "william koohon" -> WilliamK))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
   alkupaikka.setNeighbors(Vector(         "kampin alakertaan" -> Kampin_alakerta))
   
@@ -109,6 +109,10 @@ class Appropeli {
   // lista kaikista baareista
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
   
+  // luodaan kaikki pelin drinkit
+  val stinanErikoinen = new Drink("stinan erikoinen","aivan 5.0/5.0","Täydet pisteet yrityksestä kulauttaa yhdellä huikalla!",5)
+  val seksiaRannalla = new Drink("sexiä rannalla", "Poloisen teekkarin (vain) fantasia", "Sujahtipa liukkaasti!",6)
+  val longIsland = new Drink("pitkän saaren jäätee", "Aamulaskareiden unelma","Kylläpä nautiskelit!",7)
   //lisätään jokaisen baarin tarjontaan olut ja viina
   baarit.foreach(_.addDrink(new Drink("talon olut","Mainiota Olvi kolmosta opiskelijahintaan","Tilasit oluen. Joit huurteisen yhdellä kulauksella!",5)))
   baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.",3)))

@@ -18,6 +18,7 @@ class Area(var name: String, var description: String, var musa: Option[String]) 
   
   def lisaaHenkilo(henkilo: Person) = this.henkilot += henkilo.name -> henkilo  
   def addDrink(drink: Drink) = this.drinks += drink.name -> drink
+  def addDrinks(drinkit: Vector[Drink]) = for(drink <- drinkit) {this.drinks += drink.name -> drink}
   def containsDrink(drinkName: String) = drinks.contains(drinkName)
   def giveDrink(drinkName: String) = drinks(drinkName)
   

@@ -146,12 +146,12 @@ class Player(startingArea: Area) {
     * Returns a description of the results of the attempt. */
   def mene (direction: String) = {
     if(location.name == "Kampin vessa" && direction == "nukkumaan") {
-      val destination = this.location.neighbor("kampin alakertaan").get.neighbor("kampin yläkertaan").get.neighbor("narinkkatorille").get.neighbor("henry's pubiin").get.neighbor("veskiin")
+      val destination = this.location.neighbor("kampin alakertaan").get.neighbor("kampin yläkertaan").get.neighbor("tennispalatsinaukiolle").get.neighbor("fredrikinkadulle").get.neighbor("william koohon").get.neighbor("veskiin")
       this.currentLocation = destination.get
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
       this.juodut -= 2
       "Kuukahdit pisuaarin alle humalassa kuin lukiolainen konsanaan. Et muista mitään viime hetkistä, mutta saat kuulla porukkasi kantaneen sinua mukana ympäri kaupunkia." + 
-      "\n\nEt muista mitään viime hetkistäsi, mutta nyt kännisi on laskenut sen verran, että huomaat makaavasi Henry's pubin lavuaarien päällä. Kerää itsesi ja jatka matkaa!"
+      "\n\nEt muista mitään viime hetkistäsi, mutta nyt kännisi on laskenut sen verran, että huomaat makaavasi William Koon vessan lavuaarien päällä. Kerää itsesi ja jatka matkaa!"
     }
     else {
     val menemisfraasit = Vector[String]("Menit ", "Saavuit ", "Tulit ", "Kävelit ")
@@ -167,7 +167,7 @@ class Player(startingArea: Area) {
       }     
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))      
       nykysijainti.onkoKayty = false
-      if(this.location.name == "Kampin vessa" || this.location.name == "Henry's Pubin vessa") {
+      if(this.location.name == "Kampin vessa" || this.location.name == "William Koon vessa") {
        if(this.vessahata > 9) {
          this.vessahata = 0
          "Huh, ehdit paikalle viimeisillä hetkillä juuri ennen kuin olit ratkeamassa. Nyt voit taas turvallisin mielin jatkaa iltaa. \n\nJostain syystä tunnet kuitenkin voimakasta halua Mennä Nukkumaan..."
