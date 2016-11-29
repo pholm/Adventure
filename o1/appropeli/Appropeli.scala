@@ -71,7 +71,7 @@ class Appropeli {
   // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
   
-  val vessahädänMäärä = 14
+  val vessahädänMäärä = 16
   
   // luodaan peliin henkilöitä. Ryhmiin kuuluvilla henkilöillä alkusijainti on sama kuin pelaajalla. 
   private val rontti = new Person("rontti",a,"olen nousu_humalassa")
@@ -95,12 +95,12 @@ class Appropeli {
     player.henkilot(tyypit).sijainti.lisaaHenkilo(player.henkilot(tyypit))
   }
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,40)
-  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,300,100000)
-  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,300,30)
-  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,300,40)
-  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,300,1000000)
-  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,300,30)
+  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
+  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,360,100000)
+  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
+  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
+  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,360,1000000)
+  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
   
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
