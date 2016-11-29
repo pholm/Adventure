@@ -57,8 +57,8 @@ class Appropeli {
   WilliamK.setNeighbors(Vector(           "fredrikinkadulle" -> Fredrikinkatu))
   AussieBar.setNeighbors(Vector(          "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Teerenpeli.setNeighbors(Vector(         "tennispalatsinaukiolle" -> Tennispalatsinaukio))
-  VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta, "vessanpönttöön" -> VeskiHenry))
-  VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub, "vessanpönttöön" -> VessaKamppi))
+  VessaKamppi.setNeighbors(Vector(        "kampin alakertaan" -> Kampin_alakerta))
+  VeskiHenry.setNeighbors(Vector(         "henry's pubiin" -> Henrys_pub))
   Circus.setNeighbors(Vector(             "narinkkatorille" -> Narinkkatori))
   alkupaikka.setNeighbors(Vector(         "kampin alakertaan" -> Kampin_alakerta))
   
@@ -66,6 +66,8 @@ class Appropeli {
    ja peli alkaa */
   val player = new Player(alkupaikka)
   alkupaikka.description = player.help()
+  // soitetaan aloitusmusiikki
+  playRecording("music0.wav",2)
   // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
   

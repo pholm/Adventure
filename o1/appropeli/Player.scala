@@ -145,6 +145,15 @@ class Player(startingArea: Area) {
     * is an exit from the player's current location towards the direction name. 
     * Returns a description of the results of the attempt. */
   def mene (direction: String) = {
+    if(location.name == "Kampin vessa" && direction == "nukkumaan") {
+      val destination = this.location.neighbor("kampin alakertaan").get.neighbor("kampin yläkertaan").get.neighbor("narinkkatorille").get.neighbor("henry's pubiin").get.neighbor("veskiin")
+      this.currentLocation = destination.get
+      this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
+      this.juodut -= 2
+      "Kuukahdit pisuaarin alle humalassa kuin lukiolainen konsanaan. Et muista mitään viime hetkistä, mutta saat kuulla porukkasi kantaneen sinua mukana ympäri kaupunkia." + 
+      "\n\nEt muista mitään viime hetkistäsi, mutta nyt kännisi on laskenut sen verran, että huomaat makaavasi Henry's pubin lavuaarien päällä. Kerää itsesi ja jatka matkaa!"
+    }
+    else {
     val menemisfraasit = Vector[String]("Menit ", "Saavuit ", "Tulit ", "Kävelit ")
     var randomi = new Random
     if(haasteheitetty == false){
@@ -155,10 +164,20 @@ class Player(startingArea: Area) {
     if (destination.isDefined) {
       if(this.location.musa.isDefined) {
       playRecording(this.location.musa.get,1)
-      }
-      this.vessahata += 1 
+      }     
+      this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))      
       nykysijainti.onkoKayty = false
-      this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
+      if(this.location.name == "Kampin vessa" || this.location.name == "Henry's Pubin vessa") {
+       if(this.vessahata > 9) {
+         this.vessahata = 0
+         "Huh, ehdit paikalle viimeisillä hetkillä juuri ennen kuin olit ratkeamassa. Nyt voit taas turvallisin mielin jatkaa iltaa. \n\nJostain syystä tunnet kuitenkin voimakasta halua Mennä Nukkumaan..."
+       }else {
+         this.vessahata = 0
+         "Ei sinulla vielä kauhea hätä ollut, mutta varmistelu on järkevää! \nKovasti sinua nukuttaa..."
+       }
+      }
+      else  {
+      this.vessahata += 1 
       if(juodut >= 4 && soitettu == false) {
         soitettu = true
         makeLoytynyt = false
@@ -170,10 +189,10 @@ class Player(startingArea: Area) {
         makeLoytynyt = true
         "Huh, nappasit Maken kiinni juuri kun hän oli konttaamassa ulos ikkunasta. Voit nyt jatkaa iltaasi rauhassa!"      
     }  else menemisfraasit(randomi.nextInt(menemisfraasit.size)) + direction + "." 
-    }} else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
+      }}} else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."
- }   
+ }}   
   
   
   /** Signals that the player wants to quit the game. Returns a description of what happened within 
