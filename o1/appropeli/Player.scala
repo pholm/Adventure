@@ -154,7 +154,7 @@ class Player(startingArea: Area) {
     this.currentLocation = destination.getOrElse(this.currentLocation) 
     if (destination.isDefined) {
       if(this.location.musa.isDefined) {
-      playRecording(this.location.musa.get,3)
+      playRecording(this.location.musa.get,1)
       }
       this.vessahata += 1 
       nykysijainti.onkoKayty = false
