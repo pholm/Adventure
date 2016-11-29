@@ -1,1 +1,34 @@
-WalktroughPelin voi läpäistä monilla tavoilla, mutta perusideana on juoda vaadittava määrä juomia, olla pissaamatta housuunsa, löytää Make ja päästä Circukseen ajoissa. Tässä yksi toimiva, erittäin suoraviivainen yhdistelmä pelin voittamiseksi.1. Valitse ryhmäksi infolaiset2. Mene Kampin yläkertaan3. Mene Bruuveriin4. Tilaa viina5. Mene Kampin yläkertaan6. Mene Bierhuis Rotterdamiin7. Tilaa talon olut8. Mene Kampin yläkertaan9. Mene Kampin alakertaan10. Mene vessaan11. Mene Nukkumaan. Päädyt sattumien kautta William K:n vessaan.12. Mene William Koohon13. Tilaa viina14. Mene Fredrikinkadulle15. Mene Tennispalatsinaukiolle16. Mene Aussie Bariin 17. Tilaa viina18. Mene Tennispalatsinaukiolle. Puhelin soi. 19. Mene Fredrikinkadulle20. Mene Shakeriin. Otat Maken mukaasi.21. Mene William Koohon22. Mene Veskiin23. Mene William Koohon24. Tilaa viina25. Mene Fredrikinkadulle26. Mene Tennispalatsinaukiolle27. Mene Narinkkatorille28. Mene Circukseen29. Voitit pelin!
+Walktrough
+
+Pelin voi l√§p√§ist√§ monilla tavoilla, mutta perusideana on juoda vaadittava m√§√§r√§ juomia, olla pissaamatta housuunsa, l√∂yt√§√§ Make ja ehti√§ Circukseen ajoissa. 
+T√§ss√§ yksi toimiva, eritt√§in suoraviivainen yhdistelm√§ pelin voittamiseksi.
+
+1. Valitse ryhm√§ksi infolaiset
+2. Mene Kampin yl√§kertaan
+3. Mene Bruuveriin
+4. Tilaa viina
+5. Mene Kampin yl√§kertaan
+6. Mene Bierhuis Rotterdamiin
+7. Tilaa talon olut
+8. Mene Kampin yl√§kertaan
+9. Mene Kampin alakertaan
+10. Mene vessaan
+11. Mene Nukkumaan. P√§√§dyt sattumien kautta William K:n vessaan.
+12. Mene William Koohon
+13. Tilaa viina
+14. Mene Fredrikinkadulle
+15. Mene Tennispalatsinaukiolle
+16. Mene Aussie Bariin 
+17. Tilaa viina
+18. Mene Tennispalatsinaukiolle. Puhelin soi. 
+19. Mene Fredrikinkadulle
+20. Mene Shakeriin. Otat Maken mukaasi.
+21. Mene William Koohon
+22. Mene Veskiin
+23. Mene William Koohon
+24. Tilaa viina
+25. Mene Fredrikinkadulle
+26. Mene Tennispalatsinaukiolle
+27. Mene Narinkkatorille
+28. Mene Circukseen
+29. Voitit pelin!
