@@ -123,6 +123,8 @@ class Appropeli {
   val työjuoma = new Drink("työ juoma","työ miehiltä työ miesten vatsa laukkuihin", "Kulautit ykkö sellä ja aloit jo miettimään että yli opisto on idi ooteille",5)
   val humanistinErikoinen = new Drink("humanistin erikoinen","Höpötystä koko drinkki","Joit drinkin etkä saa enää töitä valmistumisesi jälkeen",5)
   val tikkiläisenSpesiaali = new Drink("tikkiläisen spesiaali","juomaIsHyvä = true: Boolean","känni += 1; fiilis += 1",5)
+  val valkkari = new Drink("valkoviini","Talon valkoviini suoraan Gristaf Grunpenbergin tilalta Etelä-Ranskasta","Kylläpä tuli aatelinen olo!",8)
+  val punkku = new Drink("punaviini","Talon punaviini suoraan Gristaf Grunpenbergin tilalta Länsi-Norjasta","Kylläpä tuli aatelinen olo!",8)
   //lisätään jokaisen baarin tarjontaan olut ja viina
   baarit.foreach(_.addDrink(new Drink("talon olut","Mainiota Olvi kolmosta opiskelijahintaan","Tilasit oluen. Joit huurteisen yhdellä kulauksella!",5)))
   baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.",3)))

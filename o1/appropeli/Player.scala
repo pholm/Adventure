@@ -149,7 +149,6 @@ class Player(startingArea: Area) {
       val destination = this.location.neighbor("kampin alakertaan").get.neighbor("kampin yläkertaan").get.neighbor("tennispalatsinaukiolle").get.neighbor("fredrikinkadulle").get.neighbor("william koohon").get.neighbor("veskiin")
       this.currentLocation = destination.get
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
-      this.juodut -= 2
       "Kuukahdit pisuaarin alle humalassa kuin lukiolainen konsanaan. Et muista mitään viime hetkistä, mutta saat kuulla porukkasi kantaneen sinua mukana ympäri kaupunkia." + 
       "\n\nEt muista mitään viime hetkistäsi, mutta nyt kännisi on laskenut sen verran, että huomaat makaavasi William Koon vessan lavuaarien päällä. Kerää itsesi ja jatka matkaa!"
     }
