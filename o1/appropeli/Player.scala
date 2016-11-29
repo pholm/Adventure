@@ -125,7 +125,7 @@ class Player(startingArea: Area) {
         this.juodut += 1
         this.vessahata += 1
         haasteheitetty = false
-        tavoitesana.mkString(" ") + "\n\nOhhoh, en olisi uskonut, että kykenet tämän ratkaisemaan! Olet olueis ansainnut!" +
+        tavoitesana.mkString(" ") + "\n\nOhhoh, en olisi uskonut, että kykenet tämän ratkaisemaan! Olet oluesi ansainnut!" +
         "\n(Voitit mysteerimiehen haasteen ja sait ylimääräisen oluen!)"
       }} 
    

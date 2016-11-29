@@ -74,9 +74,9 @@ class Appropeli {
   val vessahädänMäärä = 16
   
   // luodaan peliin henkilöitä. Ryhmiin kuuluvilla henkilöillä alkusijainti on sama kuin pelaajalla. 
-  private val rontti = new Person("rontti",a,"olen nousu_humalassa")
-  private val akseli = new Person("akseli",a,"vitunkymisvittu")
-  private val kymis = new Person("kymis",a,"en ainakaan nouse ennen kahtatoista")
+  private val rontti = new Person("rontti",a,"olen nousu_humalassa!")
+  private val akseli = new Person("akseli",a,"Tää on mun ensimmäinen appro!")
+  private val kymis = new Person("kymis",a,"Täytyy varmaan skipata huomiset luennot, taas...")
   private val janpaul = new Person("jan-paul",a,"Lähtisitkö viikonloppuna purjehtimaan Dragsvikiin?") 
   private val christoffer = new Person("christoffer",a,"Tänään otetaan!")
   private val erik = new Person("erik",a,"Mä oon tänään vesilinjalla, älä syyyllistä.")
