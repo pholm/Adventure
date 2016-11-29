@@ -13,7 +13,7 @@ Suurin osa pelin kommennoista selitetään illan edetessä, mutta pääkomennot 
 
 - tilaa [juoman nimi]: Tilaa juoman. Juot juoman automaattisesti.
 
-- lue [juoman nimi]: Lukee tarjolla olevan juoman etiketin.
+- katso [juoman nimi]: Lukee tarjolla olevan juoman etiketin.
 
 - help: Näyttää tämän ohjektekstin. 
 

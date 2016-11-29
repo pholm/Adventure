@@ -204,7 +204,7 @@ class Appropeli {
       this.turnCount += 1 
     }}
     var vessa = ""
-    if(this.player.vessahata > (vessahädänMäärä - 5) && !isOver )vessa = "\n\nSinulla alkaa olla jo melko kova vessahätä, varo ettet lirauta housuun!"
+    if(this.player.vessahata > (vessahädänMäärä - 7) && !isOver )vessa = "\n\nSinulla alkaa olla jo melko kova vessahätä, varo ettet lirauta housuun!"
     outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \nSanoppa uudestaan.") + vessa
   }
   

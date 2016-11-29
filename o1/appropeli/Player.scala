@@ -167,7 +167,7 @@ class Player(startingArea: Area) {
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))      
       nykysijainti.onkoKayty = false
       if(this.location.name == "Kampin vessa" || this.location.name == "William Koon vessa") {
-       if(this.vessahata > 11) {
+       if(this.vessahata > 10) {
          this.vessahata = 0
          "Huh, ehdit paikalle viimeisillä hetkillä juuri ennen kuin olit ratkeamassa. Nyt voit taas turvallisin mielin jatkaa iltaa. \n\nJostain syystä tunnet kuitenkin voimakasta halua Mennä Nukkumaan..."
        }else {
