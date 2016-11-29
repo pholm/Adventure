@@ -204,7 +204,7 @@ class Appropeli {
 
   tyyppejä baareihin
   testausta
-  projektin nimen vaihto
+  projektin nimenvaihto
   																																															DONE taustamusiikit (ulkoilma, baari, voitto)
   																																															DONE baareihin tyypit näkyviin
  																																																DONE lisää juomia				
