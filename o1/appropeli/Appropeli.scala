@@ -208,32 +208,4 @@ class Appropeli {
     outcomeReport.getOrElse("Olet jo niin humalassa, ettei puheestasi saa selvää. \nSanoppa uudestaan.") + vessa
   }
   
-/**
-  TODO
-
-  tyyppejä baareihin
-  testausta
-  projektin nimenvaihto
-  																																															DONE taustamusiikit (ulkoilma, baari, voitto)
-  																																															DONE baareihin tyypit näkyviin
- 																																																DONE lisää juomia				
-  																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
- 																																																NÄÄ MUST IHA OK NYT?  pitää laskea hyvät drinkki- ja aikavaatimukset ja hyvä vessahätämäärä				2
-  																																															DONE vessahädästä varoitus kun esim 20/30
-  																																															DONE guihin näkyviin montako juomaa juonut  kautta tavoite
-  																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
-  																																															DONE makenhaku
-  																																															DONE luovutusmetodi
-  																																															DONE vessassakäymismetodi		
-  																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
-  																																															DONE guihin rahevarat
- 																																															  DONE ylimääräisten adventuresta jääneiden metodien karsinta			
-  																																															DONE uusi nimi	
-  																																															DONE helppi
-  																																															DONE walkthrough																																	
- 																																																DONE kartta selkeämmäksi tai hienommaksi?	
- 																																									 							DONE vessareitti
-                                                                                                DONE vektori, mistä menemisfraasi randomilla.
-  																																															DONE puhu-metodiin: "Henkilö sanoo:"																						
-**/
 }
