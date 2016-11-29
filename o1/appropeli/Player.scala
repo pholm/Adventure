@@ -235,14 +235,6 @@ class Player(startingArea: Area) {
     useAndClose(tiedosto)( _.getLines.toVector ).mkString("\n") + onkoRyhmä
   }
  
-  
-  def suicide() = {
-   var bukka = 1.0
-    while(bukka < 2){
-      bukka = bukka * -0.8978
-    }
-  }
-
 }
 
 

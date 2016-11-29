@@ -39,8 +39,6 @@ class Action(input: String) {
       Some(actor.ei())
     } else if (autoCorrect(this.verb,"help")) {
       Some(actor.help())
-    } else if (autoCorrect(this.verb,"suicide")) {
-      Some(actor.suicide())
     } else {
       None
     }
