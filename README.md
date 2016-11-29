@@ -3,7 +3,7 @@ Tervetuloa pelaamaan Appro-pelisarjan ensimmäistä osaa, Appro: Option [humala]
 
 Pelissä sinun täytyy ehtiä keräämään tarpeeksi juotavia eri ravitsemusliikkeistä, jotta kestät kuunnella kello 22:00 Circuksessa soittonsa aloittavaa Grippe & Co. yhtyettä. Ole lisäksi varovainen, etteivät rahavarasi pääse loppumaan tai ettei housuusi lirahda. Kummassakaan tapauksessa et pääse Circukseen sisälle!
 
-Suositeltavaa on pitää tietokoneen tai mobiililaitteen äänet päällä pelin aikana, mutta seikkailun kulkuu tällä ei ole vaikutusta.
+Suositeltavaa on pitää tietokoneen äänet päällä pelin aikana, mutta seikkailun kulkuun tällä ei ole vaikutusta.
 
 Suurin osa pelin kommennoista selitetään illan edetessä, mutta pääkomennot ovat seuraavanlaiset:
 
@@ -15,8 +15,8 @@ Suurin osa pelin kommennoista selitetään illan edetessä, mutta pääkomennot 
 
 - katso [juoman nimi]: Lukee tarjolla olevan juoman etiketin.
 
-- help: Näyttää tämän ohjektekstin. 
+- help: Näyttää tämän ohjetekstin. 
 
-- luovutan: Lopettaa pelin (buu).
+- luovutan: Lopettaa pelin.
 
 Skumpan tuoksuista kierrosta!
