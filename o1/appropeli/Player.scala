@@ -153,26 +153,24 @@ class Player(startingArea: Area) {
     val destination = this.location.neighbor(direction)
     this.currentLocation = destination.getOrElse(this.currentLocation) 
     if (destination.isDefined) {
+      if(this.location.musa.isDefined) {
+      playRecording(this.location.musa.get,3)
+      }
       this.vessahata += 1 
       nykysijainti.onkoKayty = false
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))
-      if(juodut >= 0 && soitettu == false) {
+      if(juodut >= 4 && soitettu == false) {
         soitettu = true
         makeLoytynyt = false
-        playRecording("music3.wav",1)
+        playRecording("nokia-tune.wav",3)
         "PUHELIMESI SOI, VASTAAT: \n'Shakerin baarimikko täällä terve. Joku Make-niminen kaverisi makaa tällä hetkellä pää pöntössä meidän vessassa, ja osasi antaa ainoastaan sun puhelinnumeron. Tulisitko hakemaan törvelön pois?'" +
         "\n\nKäy noutamassa Make Shakerista ennen kuin jatkat iltaasi Circuksessa."
-      }
-        else if(soitettu == true && location.name == "Shaker") {
+      } else {
+        if(soitettu == true && location.name == "Shaker") {
         makeLoytynyt = true
-        playRecording(this.location.musa.get)
-        "Huh, nappasit Maken kiinni juuri kun hän oli konttaamassa ulos ikkunasta. Voit nyt jatkaa iltaasi rauhassa!"
-      
-    }  else if(this.location.musa.isDefined) {
-      playRecording(this.location.musa.get)
-      menemisfraasit(randomi.nextInt(menemisfraasit.size))+ direction + "." 
-    } else menemisfraasit(randomi.nextInt(menemisfraasit.size)) + direction + "." 
-    } else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
+        "Huh, nappasit Maken kiinni juuri kun hän oli konttaamassa ulos ikkunasta. Voit nyt jatkaa iltaasi rauhassa!"      
+    }  else menemisfraasit(randomi.nextInt(menemisfraasit.size)) + direction + "." 
+    }} else "Et voi mennä " + direction + "." + " Aikaasi kului suuntaa etsiessä."
     } else "Yritit livahtaa kaveriesi ohi, mutta viime hetkellä aina kärppänä oleva Antti 'rontti' Ihalainen bongaa sinut. Joudut siis valitsemaan jonkun ryhmistä."
   } else "Älä yritä luikkia pakoon mysteerimiestä!\nVastaa pyyntöön kyllä tai ei."
  }   

@@ -31,18 +31,18 @@ class Appropeli {
   private val Bruuveri            = new Area("Bruuveri", "Tervetuloa Bruuveriin! Olemme tunnettuja laadukkaista, valtavirrasta erottuvista talon omista oluista ja siidereistä.",Some("music1.wav"))
   private val AussieBar           = new Area("Aussie Bar", "Welcome to Aussie Bar. You don't just visit Aussie Bar, you live it!",Some("music2.wav"))
   private val Bierhuis_Rotterdam  = new Area("Bierhuis Rotterdam", "Tervetuloa Bierhuis Rotterdamiin. Bierhuis on välitön hauskanpidon satama, jossa juttu lentää ja tuopit kolahtelevat.",Some("music3.wav"))
-  private val Pub_Ikkuna          = new Area("Pub Ikkuna", "Tervetuloa Pub Ikkunaan. Pub Ikkuna on alkuillan starttipaikka Kampin keskuksessa.") 
-  private val Henrys_pub          = new Area("Henry's Pub", "Tervetuloa Henry's Pubiin. Henry's Pub tarjoaa elävää musiikkia maanantaista torstaihin sekä tietenkin erinomaisia juomia moneen makuun.")
-  private val Shaker              = new Area("Shaker", "Tervetuloa Shakeriin. Olemme tunnettu hyvistä cocktaileista, ammattitaitoisesta henkilökunnasta, hyvästä palvelusta ja rennosta ilmapiiristä.")
-  private val WilliamK            = new Area("William K", "Kun haluat treffata ennen leffaa tai mennä fiilistelemään leffan jälkeen, William K. Fredrikinkatu Tennispalatsissa sopii tarkoitukseen kuin buutsit Chuck Norrisille.")
-  private val Teerenpeli          = new Area("Teerenpeli", "Teerenpeli Panimo & Tislaamossa on näyttävällä ja tehokkaalla tavalla yhdistetty oluen valmistus ja tislaaminen.")
+  private val Pub_Ikkuna          = new Area("Pub Ikkuna", "Tervetuloa Pub Ikkunaan. Pub Ikkuna on alkuillan starttipaikka Kampin keskuksessa.",Some("music4.wav")) 
+  private val Henrys_pub          = new Area("Henry's Pub", "Tervetuloa Henry's Pubiin. Henry's Pub tarjoaa elävää musiikkia maanantaista torstaihin sekä tietenkin erinomaisia juomia moneen makuun.",Some("music5.wav"))
+  private val Shaker              = new Area("Shaker", "Tervetuloa Shakeriin. Olemme tunnettu hyvistä cocktaileista, ammattitaitoisesta henkilökunnasta, hyvästä palvelusta ja rennosta ilmapiiristä.",Some("music6.wav"))
+  private val WilliamK            = new Area("William K", "Kun haluat treffata ennen leffaa tai mennä fiilistelemään leffan jälkeen, William K. Fredrikinkatu Tennispalatsissa sopii tarkoitukseen kuin buutsit Chuck Norrisille.",Some("music7.wav"))
+  private val Teerenpeli          = new Area("Teerenpeli", "Teerenpeli Panimo & Tislaamossa on näyttävällä ja tehokkaalla tavalla yhdistetty oluen valmistus ja tislaaminen.",Some("music8.wav"))
   private val VessaKamppi         = new Area("Kampin vessa", "Olet Kampin vessassa. Tänne ovat monien approt päättyneet ennenaikaisesti.", None)
   private val VeskiHenry          = new Area("Henry's Pubin vessa", "Olet Henry's Pubin vessassa.", None)
   private val Circus              = new Area("Circus", "Portsari puhalluttaa sinut eikä todellakaan päästä noin selvää kaveria tylsistyttämään tunnelmaa. \nMene käymään muutamassa kapakassa vielä!", None)
   private val alkupaikka          = new Area("Alkupaikka", "Tervetuloa pelaamaan Appropeliä.", None)
   val destination                 = Circus    
 
-  
+   
   // Määritellään alueille naapurialueet 
   Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi))
   Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "narinkkatorille" -> Narinkkatori, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
@@ -69,7 +69,7 @@ class Appropeli {
   // luodaan muuttuja a, jotta sitä voidaan käyttää sijaintina ryhmien jäseniä luotaessa
   val a = this.Kampin_alakerta
   
-  val vessahädänMäärä = 12
+  val vessahädänMäärä = 14
   
   // luodaan peliin henkilöitä. Ryhmiin kuuluvilla henkilöillä alkusijainti on sama kuin pelaajalla. 
   private val rontti = new Person("rontti",a,"olen nousu_humalassa")
@@ -137,8 +137,10 @@ class Appropeli {
   /** Returns a message that is to be displayed to the player at the end of the game. The message 
     * will be different depending on whether or not the player has completed their quest. */
   def goodbyeMessage = {
-    if (this.isComplete)
+    if (this.isComplete) {
+      playRecording("victory.wav",3)
       "Tervetuloa jatkoille! Keräsit " +  this.player.juodut + " leimaa, joten saat haalarimerkin!"
+    }
     else if (this.turnCount*10 > this.player.maximiaika)
       "Et ehtinyt jatkoille asti ajoissa. Yritä ensi vuonna uudestaan!"
     else if (this.player.vessahata >= vessahädänMäärä)
