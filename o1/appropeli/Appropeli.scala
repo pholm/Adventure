@@ -173,7 +173,7 @@ class Appropeli {
   TODO
 
   joku ansa vielä, esim jos jää puhumaan jollekkin , ni hävii pelin						3
-  taustamusiikit (ulkoilma, baari, voitto)																		2
+  																																															DONE taustamusiikit (ulkoilma, baari, voitto)
   																																															DONE baareihin tyypit näkyviin
   lisää tyyppejä ja juomia																										1	 	
   																																															DONE katso-metodi (kertoo drinkkien kuvaukset)
@@ -183,7 +183,7 @@ class Appropeli {
   																																															DONE ryhmäläisten nimet näkyviin alussa ja help metodilla
   																																															DONE makenhaku
   																																															DONE luovutusmetodi
-  vessassakäymismetodi																												4
+  																																															DONE vessassakäymismetodi		
   																																															DONE Drink-luokalle hinta ja tilaa-metodi vähentämään raheja
   																																															DONE guihin rahevarat
   lisää hauskuuttaa teksteihin jos ehtii																			4
@@ -192,7 +192,7 @@ class Appropeli {
   																																															DONE helppi
   walkthrough																																	1
   kartta selkeämmäksi tai hienommaksi?																				5
-  vessareitti pois?																														2
+ 																																									 							DONE vessareitti
                                                                                                 DONE vektori, mistä menemisfraasi randomilla.
   																																															DONE puhu-metodiin: "Henkilö sanoo:"																						
 **/
