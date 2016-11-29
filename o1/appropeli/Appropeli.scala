@@ -47,7 +47,7 @@ class Appropeli {
   Kampin_alakerta.setNeighbors(Vector(    "kampin yläkertaan" -> Kampin_yläkerta, "vessaan" -> VessaKamppi,"narinkkatorille" -> Narinkkatori))
   Kampin_yläkerta.setNeighbors(Vector(    "bruuveriin" -> Bruuveri, "bierhuis rotterdamiin" -> Bierhuis_Rotterdam, "tennispalatsinaukiolle" -> Tennispalatsinaukio,   "kampin alakertaan" -> Kampin_alakerta))
   Narinkkatori.setNeighbors(Vector(       "pub ikkunaan" -> Pub_Ikkuna, "henry's pubiin" -> Henrys_pub, "tennispalatsinaukiolle" -> Tennispalatsinaukio, "kampin yläkertaan" -> Kampin_yläkerta, "circukseen" -> Circus  ))
-  Tennispalatsinaukio.setNeighbors(Vector("teerenpeliin" -> Teerenpeli,      "aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
+  Tennispalatsinaukio.setNeighbors(Vector("teerenpeliin" -> Teerenpeli,"narinkkatorille" -> Narinkkatori,"aussie bariin" -> AussieBar, "fredrikinkadulle" -> Fredrikinkatu, "kampin yläkertaan" -> Kampin_yläkerta   ))
   Fredrikinkatu.setNeighbors(Vector(      "william koohon" -> WilliamK, "shakeriin" -> Shaker, "tennispalatsinaukiolle" -> Tennispalatsinaukio))
   Bruuveri.setNeighbors(Vector(           "kampin yläkertaan" -> Kampin_yläkerta))
   Bierhuis_Rotterdam.setNeighbors(Vector( "kampin yläkertaan" -> Kampin_yläkerta))
@@ -125,7 +125,21 @@ class Appropeli {
   val tikkiläisenSpesiaali = new Drink("tikkiläisen spesiaali","juomaIsHyvä = true: Boolean","känni += 1; fiilis += 1",5)
   val valkkari = new Drink("valkoviini","Talon valkoviini suoraan Gristaf Grunpenbergin tilalta Etelä-Ranskasta","Kylläpä tuli aatelinen olo!",8)
   val punkku = new Drink("punaviini","Talon punaviini suoraan Gristaf Grunpenbergin tilalta Länsi-Norjasta","Kylläpä tuli aatelinen olo!",8)
-  //lisätään jokaisen baarin tarjontaan olut ja viina
+  val skumppa = new Drink("skumppa","Kyltereiden kellarista", "Nääh, ei ollut hyvää. Taitaa olla vain kulissia tuo kyltereiden elämä.",7)
+  val kilju = new Drink("kilju", "Tule käymään takahuoneessa", "Baarimikko johdattaa sinut kellariin, josta saat kiljua niin paljon, kuin pystyt juomaan. \nOn kuitenkin niin pahaa, että kiljut ällötyksestä.",2)
+  val pöhina = new Drink("pöhinäjuoma", "super uber innovatiivinen makuelämys","Joit lasillisen ja sinulle kasvoi pöhinäparta. \nIlmoittauduit lisäksi ensi vuoden Slushiin ja Junctioniin sekä liimasit Maciisi startup-saunan ja -lifen pöhinätarrat.", 5)
+  
+  //lisätään drinkit baareihin
+  Bruuveri.addDrinks(Vector[Drink](jallu,tikkiläisenSpesiaali,pöhina))
+  AussieBar.addDrinks(Vector[Drink](minttu,humanistinErikoinen))
+  Bierhuis_Rotterdam.addDrinks(Vector[Drink](kylterinErikoinen,valkkari))
+  Pub_Ikkuna.addDrinks(Vector[Drink](stinanErikoinen,kilju))
+  Henrys_pub.addDrinks(Vector[Drink](longIsland,työjuoma,skumppa))
+  Shaker.addDrinks(Vector[Drink](seksiaRannalla,siideri))
+  WilliamK.addDrinks(Vector[Drink](askonSponssi,pontikka))
+  Teerenpeli.addDrinks(Vector[Drink](rommiKola,punkku))
+  
+   //lisätään jokaisen baarin tarjontaan lisäksi olut ja viina
   baarit.foreach(_.addDrink(new Drink("talon olut","Mainiota Olvi kolmosta opiskelijahintaan","Tilasit oluen. Joit huurteisen yhdellä kulauksella!",5)))
   baarit.foreach(_.addDrink(new Drink("viina","Räväkkä Ko-ko-ko-koskeeen ko-ko-ko-korvaaaa tyydyttää janoisemmankin teekkarin","Joit viinan ja irvistit kuin fuksi.",3)))
   
