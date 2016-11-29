@@ -44,7 +44,7 @@ class Area(var name: String, var description: String, var musa: Option[String]) 
     } else ""
     var kuvaus = this.description    
     if(!this.henkilot.isEmpty) {
-    val ihmiset = "\n\nHuomaat paikalla seuraavat ihmiset: " + this.henkilot.keys.mkString(" ").capitalize
+    val ihmiset = "\n\nHuomaat paikalla seuraavat ihmiset: " + this.henkilot.keys.mkString(", ").capitalize
     kuvaus += ihmiset
     } 
     if(!this.drinks.isEmpty) {
