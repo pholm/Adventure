@@ -104,10 +104,10 @@ class Appropeli {
     player.henkilot(tyypit).sijainti.lisaaHenkilo(player.henkilot(tyypit))
   }
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  private val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
+  private val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,45)
   private val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,360,100000)
   private val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
-  private val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
+  private val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,45)
   private val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,360,1000000)
   private val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
   
