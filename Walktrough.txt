@@ -6,29 +6,27 @@ Tässä yksi toimiva, erittäin suoraviivainen yhdistelmä pelin voittamiseksi.
 1. Valitse ryhmäksi infolaiset
 2. Mene Kampin yläkertaan
 3. Mene Bruuveriin
-4. Tilaa viina
+4. Tilaa jallu
 5. Mene Kampin yläkertaan
 6. Mene Bierhuis Rotterdamiin
-7. Tilaa talon olut
+7. Tilaa kylterin erikoinen
 8. Mene Kampin yläkertaan
 9. Mene Kampin alakertaan
 10. Mene vessaan
-11. Mene Nukkumaan. Päädyt sattumien kautta William K:n vessaan.
+11. Mene nukkumaan
 12. Mene William Koohon
-13. Tilaa viina
+13. Tilaa Askon sponssi
 14. Mene Fredrikinkadulle
 15. Mene Tennispalatsinaukiolle
-16. Mene Aussie Bariin 
-17. Tilaa viina
-18. Mene Tennispalatsinaukiolle. Puhelin soi. 
-19. Mene Fredrikinkadulle
-20. Mene Shakeriin. Otat Maken mukaasi.
-21. Mene William Koohon
-22. Mene Veskiin
-23. Mene William Koohon
-24. Tilaa viina
-25. Mene Fredrikinkadulle
-26. Mene Tennispalatsinaukiolle
-27. Mene Narinkkatorille
-28. Mene Circukseen
-29. Voitit pelin!
+16. Mene Teerenpeliin
+17. Puhu mysteerimiehelle
+18. Pelaa hirsipuuta
+19. Tilaa viina
+20. Mene Tennispalatsinaukiolle. Puhelimesi soi.
+21. Mene Fredrikinkadulle
+22. Mene Shakeriin. Otat Maken mukaasi.
+23. Mene Fredrikinkadulle
+24. Mene Tennispalatsinaukiolle
+25. Mene Narinkkatorille
+26. Mene Circukseen.
+27. Voitit pelin, onnittelut! Pelaa ensi kerralla vaikeamman ryhmän kanssa ;)
