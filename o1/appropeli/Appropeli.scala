@@ -83,24 +83,33 @@ class Appropeli {
   private val henrik = new Person("henrik",a,"Mun rahat on loppu.")
   private val ville = new Person("ville",a,"Mun tekstipeli on parempi ku sun.")
   private val tiina = new Person("tiina",a,"Info on paras")
+  
   //luodaan ryhmiin kuulumattomat henkilöt
   private val spusse = new Person("spusse",Henrys_pub,"Juodaan viinaa, tullaan viisaammiksi näin!")
   private val puustinen = new Person("puustinen",Bruuveri,"Minähän juon tunnetusti vain pienpanimoiden tuotteita.")
   private val mysteeriMies = new Person("mysteerimies",Teerenpeli,"Uskaltaako kloppi pelata kierroksen Hirsipuuta?\n\nVastaa haasteeseen kyllä tai ei.")
   private val make = new Person("make",Shaker,"Nyt on paha olla.")
+  private val työmies = new Person("työ mies",Henrys_pub,"olvi kolme tekee hyvää työ päivän jälkeen")
+  private val risumies = new Person("risumies",WilliamK,"Mie oon ympäristönpaskaaja.")
+  private val fabu = new Person("fabu",Bierhuis_Rotterdam,"Voi kuule, sillon kun minä olin fuksi olin tuossa ajassa jo kiertänyt koko Helsingin kaikki baarit")
+  private val pirjo = new Person("pirjo",AussieBar,"Mitä se siinä tuijottelee?")
+  private val saarnaaja = new Person("saarnaaja",Pub_Ikkuna,"Do you have time to talk about the miracle of Elisa?")
+  private val jyrki = new Person("jyrki",AussieBar,"Opettele dokaamaa!")
+ 
   // lisätään henkilöt henkilöhakemistoon
-  player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies, make.name -> make))
+  player.addHenkiloita(Vector(spusse.name -> spusse, puustinen.name -> puustinen, mysteeriMies.name -> mysteeriMies, make.name -> make,työmies.name -> työmies,risumies.name -> risumies, fabu.name -> fabu, pirjo.name -> pirjo, saarnaaja.name -> saarnaaja,jyrki.name -> jyrki))
+  
   //lisätään henkilöt paikkoihinsa
   for(tyypit <- player.henkilot.keys) {
     player.henkilot(tyypit).sijainti.lisaaHenkilo(player.henkilot(tyypit))
   }
   // luodaan ryhmät, joissa jokaisessa on 3 jäsentä
-  val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
-  val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,360,100000)
-  val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
-  val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
-  val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,360,1000000)
-  val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
+  private val group1 = new Group("paatuneet tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
+  private val group2 = new Group("syntiset kylterit",Vector[Person](janpaul,christoffer,erik),7,360,100000)
+  private val group3 = new Group("viattomat infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
+  private val group4 = new Group("tutalaiset", Vector[Person](rontti,akseli,kymis),9,360,40)
+  private val group5 = new Group("kylterit",Vector[Person](janpaul,christoffer,erik),7,360,1000000)
+  private val group6 = new Group("infolaiset",Vector[Person](henrik,ville,tiina),5,360,30)
   
   
   //lisätään edellä luodut ryhmät pelaajan valittavissa oleviin ryhmiin
@@ -110,24 +119,24 @@ class Appropeli {
   private val baarit = Vector[Area](Bruuveri, AussieBar, Bierhuis_Rotterdam, Pub_Ikkuna, Henrys_pub, Shaker, WilliamK, Teerenpeli)
   
   // luodaan kaikki pelin drinkit
-  val stinanErikoinen = new Drink("stinan erikoinen","aivan 5.0/5.0","Täydet pisteet yrityksestä kulauttaa yhdellä huikalla!",5)
-  val seksiaRannalla = new Drink("sexiä rannalla", "Poloisen teekkarin (vain) fantasia", "Sujahtipa liukkaasti!",6)
-  val longIsland = new Drink("pitkän saaren jäätee", "Aamulaskareiden unelma","Kylläpä nautiskelit!",7)
-  val kylterinErikoinen = new Drink("kylterin erikoinen","Hivelee makuhermoja sekä lompakkoa","Se tuntui tiukalta! Tosin erityisesti kukkarossa", 15)
-  val askonSponssi = new Drink("askon sponssi", "Mukava olut mukavalta mieheltä", "Nautiskelit tuopillisen rakkaudella.",6)
-  val rommiKola = new Drink("rommikola","Sikajuhlista ylijääneitä itse juomasian tarjoilemana","Kyllä maistui, vaikka toisin kuin sikajuhlissa häppärin aikaan, ei ollutkaan ilmainen.",4)
-  val minttu = new Drink("minttu","Raikas kuin fuksin henkäys","Kylläpä piristi!",3)
-  val jallu = new Drink("jallu","Täällä jallutähden alla,\n lasi täyttyy leikatulla","Täällä jallutähden alla \nkorkeimmalla kukkulalla. \nKatson läpi lasin tyhjän, \nsen täytän uudestaan.",4)
-  val siideri = new Drink("siideri","Sopii hyvin tytöille","Olipa ihana juoma.",5)
-  val pontikka = new Drink("pontikka","Suoraan tiskin alta pelottoman teekkarin juotavaksi", "Oho! Ei mennyt edes näkö!",2)
-  val työjuoma = new Drink("työ juoma","työ miehiltä työ miesten vatsa laukkuihin", "Kulautit ykkö sellä ja aloit jo miettimään että yli opisto on idi ooteille",5)
-  val humanistinErikoinen = new Drink("humanistin erikoinen","Höpötystä koko drinkki","Joit drinkin etkä saa enää töitä valmistumisesi jälkeen",5)
-  val tikkiläisenSpesiaali = new Drink("tikkiläisen spesiaali","juomaIsHyvä = true: Boolean","känni += 1; fiilis += 1",5)
-  val valkkari = new Drink("valkoviini","Talon valkoviini suoraan Gristaf Grunpenbergin tilalta Etelä-Ranskasta","Kylläpä tuli aatelinen olo!",8)
-  val punkku = new Drink("punaviini","Talon punaviini suoraan Gristaf Grunpenbergin tilalta Länsi-Norjasta","Kylläpä tuli aatelinen olo!",8)
-  val skumppa = new Drink("skumppa","Kyltereiden kellarista", "Nääh, ei ollut hyvää. Taitaa olla vain kulissia tuo kyltereiden elämä.",7)
-  val kilju = new Drink("kilju", "Tule käymään takahuoneessa", "Baarimikko johdattaa sinut kellariin, josta saat kiljua niin paljon, kuin pystyt juomaan. \nOn kuitenkin niin pahaa, että kiljut ällötyksestä.",2)
-  val pöhina = new Drink("pöhinäjuoma", "super uber innovatiivinen makuelämys","Joit lasillisen ja sinulle kasvoi pöhinäparta. \nIlmoittauduit lisäksi ensi vuoden Slushiin ja Junctioniin sekä liimasit Maciisi startup-saunan ja -lifen pöhinätarrat.", 5)
+  private val stinanErikoinen = new Drink("stinan erikoinen","aivan 5.0/5.0","Täydet pisteet yrityksestä kulauttaa yhdellä huikalla!",5)
+  private val seksiaRannalla = new Drink("sexiä rannalla", "Poloisen teekkarin (vain) fantasia", "Sujahtipa liukkaasti!",6)
+  private val longIsland = new Drink("pitkän saaren jäätee", "Aamulaskareiden unelma","Kylläpä nautiskelit!",7)
+  private val kylterinErikoinen = new Drink("kylterin erikoinen","Hivelee makuhermoja sekä lompakkoa","Se tuntui tiukalta! Tosin erityisesti kukkarossa", 15)
+  private val askonSponssi = new Drink("askon sponssi", "Mukava olut mukavalta mieheltä", "Nautiskelit tuopillisen rakkaudella.",6)
+  private val rommiKola = new Drink("rommikola","Sikajuhlista ylijääneitä itse juomasian tarjoilemana","Kyllä maistui, vaikka toisin kuin sikajuhlissa häppärin aikaan, ei ollutkaan ilmainen.",4)
+  private val minttu = new Drink("minttu","Raikas kuin fuksin henkäys","Kylläpä piristi!",3)
+  private val jallu = new Drink("jallu","Täällä jallutähden alla,\n lasi täyttyy leikatulla","Täällä jallutähden alla \nkorkeimmalla kukkulalla. \nKatson läpi lasin tyhjän, \nsen täytän uudestaan.",4)
+  private val siideri = new Drink("siideri","Sopii hyvin tytöille","Olipa ihana juoma.",5)
+  private val pontikka = new Drink("pontikka","Suoraan tiskin alta pelottoman teekkarin juotavaksi", "Oho! Ei mennyt edes näkö!",2)
+  private val työjuoma = new Drink("työ juoma","työ miehiltä työ miesten vatsa laukkuihin", "Kulautit ykkö sellä ja aloit jo miettimään että yli opisto on idi ooteille",5)
+  private val humanistinErikoinen = new Drink("humanistin erikoinen","Höpötystä koko drinkki","Joit drinkin etkä saa enää töitä valmistumisesi jälkeen",5)
+  private val tikkiläisenSpesiaali = new Drink("tikkiläisen spesiaali","juomaIsHyvä = true: Boolean","känni += 1; fiilis += 1",5)
+  private val valkkari = new Drink("valkoviini","Talon valkoviini suoraan Gristaf Grunpenbergin tilalta Etelä-Ranskasta","Kylläpä tuli aatelinen olo!",8)
+  private val punkku = new Drink("punaviini","Talon punaviini suoraan Gristaf Grunpenbergin tilalta Länsi-Norjasta","Kylläpä tuli aatelinen olo!",8)
+  private val skumppa = new Drink("skumppa","Kyltereiden kellarista", "Nääh, ei ollut hyvää. Taitaa olla vain kulissia tuo kyltereiden elämä.",7)
+  private val kilju = new Drink("kilju", "Tule käymään takahuoneessa", "Baarimikko johdattaa sinut kellariin, josta saat kiljua niin paljon, kuin pystyt juomaan. \nOn kuitenkin niin pahaa, että kiljut ällötyksestä.",2)
+  private val pöhina = new Drink("pöhinäjuoma", "super uber innovatiivinen makuelämys","Joit lasillisen ja sinulle kasvoi pöhinäparta. \nIlmoittauduit lisäksi ensi vuoden Slushiin ja Junctioniin sekä liimasit Maciisi startup-saunan ja -lifen pöhinätarrat.", 5)
   
   //lisätään drinkit baareihin
   Bruuveri.addDrinks(Vector[Drink](jallu,tikkiläisenSpesiaali,pöhina))
