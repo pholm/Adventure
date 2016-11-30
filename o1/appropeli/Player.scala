@@ -6,23 +6,23 @@ import scala.io.Source
 import o1.sound._
 import util.Random
   
-/** A `Player` object represents a player character controlled by the real-life user of the program. 
-  *
-  * A player object's state is mutable: the player's location and possessions can change, for instance.
-  *
-  * @param startingArea  the initial location of the player */
+// `Player` objekti edustaa pelin pelaajan ohjailemaa pelihahmoa. 
+
+
+
+
 class Player(startingArea: Area) {
 
-  private var currentLocation = startingArea        // gatherer: tämän hetkinen sijainti
-  private var quitCommandGiven = false              // one-way flag
-  private var ryhmä: Option[Group] = None
-  var juodut = 0
-  var vessahata = 0
-  var vaadittukanni = 0
-  var maximiaika = 0
-  var rahat = 0
-  var porukat = Map[String, Group]() 
-  var henkilot = Map[String,Person]()
+  private var currentLocation = startingArea      // tämän hetkinen sijainti, gatherer
+  private var quitCommandGiven = false            // kertoo onko pelaaja luovuttanut, one way flag
+  private var ryhmä: Option[Group] = None         // pelaajan ryhmä
+  var juodut = 0                                  // pitää kirjaa pelaajan juoduista juomista
+  var vessahata = 0                               // pitää kirjaa vessahädästä
+  var vaadittukanni = 0                           // pelaajan vaadittu humalatila
+  var maximiaika = 0                              // pelin maksimiaika
+  var rahat = 0                                   // pelaajan rahat
+  var porukat = Map[String, Group]()              // pelin ryhmät
+  var henkilot = Map[String,Person]()             // pelin henkilöt
   
   private var soitettu = false                    // Maken etsimiseen
   var makeLoytynyt = true                         // Maken etsimiseen
@@ -33,10 +33,10 @@ class Player(startingArea: Area) {
   private var piilosana  = Vector[String] ("___", "___", "___" , "___",  "___", "___", "___", "___", "___")         // Mysteerimiehen hirsipuuhun
   private var tavoitesana= Vector[String] (" H ", " U ", " M " , " A ",  " N ", " I ", " S ", " T ", " I ")         // Mysteerimiehen hirsipuuhun
   
-  def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat
-  def addHenkiloita(henkilot: Vector[(String,Person)]) = this.henkilot ++= henkilot
+  def addGroups(ryhmat: Vector[(String, Group)]) = this.porukat ++= ryhmat                                          // lisää ryhmiä peliin
+  def addHenkiloita(henkilot: Vector[(String,Person)]) = this.henkilot ++= henkilot                                 // lisää henkilöitä peliin
   
-  
+  //valitsee ryhmän pelin alussa
   def valitsen(ryhmanNimi: String) = {
     if(!this.ryhmä.isDefined) {
       if(porukat.contains(ryhmanNimi)) {
@@ -53,11 +53,11 @@ class Player(startingArea: Area) {
     } else "Tiedetään, ryhmävalintasi ei ollut nappiosuma, mutta olisi todella epäkohteliasta vaihtaa porukkaa kesken appron."
   }
   
-  
- def puhu(personName: String) = {
-  val puhumisfraasit = Vector[String](" sanoo: "," tokaisee: "," vastaa: "," kommentoi: ")
-  var randomi = new Random
-  if(henkilot.contains(personName)) {
+  //puhuu ihmisille samassa tilassa
+  def puhu(personName: String) = {
+   val puhumisfraasit = Vector[String](" sanoo: "," tokaisee: "," vastaa: "," kommentoi: ")
+   var randomi = new Random
+   if(henkilot.contains(personName)) {
      if(henkilot(personName).sijainti == this.location) {
        if(personName == "mysteerimies") {
        haasteheitetty = true
@@ -68,20 +68,20 @@ class Player(startingArea: Area) {
    } else "Ei ole kyllä tuommoisesta kaverista kuullut edes herra Peter 'network' Kelly."  
  }
 
- 
+   // vastaus Mysteerimiehelle
   def kyllä () = {
     "Mainiota, rakastan ihmisiä jotka tykkäävät pelata.\nArvaa kirjain kerrallaan mitä maailman huvittavinta kahdeksankirjaimista asiaa ajattelen." + 
     "\n\nSinulla on 4 väärää vastausta käytettävänäsi, voittaja tarjoaa häviäjälle oluen!\n" + 
     piilosana.mkString(" ") +
     "\n(arvaa sanomalla 'arvaan [kirjain]'"    
   }
-  
+  // vastaus Mysteerimiehelle
   def ei () = {
     haasteheitetty = false
     "Ei sitten, senkin mammanpoika!"
   }
   
-  
+  //apumetodi hirsipuuhun
   private def paljasta(paljastettavat: Vector[String]) = {
     var uusiPiilosana = piilosana.toBuffer                             
     for (indeksi <- this.piilosana.indices) {
@@ -94,7 +94,7 @@ class Player(startingArea: Area) {
     uusiPiilosana.toVector
   }
   
-  
+  //arvaa kirjaimen hirsipuussa Mysteerimiestä vastaan
   def arvaan(arvaus: String) = {
     if(haasteheitetty == true) {
     val arvausIsona = arvaus.toUpperCase.toCharArray.head
@@ -132,18 +132,16 @@ class Player(startingArea: Area) {
   }else "Mitä se siinä yksikseen arvailee."
 }
 
-  /** Determines if the player has indicated a desire to quit the game. */
+  //kertoo onko pelaaja lopettanut
   def hasQuit = this.quitCommandGiven
 
   
-  /** Returns the current location of the player. */
+  //antaa nykyisen sijainnin
   def location = this.currentLocation
   
 
   
-  /** Attempts to move the player in the given direction. This is successful if there 
-    * is an exit from the player's current location towards the direction name. 
-    * Returns a description of the results of the attempt. */
+  //liikkuu pelialueella
   def mene (direction: String) = {
     if(location.name == "Kampin vessa" && direction == "nukkumaan") {
       val destination = this.location.neighbor("kampin alakertaan").get.neighbor("kampin yläkertaan").get.neighbor("tennispalatsinaukiolle").get.neighbor("fredrikinkadulle").get.neighbor("william koohon").get.neighbor("veskiin")
@@ -203,12 +201,12 @@ class Player(startingArea: Area) {
     ""
   }
   
-  
+  //tutkii juoman etikettiä
   def katso(juoma: String) = {
     this.location.giveDrink(juoma).kuvaus
   }
   
-
+  // tilaa baareissa juoman
   def tilaa(juoma: String) = {
     if (location.onkoKayty == false) {
       if (this.location.giveDrink(juoma) != this.location.giveDrink("tyhja")) {                        // Kaikki listan määritellyt juomat
@@ -221,7 +219,7 @@ class Player(startingArea: Area) {
     } else "Kaveri hei, sun takana on kuuskymmentä janoista teekkaria, jatka matkaa jo!"
   }
   
-  
+  //avaa helpin
   def help() = {    
     type Closeable = { def close(): Unit }
     def useAndClose[Resource <: Closeable, Result](resource: Resource)(operation: Resource => Result) = {
