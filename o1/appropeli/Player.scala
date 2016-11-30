@@ -6,8 +6,9 @@ import scala.io.Source
 import o1.sound._
 import util.Random
   
-// `Player` objekti edustaa pelin pelaajan ohjailemaa pelihahmoa. 
 
+
+// Player -luokka edustaa pelin pelaajan ohjailemaa pelihahmoa. 
 
 
 

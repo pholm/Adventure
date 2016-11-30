@@ -2,41 +2,33 @@ package o1.appropeli
 
 import scala.collection.mutable.Map
 
-/** The class `Area` represents locations in a text adventure game world. A game world 
-  * consists of areas. In general, an "area" can be pretty much anything: a room, a building, 
-  * an acre of forest, or something completely different. What different areas have in 
-  * common is that players can be located in them and that they can have exits leading to 
-  * other, neighboring areas. An area also has a name and a description. 
-  * @param name         the name of the area 
-  * @param description  a basic description of the area (typically not including information about items) */
+// Area -luokka edustaa jokaista Appro: Option[humala] -pelin aluetta.
+// Tämmöisiä ovat baarit ja alueet niiden välissä sekä baarien muutamat vessat
+
+
 class Area(var name: String, var description: String, var musa: Option[String]) {
   
-  private val neighbors = Map[String, Area]()
-  private val drinks = Map[String, Drink]().withDefaultValue(new Drink("Ei olla","Juomaasi ei ole listassa. Tilaa vikka viina, jos et muuta keksi.","Osta Bisse", 0))
-  private val henkilot = Map[String, Person]()
-  var onkoKayty = false
+  private val neighbors = Map[String, Area]()            //alueen naapurit
+  private val drinks = Map[String, Drink]().withDefaultValue(new Drink("Ei olla","Juomaasi ei ole listassa. Tilaa vikka viina, jos et muuta keksi.","Osta Bisse", 0)) //alueen drinkit (on jos alue on baari)
+  private val henkilot = Map[String, Person]()          // henkilöt alueella
+  var onkoKayty = false                                 // estää monien juomien tilaamisen putkeen
   
-  def lisaaHenkilo(henkilo: Person) = this.henkilot += henkilo.name -> henkilo  
-  def addDrink(drink: Drink) = this.drinks += drink.name -> drink
-  def addDrinks(drinkit: Vector[Drink]) = for(drink <- drinkit) {this.drinks += drink.name -> drink}
-  def containsDrink(drinkName: String) = drinks.contains(drinkName)
-  def giveDrink(drinkName: String) = drinks(drinkName)
+  def lisaaHenkilo(henkilo: Person) = this.henkilot += henkilo.name -> henkilo                          // lisää henkilön alueelle
+  def addDrink(drink: Drink) = this.drinks += drink.name -> drink                                       // lisää juoman alueelle
+  def addDrinks(drinkit: Vector[Drink]) = for(drink <- drinkit) {this.drinks += drink.name -> drink}    // lisää juomia alueelle
+  def containsDrink(drinkName: String) = drinks.contains(drinkName)                                     // tutkii onko alueella annettu juoma
+  def giveDrink(drinkName: String) = drinks(drinkName)                                                  // palauttaa annetun juoman
   
-  /** Returns the area that can be reached from this area by moving in the given direction. The result 
-    * is returned in an `Option`; `None` is returned if there is no exit in the given direction. */
+  // palauttaa alueen naapurin pyydetyssä suunnassa
   def neighbor(direction: String) = this.neighbors.get(direction)
   
-  /** Adds exits from this area to the given areas. Calling this method is equivalent to calling 
-    * the `setNeighbor` method on each of the given direction--area pairs.
-    * @param exits  contains pairs consisting of a direction and the neighboring area in that direction
-    * @see [[setNeighbor]] */
+  // asettaa alueelle naapureita
   def setNeighbors(exits: Vector[(String, Area)]) = {
     this.neighbors ++= exits
   }
   
   
-  /** Returns a multi-line description of the area as a player sees it. This includes a basic 
-    * description of the area as well as information about exits and items. */
+  // palauttaa täydellisen kuvauksen alueesta
   def fullDescription = {
     var exitit = this.neighbors.keys.map(_.capitalize).toVector
     val exitList = if(this.name !="Alkupaikka") {
