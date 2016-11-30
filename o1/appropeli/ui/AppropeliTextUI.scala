@@ -1,3 +1,8 @@
+
+
+/** PELI ON OPTIMOITU GUILLE, KÄYTÄ TEXTUITA VAIN ERITYISESTÄ HALUSTA! (kiitos!)
+
+
 package o1.appropeli.ui
 
 import o1.appropeli._
@@ -43,4 +48,4 @@ object AppropeliTextUI extends App {
 
 }
 
-
+**/
