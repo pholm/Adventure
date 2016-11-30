@@ -167,12 +167,14 @@ class Player(startingArea: Area) {
       this.ryhmä.foreach(_.jasenet.foreach(_.sijainti = destination.get))      
       nykysijainti.onkoKayty = false
       if(this.location.name == "Kampin vessa" || this.location.name == "William Koon vessa") {
+        var kamppi = " "
+        if(this.location.name == "Kampin vessa") kamppi = " \n\nJostain syystä tunnet kuitenkin voimakasta halua Mennä Nukkumaan..."
        if(this.vessahata > 10) {
          this.vessahata = 0
-         "Huh, ehdit paikalle viimeisillä hetkillä juuri ennen kuin olit ratkeamassa. Nyt voit taas turvallisin mielin jatkaa iltaa. \n\nJostain syystä tunnet kuitenkin voimakasta halua Mennä Nukkumaan..."
+         "Huh, ehdit paikalle viimeisillä hetkillä juuri ennen kuin olit ratkeamassa. Nyt voit taas turvallisin mielin jatkaa iltaa. " + kamppi
        }else {
          this.vessahata = 0
-         "Ei sinulla vielä kauhea hätä ollut, mutta varmistelu on järkevää! \nKovasti sinua nukuttaa..."
+         "Ei sinulla vielä kauhea hätä ollut, mutta varmistelu on järkevää!" + kamppi
        }
       }
       else  {
